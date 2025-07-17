@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(height: 16),
-                    Column(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
@@ -116,16 +116,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                   width: 28,
                                   height: 28,
                                 ),
-                                SizedBox(width: 8),
-                                Text(
-                                  "Continue with Google",
-                                  style: theme.textTheme.titleMedium,
-                                ),
                               ],
                             ),
                           ),
                         ),
-                        SizedBox(height: 8),
+                        // SizedBox(height: 8),
                         Container(
                           child: IconButton(
                             style: ButtonStyle(
@@ -142,13 +137,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               children: [
                                 Image.network(
                                   "https://cdn.freebiesupply.com/logos/large/2x/facebook-logo-2019.png",
-                                  width: 24,
-                                  height: 24,
-                                ),
-                                SizedBox(width: 8),
-                                Text(
-                                  "Continue with Facebook",
-                                  style: theme.textTheme.titleMedium,
+                                  width: 28,
+                                  height: 28,
                                 ),
                               ],
                             ),
@@ -173,11 +163,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   "https://cdn-icons-png.flaticon.com/512/0/747.png",
                                   width: 28,
                                   height: 28,
-                                ),
-                                SizedBox(width: 8),
-                                Text(
-                                  "Continue with Apple",
-                                  style: theme.textTheme.titleMedium,
                                 ),
                               ],
                             ),
