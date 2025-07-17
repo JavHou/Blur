@@ -5,11 +5,12 @@ class RegisterPhoneVerificationStep extends StatefulWidget {
   const RegisterPhoneVerificationStep({super.key});
 
   @override
-  State<RegisterPhoneVerificationStep> createState() => _RegisterPhoneVerificationStepState();
+  State<RegisterPhoneVerificationStep> createState() =>
+      _RegisterPhoneVerificationStepState();
 }
 
-class _RegisterPhoneVerificationStepState extends State<RegisterPhoneVerificationStep> {
-
+class _RegisterPhoneVerificationStepState
+    extends State<RegisterPhoneVerificationStep> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -22,22 +23,21 @@ class _RegisterPhoneVerificationStepState extends State<RegisterPhoneVerificatio
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                  'OTP Verification',
-                  style: theme.textTheme.headlineSmall?.copyWith(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
+                '验证码登录',
+                style: theme.textTheme.headlineSmall?.copyWith(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
                 ),
-                SizedBox(height: 4,),
-                Text(
-                  'Please enter the code we just sent to your number',
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey.shade600,
-                  ),
+              ),
+              SizedBox(height: 4),
+              Text(
+                '请输入刚刚发送到您号码上的6位数验证码',
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: Colors.grey.shade600,
                 ),
-              SizedBox(height: 4,),
-              Text("+93 708 888 888", style: theme.textTheme.labelMedium?.copyWith(color: Colors.grey.shade800),),
-              SizedBox(height: 16,),
+              ),
+              SizedBox(height: 4),
+              SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -47,23 +47,40 @@ class _RegisterPhoneVerificationStepState extends State<RegisterPhoneVerificatio
                       height: 42,
                       width: 42,
                       padding: EdgeInsets.symmetric(horizontal: 16),
-                      textStyle: theme.textTheme.titleLarge?.copyWith(color: Colors.grey.shade800, fontWeight: FontWeight.w600, fontSize: 20),
+                      textStyle: theme.textTheme.titleLarge?.copyWith(
+                        color: Colors.grey.shade800,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20,
+                      ),
                       margin: EdgeInsets.only(right: 8),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(color: Colors.grey.shade300),
                         borderRadius: BorderRadius.circular(12),
-                      )
+                      ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 16,),
+              SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Didn't receive the code? ", style: theme.textTheme.titleLarge?.copyWith(color: Colors.grey.shade600, fontWeight: FontWeight.w400),),
-                  Text("Resend", style: theme.textTheme.labelMedium?.copyWith(color: theme.primaryColor, fontWeight: FontWeight.w600, letterSpacing: 0),),
+                  Text(
+                    "没有收到验证码？",
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      color: Colors.grey.shade600,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  Text(
+                    "重新发送",
+                    style: theme.textTheme.labelMedium?.copyWith(
+                      color: theme.primaryColor,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 0,
+                    ),
+                  ),
                 ],
               ),
             ],

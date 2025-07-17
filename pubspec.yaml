@@ -87,7 +87,6 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/images/empty_state/
-    - assets/images/onboarding/
     - assets/videos/
   #   - images/a_dot_ham.jpeg
 

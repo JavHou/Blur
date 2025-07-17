@@ -171,7 +171,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                       children: [
                         Expanded(
                           child: FullWidthButton(
-                            text: "Login",
+                            text: "登录",
                             onPressed: () {
                               context.push("/login");
                             },
@@ -196,7 +196,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                               ),
                             ),
                             child: Text(
-                              "Register",
+                              "注册",
                               style: theme.textTheme.labelMedium?.copyWith(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w600,

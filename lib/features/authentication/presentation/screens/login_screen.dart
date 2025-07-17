@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 vertical: 8.0,
                               ),
                               child: Text(
-                                "Forgot Password?",
+                                "忘记密码？",
                                 style: theme.textTheme.titleSmall?.copyWith(
                                   color: Colors.blue.shade700,
                                 ),
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: 16),
                     FullWidthButton(
-                      text: "Login",
+                      text: "登录",
                       onPressed: () {
                         context.go("/home");
                       },
@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Column(
                   children: [
                     Text(
-                      "or Continue with",
+                      "其他方式",
                       style: theme.textTheme.labelMedium?.copyWith(
                         color: Colors.grey.shade700,
                         letterSpacing: 0,
@@ -177,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account yet? ",
+                      "没有账号？ ",
                       style: theme.textTheme.labelMedium?.copyWith(
                         color: Colors.grey.shade700,
                         letterSpacing: 0,
@@ -188,7 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         context.push("/register");
                       },
                       child: Text(
-                        "Register",
+                        "立即注册",
                         style: theme.textTheme.labelMedium?.copyWith(
                           color: Colors.blue.shade700,
                         ),

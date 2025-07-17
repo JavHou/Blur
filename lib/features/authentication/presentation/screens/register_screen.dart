@@ -55,7 +55,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Step ${_currentStep.toString()} of 3",
+          "Step ${_currentStep.toString()} of 2",
           style: theme.textTheme.labelLarge,
         ),
         leading: BackButton(
@@ -78,10 +78,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Container(
           height: 60,
           child: FullWidthButton(
-            text: _currentStep < 3 ? 'Continue' : "Register",
+            text: _currentStep < 2 ? '继续' : "注册",
             isLoading: _isLoading,
             onPressed: () {
-              if (_currentStep < 3) {
+              if (_currentStep < 2) {
                 _pageController.nextPage(
                   duration: Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
@@ -93,7 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 process();
               }
             },
-            color: Colors.black,
+            // color: Colors.black,
           ),
         ),
       ),
@@ -103,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         children: [
           RegisterPhoneStep(),
           RegisterPhoneVerificationStep(),
-          RegisterAccountInfoStep(),
+          // RegisterAccountInfoStep(),
         ],
       ),
     );

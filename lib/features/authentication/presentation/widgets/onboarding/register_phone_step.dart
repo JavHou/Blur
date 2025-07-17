@@ -24,7 +24,7 @@ class _RegisterPhoneStepState extends State<RegisterPhoneStep> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Enter phone number',
+                  '输入您的手机号码',
                   style: theme.textTheme.headlineSmall?.copyWith(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
@@ -32,7 +32,7 @@ class _RegisterPhoneStepState extends State<RegisterPhoneStep> {
                 ),
                 SizedBox(height: 4),
                 Text(
-                  'We will send you an OTP verification code which will be used to continue the process.',
+                  '我们将向您发送一个6位数验证码，您可以使用该验证码继续进行操作.',
                   style: theme.textTheme.bodyMedium?.copyWith(
                     color: Colors.grey.shade600,
                   ),
@@ -41,12 +41,11 @@ class _RegisterPhoneStepState extends State<RegisterPhoneStep> {
               ],
             ),
             BaseInput(
-              label: "Phone Number",
-              hint: "e.g. 708 888 888",
+              hint: "e.g. 123 4561 7891",
               prefixIcon: Container(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 child: Text(
-                  "🇦🇫 +93",
+                  " 🇨🇳 +86",
                   style: theme.textTheme.labelLarge?.copyWith(
                     color: Colors.grey.shade700,
                     fontWeight: FontWeight.w500,

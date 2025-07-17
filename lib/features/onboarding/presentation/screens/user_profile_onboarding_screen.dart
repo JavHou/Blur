@@ -159,7 +159,6 @@ class _UserProfileOnboardingScreenState
                 process();
               }
             },
-            color: Colors.black,
           ),
         ),
       ),
