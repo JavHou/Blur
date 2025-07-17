@@ -7,6 +7,7 @@ import 'package:blur/features/authentication/presentation/screens/register_scree
 import 'package:blur/features/authentication/presentation/screens/reset_password/reset_password_screen.dart';
 import 'package:blur/features/authentication/presentation/screens/verification/otp_verification_screen.dart';
 import 'package:blur/features/authentication/presentation/screens/register_success_screen.dart';
+import 'package:blur/features/onboarding/presentation/screens/user_profile_onboarding_screen.dart';
 import 'package:blur/features/category/presentation/screens/category_list_screen.dart';
 import 'package:blur/features/category/presentation/screens/category_view_screen.dart';
 import 'package:blur/features/chat/data/models/conversation_model.dart';
@@ -53,6 +54,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/register/success',
       builder: (context, state) => RegisterSuccessScreen(),
+    ),
+    GoRoute(
+      path: '/profile/setup',
+      builder: (context, state) => UserProfileOnboardingScreen(),
     ),
     GoRoute(path: '/home', builder: (context, state) => HomeScreen()),
     GoRoute(

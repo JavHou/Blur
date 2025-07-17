@@ -40,7 +40,7 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen>
           child: FullWidthButton(
             text: 'Continue',
             onPressed: () {
-              context.go("/home");
+              context.go("/profile/setup");
             },
             color: Colors.black,
           ),

@@ -25,34 +25,34 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                SizedBox(height: 42),
+                SizedBox(height: 128),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      'Let\'s Get You Signed In ',
-                      style: theme.textTheme.headlineMedium?.copyWith(
-                        fontWeight: FontWeight.w600,
+                    Center(
+                      child: ShaderMask(
+                        shaderCallback:
+                            (bounds) => LinearGradient(
+                              colors: [Color(0xFF7951FF), Color(0xFFEB52FF)],
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                            ).createShader(bounds),
+                        child: Text(
+                          "Blur",
+                          style: theme.textTheme.headlineLarge?.copyWith(
+                            fontSize: 64,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
-                    SizedBox(height: 4),
-                    Text(
-                      'Please enter your login info to continue.',
-                      style: theme.textTheme.bodyLarge?.copyWith(
-                        color: Colors.grey.shade700,
-                        letterSpacing: 0,
-                      ),
-                    ),
-                    SizedBox(height: 32),
-                    BaseInput(label: "Email", hint: "e.g. rto1680@gmail.com"),
+                    SizedBox(height: 80),
+                    BaseInput(hint: "Email"),
                     SizedBox(height: 16),
                     Column(
                       children: [
-                        BaseInput(
-                          label: "Password",
-                          hint: "Password",
-                          obscureText: true,
-                        ),
+                        BaseInput(hint: "Password", obscureText: true),
                         Align(
                           alignment: Alignment.centerRight,
                           child: InkWell(
