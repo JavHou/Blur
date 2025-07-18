@@ -1,3 +1,4 @@
+import 'package:blur/shared/logo_fonts/title_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
@@ -29,24 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Center(
-                      child: ShaderMask(
-                        shaderCallback:
-                            (bounds) => LinearGradient(
-                              colors: [Color(0xFF7951FF), Color(0xFFEB52FF)],
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                            ).createShader(bounds),
-                        child: Text(
-                          "Blur",
-                          style: theme.textTheme.headlineLarge?.copyWith(
-                            fontSize: 64,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
+                    Center(child: TitleFont(title: 'Blur', fontSize: 64)),
                     SizedBox(height: 80),
                     BaseInput(hint: "Email"),
                     SizedBox(height: 16),

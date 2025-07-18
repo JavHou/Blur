@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:blur/shared/logo_fonts/title_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -212,6 +213,12 @@ class _MatchTabState extends State<MatchTab> {
     final theme = Theme.of(context);
 
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        title: TitleFont(title: 'Blur', fontSize: 32),
+        // actions: [Fi(onPressed: () {})],
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -260,7 +267,7 @@ class _MatchTabState extends State<MatchTab> {
                       decoration: InputDecoration(
                         hintText: hintTexts[currentHintIndex],
                         prefixIcon: HugeIcon(
-                          icon: HugeIcons.bulkRoundedSearch01,
+                          icon: HugeIcons.strokeRoundedAiBrain03,
                           color: Colors.black,
                         ),
                         border: OutlineInputBorder(
