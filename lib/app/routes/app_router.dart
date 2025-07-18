@@ -1,3 +1,5 @@
+import 'package:blur/features/dating/data/models/dating_model.dart';
+import 'package:blur/features/dating/presentation/screens/dating_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blur/features/authentication/presentation/screens/forgot_password_screen.dart';
@@ -81,6 +83,21 @@ final GoRouter router = GoRouter(
         }
 
         return PropertyScreen(property: property);
+      },
+    ),
+    GoRoute(
+      path: '/dating/:id/view',
+      builder: (context, GoRouterState state) {
+        final dating = state.extra as DatingModel?;
+        final uuid = state.pathParameters['id']!;
+
+        if (dating == null) {
+          return Scaffold(
+            body: Center(child: Text('Dating with uuid $uuid not found')),
+          );
+        }
+
+        return DatingScreen(dating: dating);
       },
     ),
     GoRoute(

@@ -1,11 +1,12 @@
 import 'package:blur/features/home/presentation/widgets/tabs/match_tab.dart';
+import 'package:blur/features/home/presentation/widgets/tabs/meet_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/booking_tab.dart';
-import 'package:blur/features/home/presentation/widgets/tabs/conversation_tab.dart';
+// import 'package:blur/features/home/presentation/widgets/tabs/conversation_tab.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/discover_tab.dart';
-import 'package:blur/features/home/presentation/widgets/tabs/home_tab.dart';
-import 'package:blur/features/home/presentation/widgets/tabs/profile_tab.dart';
+// import 'package:blur/features/home/presentation/widgets/tabs/home_tab.dart';
+// import 'package:blur/features/home/presentation/widgets/tabs/profile_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,7 +20,8 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentTab = 0;
 
   final tabs = <Widget>[
-    HomeTab(),
+    // HomeTab(),
+    MeetTab(),
     DiscoverTab(),
     BookingTab(),
     MatchTab(),
@@ -89,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           : Colors.grey.shade600,
                 ),
               ),
-              label: "Home",
+              label: "Meet",
             ),
             BottomNavigationBarItem(
               icon: Container(
@@ -139,32 +141,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               label: "Match",
             ),
-            // BottomNavigationBarItem(
-            //   icon: Container(
-            //     margin: EdgeInsets.only(bottom: 2),
-            //     child: HugeIcon(
-            //       icon:
-            //           currentTab == 3
-            //               ? HugeIcons.bulkRoundedMessage01
-            //               : HugeIcons.strokeRoundedMessage01,
-            //       color: currentTab == 3 ? Colors.black : Colors.grey.shade600,
-            //     ),
-            //   ),
-            //   label: "Message",
-            // ),
-            // BottomNavigationBarItem(
-            //   icon: Container(
-            //     margin: EdgeInsets.only(bottom: 2),
-            //     child: HugeIcon(
-            //       icon:
-            //           currentTab == 4
-            //               ? HugeIcons.bulkRoundedUser
-            //               : HugeIcons.strokeRoundedUser,
-            //       color: currentTab == 4 ? Colors.black : Colors.grey.shade600,
-            //     ),
-            //   ),
-            //   label: "Profile",
-            // ),
           ],
         ),
       ),
