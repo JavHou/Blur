@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -11,6 +12,8 @@ class RegisterPhoneVerificationStep extends StatefulWidget {
 
 class _RegisterPhoneVerificationStepState
     extends State<RegisterPhoneVerificationStep> {
+  bool isChecked = false; // Move isChecked here to persist across rebuilds
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -83,6 +86,39 @@ class _RegisterPhoneVerificationStepState
                   ),
                 ],
               ),
+              SizedBox(height: 512),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Checkbox(
+                    value: isChecked,
+                    onChanged: (value) {
+                      setState(() {
+                        isChecked = value!;
+                      });
+                    },
+                  ),
+                  Expanded(
+                    child: Text.rich(
+                      TextSpan(
+                        text: "我已阅读并同意",
+                        children: [
+                          TextSpan(
+                            text: "《用户协议》",
+                            style: TextStyle(color: Colors.blue),
+                          ),
+                          TextSpan(text: "和"),
+                          TextSpan(
+                            text: "《隐私政策》",
+                            style: TextStyle(color: Colors.blue),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 32),
             ],
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:blur/features/home/presentation/widgets/tabs/match_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/booking_tab.dart';
@@ -21,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeTab(),
     DiscoverTab(),
     BookingTab(),
+    MatchTab(),
     // ConversationTab(),
     // ProfileTab(),
   ];
@@ -81,7 +83,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       currentTab == 0
                           ? HugeIcons.bulkRoundedHome05
                           : HugeIcons.strokeRoundedHome05,
-                  color: currentTab == 0 ? Colors.black : Colors.grey.shade600,
+                  color:
+                      currentTab == 0
+                          ? Color(0xFFAB3FFF)
+                          : Colors.grey.shade600,
                 ),
               ),
               label: "Home",
@@ -94,7 +99,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       currentTab == 1
                           ? HugeIcons.bulkRoundedDiscoverCircle
                           : HugeIcons.strokeRoundedDiscoverCircle,
-                  color: currentTab == 1 ? Colors.black : Colors.grey.shade600,
+                  color:
+                      currentTab == 1
+                          ? Color(0xFFAB3FFF)
+                          : Colors.grey.shade600,
                 ),
               ),
               label: "Discover",
@@ -107,10 +115,29 @@ class _HomeScreenState extends State<HomeScreen> {
                       currentTab == 2
                           ? HugeIcons.bulkRoundedCalendar02
                           : HugeIcons.strokeRoundedCalendar02,
-                  color: currentTab == 2 ? Colors.black : Colors.grey.shade600,
+                  color:
+                      currentTab == 2
+                          ? Color(0xFFAB3FFF)
+                          : Colors.grey.shade600,
                 ),
               ),
               label: "Booking",
+            ),
+            BottomNavigationBarItem(
+              icon: Container(
+                margin: EdgeInsets.only(bottom: 2),
+                child: HugeIcon(
+                  icon:
+                      currentTab == 3
+                          ? HugeIcons.duotoneRoundedLink01
+                          : HugeIcons.strokeStandardLink01,
+                  color:
+                      currentTab == 3
+                          ? Color(0xFFAB3FFF)
+                          : Colors.grey.shade600,
+                ),
+              ),
+              label: "Match",
             ),
             // BottomNavigationBarItem(
             //   icon: Container(

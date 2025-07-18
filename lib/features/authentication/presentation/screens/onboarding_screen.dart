@@ -145,8 +145,8 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                 FadeTransition(
                   opacity: _descriptionOpacity,
                   child: Text(
-                    "不是99次滑动，只要一次心动",
-                    style: theme.textTheme.labelMedium?.copyWith(
+                    "先见面再说",
+                    style: theme.textTheme.labelLarge?.copyWith(
                       color: Colors.purple,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 1,

@@ -38,11 +38,10 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen>
         child: Container(
           height: 60,
           child: FullWidthButton(
-            text: 'Continue',
+            text: '继续',
             onPressed: () {
               context.go("/profile/setup");
             },
-            color: Colors.black,
           ),
         ),
       ),
@@ -75,7 +74,7 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Account Created',
+                          '开启Blur之旅！',
                           style: theme.textTheme.headlineSmall?.copyWith(
                             fontWeight: FontWeight.w600,
                             color: Colors.green,
@@ -102,10 +101,7 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen>
                           letterSpacing: 0,
                         ),
                         children: [
-                          const TextSpan(
-                            text:
-                                'Account registration is successful, your account is being created.',
-                          ),
+                          const TextSpan(text: '账户创建成功, 请完善信息帮助AI更好配对到理想型.'),
                         ],
                       ),
                     ),
