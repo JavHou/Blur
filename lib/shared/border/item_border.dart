@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ItemBorder extends StatelessWidget {
   final double spacing;
-  const ItemBorder({super.key, this.spacing = 16.0});
+  const ItemBorder(int i, {super.key, this.spacing = 16.0});
 
   @override
   Widget build(BuildContext context) {

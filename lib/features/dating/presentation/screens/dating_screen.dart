@@ -1,6 +1,7 @@
 import 'package:blur/features/dating/presentation/screens/dating_confirm_screen.dart';
 import 'package:blur/features/dating/presentation/widgets/about/dating_about.dart';
 import 'package:blur/features/dating/presentation/widgets/details/dating_details.dart';
+import 'package:blur/features/dating/presentation/widgets/faq/faq_card.dart';
 import 'package:blur/features/dating/presentation/widgets/features/feature_card.dart';
 import 'package:blur/features/dating/presentation/widgets/gallery/dating_gallery.dart';
 import 'package:blur/features/dating/presentation/widgets/location/dating_location.dart';
@@ -72,22 +73,22 @@ class _DatingScreenState extends State<DatingScreen> {
                 ),
               ),
               onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(24),
-                      topRight: Radius.circular(24),
-                    ),
-                  ),
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  builder: (context) {
-                    return SizedBox(
-                      height: deviceHeight * 0.5,
-                      child: DatingconfirmScreen(),
-                    );
-                  },
-                );
+                // showModalBottomSheet(
+                //   context: context,
+                //   shape: RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.only(
+                //       topLeft: Radius.circular(24),
+                //       topRight: Radius.circular(24),
+                //     ),
+                //   ),
+                //   clipBehavior: Clip.antiAliasWithSaveLayer,
+                //   builder: (context) {
+                //     return SizedBox(
+                //       height: deviceHeight * 0.5,
+                //       child: DatingconfirmScreen(dating: widget.dating),
+                //     );
+                //   },
+                // );
               },
               label: Text(
                 "我再想想",
@@ -118,8 +119,8 @@ class _DatingScreenState extends State<DatingScreen> {
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   builder: (context) {
                     return SizedBox(
-                      height: deviceHeight * 0.5,
-                      child: DatingconfirmScreen(),
+                      height: deviceHeight * 0.7,
+                      child: DatingconfirmScreen(dating: widget.dating),
                     );
                   },
                 );
@@ -231,58 +232,13 @@ class _DatingScreenState extends State<DatingScreen> {
                     SizedBox(height: 16),
                     DatingLocation(),
                     SizedBox(height: 16),
-                    // Row(
-                    //   children: [
-                    //     Text(
-                    //       widget.dating.venueName,
-                    //       style: theme.textTheme.labelLarge,
-                    //     ),
-                    //     // Spacer(),
-                    //     // Text(
-                    //     //   "\$${formatPrice(widget.dating.salePrice!)}",
-                    //     //   style: theme.textTheme.headlineSmall?.copyWith(
-                    //     //     color: Colors.green,
-                    //     //   ),
-                    //     // ),
-                    //   ],
-                    // ),
+
                     SizedBox(height: 3),
-                    // Row(
-                    //   children: [
-                    //     HugeIcon(
-                    //       icon: HugeIcons.solidRoundedStar,
-                    //       color: Colors.orange,
-                    //       size: 20,
-                    //     ),
-                    //     SizedBox(width: 4),
-                    //     RichText(
-                    //       text: TextSpan(
-                    //         style: theme.textTheme.labelMedium,
-                    //         children: [
-                    //           TextSpan(text: '4.5 '),
-                    //           TextSpan(
-                    //             text: '(142)',
-                    //             style: theme.textTheme.labelMedium?.copyWith(
-                    //               fontSize: 16 * 0.8,
-                    //               color: Colors.grey.shade800,
-                    //             ),
-                    //           ),
-                    //         ],
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                    // SizedBox(height: 12),
-                    // DatingInfoCard(dating: widget.dating),
-                    // SizedBox(height: 16),
-                    // DatingAbout(about: widget.dating.description),
+
                     SizedBox(height: 16),
                     Text('相册', style: Theme.of(context).textTheme.labelLarge),
                     DatingGallery(dating: widget.dating),
-                    // SizedBox(height: 16),
-                    // DatingLocation(),
-                    // SizedBox(height: 16),
-                    // DatingDetails(dating: widget.dating),
+
                     SizedBox(height: 16),
                     Text('此外AI发现了些彼此的共同点', style: theme.textTheme.labelLarge),
                     SizedBox(height: 8),
@@ -299,8 +255,15 @@ class _DatingScreenState extends State<DatingScreen> {
                     ),
                     SizedBox(height: 16),
                     // DatingHostInfo(),
+                    Text(
+                      '常见问题',
+                      style: theme.textTheme.labelLarge?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    DatingFAQThree(),
                     SizedBox(height: 32),
-                    // TODO: 添加dating tips
                   ],
                 ),
               ),

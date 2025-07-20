@@ -69,7 +69,7 @@ List<MatchMessageModel> mockMessages = [
     senderType: SenderType.ai,
     timestamp: DateTime.now().subtract(Duration(minutes: 9)),
     aiThinking: '正在分析您的偏好...\n匹配咖啡约会场景...\n考虑性格互补和共同话题...\n为您推荐最合适的约会对象...',
-    datingModels: [datings[4], datings[1]],
+    datingModels: [datings[3], datings[7]],
   ),
   // MatchMessageModel(
   //   content: '有没有适合看电影的约会推荐？',

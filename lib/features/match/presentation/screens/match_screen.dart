@@ -152,17 +152,17 @@ class _MatchScreenState extends State<MatchScreen> {
     return [];
   }
 
-  void _scrollToBottom() {
-    Future.delayed(Duration(milliseconds: 100), () {
-      if (_scrollController.hasClients) {
-        _scrollController.animateTo(
-          0, // 因为使用reverse，顶部是0
-          duration: Duration(milliseconds: 300),
-          curve: Curves.easeOut,
-        );
-      }
-    });
-  }
+  // void _scrollToBottom() {
+  //   Future.delayed(Duration(milliseconds: 100), () {
+  //     if (_scrollController.hasClients) {
+  //       _scrollController.animateTo(
+  //         0, // 因为使用reverse，顶部是0
+  //         duration: Duration(milliseconds: 300),
+  //         curve: Curves.easeOut,
+  //       );
+  //     }
+  //   });
+  // }
 
   // void _onDatingCardTap() {
   //   // TODO: 处理约会卡片点击事件

@@ -129,7 +129,8 @@ List<DatingModel> datings = [
     differences: ["他更爱表现自己", "你更喜欢安静观察"],
     matchReason: "你们有相似的幽默感和兴趣爱好，他的开朗能带动气氛，让约会不会冷场。一起看电影是很好的破冰方式。",
     dateTips: ["选一部轻松的喜剧电影", "准备一些电影相关的梗", "可以约看完电影后去奶茶店聊天"],
-    coverImage:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60",
+    coverImage:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60",
     status: DatingStatus.past,
   ),
 
@@ -281,7 +282,8 @@ List<DatingModel> datings = [
     differences: ["她更注重视觉美感", "你更关注技术细节"],
     matchReason: "你们都有艺术细胞和审美品味，她的创意视角能激发你的灵感，而你的技术背景也能帮她理解摄影技术。",
     dateTips: ["准备一台好相机", "可以互相拍照", "聊聊对艺术的理解"],
-    coverImage: "assets/images/covers/art_date_cover.jpg",
+    coverImage:
+        "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&auto=format&fit=crop&q=60",
     status: DatingStatus.pending,
   ),
 

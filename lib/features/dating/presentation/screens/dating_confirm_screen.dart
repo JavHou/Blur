@@ -1,14 +1,15 @@
 import 'dart:async';
 
+import 'package:blur/features/dating/data/models/dating_model.dart';
+import 'package:blur/features/dating/presentation/widgets/confirm_step/request_confirm_step_one.dart';
+import 'package:blur/features/dating/presentation/widgets/confirm_step/request_confirm_step_two.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:blur/features/property/presentation/widgets/request_visit/request_visit_step_one.dart';
-import 'package:blur/features/property/presentation/widgets/request_visit/request_visit_step_three.dart';
-import 'package:blur/features/property/presentation/widgets/request_visit/request_visit_step_two.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
 
 class DatingconfirmScreen extends StatefulWidget {
-  const DatingconfirmScreen({super.key});
+  final DatingModel dating;
+  const DatingconfirmScreen({super.key, required this.dating});
 
   @override
   State<DatingconfirmScreen> createState() => _DatingconfirmScreenState();
@@ -32,7 +33,11 @@ class _DatingconfirmScreenState extends State<DatingconfirmScreen> {
       setState(() {
         _isLoading = false;
         Navigator.of(context).pop();
-        context.push('/property/tour/success');
+        context.push(
+          '/dating/${widget.dating.id}/confirm/success',
+          extra: widget.dating,
+        );
+
         timer.cancel();
       });
     });
@@ -58,7 +63,7 @@ class _DatingconfirmScreenState extends State<DatingconfirmScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Request a Visit', style: theme.textTheme.labelLarge),
+        title: Text('确认约会🤩', style: theme.textTheme.labelLarge),
         leading: BackButton(
           onPressed: () {
             if (_currentStep > 0) {
@@ -79,19 +84,18 @@ class _DatingconfirmScreenState extends State<DatingconfirmScreen> {
         controller: _pageController,
         physics: NeverScrollableScrollPhysics(),
         children: [
-          RequestVisitStepOne(),
-          RequestVisitStepTwo(),
-          RequestVisitStepThree(),
+          RequestConfirmStepOne(dating: widget.dating),
+          RequestConfirmStepTwo(),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        child: Container(
+        child: SizedBox(
           height: 60,
           child: FullWidthButton(
-            text: _currentStep <= 1 ? 'Continue' : "Confirm Dating",
+            text: _currentStep <= 0 ? '继续' : "确认",
             isLoading: _isLoading,
             onPressed: () {
-              if (_currentStep <= 1) {
+              if (_currentStep <= 0) {
                 _pageController.nextPage(
                   duration: Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
@@ -103,7 +107,6 @@ class _DatingconfirmScreenState extends State<DatingconfirmScreen> {
                 process();
               }
             },
-            color: Colors.black,
           ),
         ),
       ),

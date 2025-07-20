@@ -1,4 +1,5 @@
 import 'package:blur/features/dating/data/models/dating_model.dart';
+import 'package:blur/features/dating/presentation/screens/dating_confirm_success_screen.dart';
 import 'package:blur/features/dating/presentation/screens/dating_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -98,6 +99,21 @@ final GoRouter router = GoRouter(
         }
 
         return DatingScreen(dating: dating);
+      },
+    ),
+    GoRoute(
+      path: '/dating/:id/confirm/success',
+      builder: (context, state) {
+        final dating = state.extra as DatingModel?;
+        final uuid = state.pathParameters['id']!;
+
+        if (dating == null) {
+          return Scaffold(
+            body: Center(child: Text('Dating with uuid $uuid not found')),
+          );
+        }
+
+        return DatingConfirmSuccessScreen(dating: dating);
       },
     ),
     GoRoute(
