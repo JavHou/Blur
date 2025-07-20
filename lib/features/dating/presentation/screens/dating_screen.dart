@@ -1,6 +1,9 @@
 import 'package:blur/features/dating/presentation/screens/dating_confirm_screen.dart';
+import 'package:blur/features/dating/presentation/screens/dating_diary_screen.dart';
+import 'package:blur/features/dating/presentation/screens/dating_poster_share_screen.dart';
 import 'package:blur/features/dating/presentation/widgets/about/dating_about.dart';
 import 'package:blur/features/dating/presentation/widgets/details/dating_details.dart';
+import 'package:blur/features/dating/presentation/widgets/diary/diary_card.dart';
 import 'package:blur/features/dating/presentation/widgets/faq/faq_card.dart';
 import 'package:blur/features/dating/presentation/widgets/features/feature_card.dart';
 import 'package:blur/features/dating/presentation/widgets/gallery/dating_gallery.dart';
@@ -21,40 +24,6 @@ class DatingScreen extends StatefulWidget {
 }
 
 class _DatingScreenState extends State<DatingScreen> {
-  final List<Map<String, dynamic>> _features = [
-    {
-      "title": 'Swimming Pool',
-      "icon": HugeIcons.bulkRoundedPool,
-      "isSelected": false,
-    },
-    {"title": 'Wifi', "icon": HugeIcons.bulkRoundedWifi01, "isSelected": false},
-    {
-      "title": 'Parking',
-      "icon": HugeIcons.bulkRoundedCarParking01,
-      "isSelected": false,
-    },
-    {
-      "title": 'Garden',
-      "icon": HugeIcons.bulkRoundedTree01,
-      "isSelected": false,
-    },
-    {
-      "title": 'Security',
-      "icon": HugeIcons.bulkRoundedSecurity,
-      "isSelected": false,
-    },
-    {
-      "title": 'Furnished',
-      "icon": HugeIcons.bulkRoundedSofa01,
-      "isSelected": false,
-    },
-    {
-      "title": 'Fireplace',
-      "icon": HugeIcons.bulkRoundedCampfire,
-      "isSelected": false,
-    },
-  ];
-
   Widget _buildBottomButtons(BuildContext context, ThemeData theme) {
     final deviceHeight = MediaQuery.of(context).size.height;
 
@@ -139,21 +108,56 @@ class _DatingScreenState extends State<DatingScreen> {
         return FullWidthButton(
           text: "分享",
           onPressed: () {
-            Share.shareUri(
-              Uri.parse('https://example.com/dating/${widget.dating.id}'),
+            showModalBottomSheet(
+              context: context,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(24),
+                  topRight: Radius.circular(24),
+                ),
+              ),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              builder: (context) {
+                return SizedBox(
+                  height: deviceHeight * 0.7,
+                  child: DatingPosterShareScreen(dating: widget.dating),
+                );
+              },
             );
           },
         );
       case DatingStatus.past:
         return FullWidthButton(
-          text: "分享",
+          text: "填写约会日记",
           onPressed: () {
-            Share.shareUri(
-              Uri.parse('https://example.com/dating/${widget.dating.id}'),
+            showModalBottomSheet(
+              context: context,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(24),
+                  topRight: Radius.circular(24),
+                ),
+              ),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              builder: (context) {
+                return SizedBox(
+                  height: deviceHeight * 0.7,
+                  child: DatingDiaryScreen(),
+                );
+              },
             );
           },
         );
 
+      // case DatingStatus.declined:
+      // return FullWidthButton(
+      //   text: "分享",
+      //   onPressed: () {
+      //     Share.shareUri(
+      //       Uri.parse('https://example.com/dating/${widget.dating.id}'),
+      //     );
+      //   },
+      // );
       case DatingStatus.canceled:
         return FullWidthButton(
           text: "已取消",
@@ -169,7 +173,6 @@ class _DatingScreenState extends State<DatingScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final deviceHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: AppBar(
@@ -229,12 +232,9 @@ class _DatingScreenState extends State<DatingScreen> {
                     DatingAbout(dating: widget.dating),
                     SizedBox(height: 16),
                     DatingDetails(dating: widget.dating),
-                    SizedBox(height: 16),
-                    DatingLocation(),
-                    SizedBox(height: 16),
-
-                    SizedBox(height: 3),
-
+                    // SizedBox(height: 16),
+                    // DatingLocation(),
+                    // SizedBox(height: 16),
                     SizedBox(height: 16),
                     Text('相册', style: Theme.of(context).textTheme.labelLarge),
                     DatingGallery(dating: widget.dating),
@@ -254,7 +254,18 @@ class _DatingScreenState extends State<DatingScreen> {
                       isSelected: false,
                     ),
                     SizedBox(height: 16),
-                    // DatingHostInfo(),
+                    // 已完成的显示约会日记模块
+                    if (widget.dating.status == DatingStatus.past) ...[
+                      Text(
+                        '约会日记',
+                        style: theme.textTheme.labelLarge?.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      DatingDiaryCard(),
+                      SizedBox(height: 16),
+                    ],
                     Text(
                       '常见问题',
                       style: theme.textTheme.labelLarge?.copyWith(
@@ -262,7 +273,7 @@ class _DatingScreenState extends State<DatingScreen> {
                       ),
                     ),
                     SizedBox(height: 8),
-                    DatingFAQThree(),
+                    DatingFAQCard(),
                     SizedBox(height: 32),
                   ],
                 ),

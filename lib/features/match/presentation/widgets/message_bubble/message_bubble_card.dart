@@ -1,5 +1,8 @@
 import 'package:blur/features/dating/presentation/widgets/cards/vertical_dating_card.dart';
+import 'package:blur/features/match/presentation/widgets/share/share_card.dart';
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../data/models/match_message_model.dart';
 
 class MessageBubbleCard extends StatelessWidget {
@@ -87,15 +90,54 @@ class MessageBubbleCard extends StatelessWidget {
                       ),
                     ),
 
-                  // AI回复内容
-                  Container(
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Text(message.content),
+                  Row(
+                    children: [
+                      // AI回复内容
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade100,
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Text(
+                            message.content,
+                            softWrap: true, // Enable automatic line wrapping
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(24),
+                                topRight: Radius.circular(24),
+                              ),
+                            ),
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            builder: (context) {
+                              return SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.7,
+                                child: MessageShareCard(
+                                  message: message.content,
+                                ),
+                              );
+                            },
+                          );
+                          MessageShareCard(message: message.content);
+                        },
+                        icon: HugeIcon(
+                          icon: HugeIcons.strokeRoundedShare01,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
                   ),
+
                   SizedBox(height: 8),
                   // 约会卡片
                   if (message.datingModels != null &&

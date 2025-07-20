@@ -25,6 +25,14 @@ class _DatingGalleryState extends State<DatingGallery> {
     super.initState();
   }
 
+  Widget _buildImage(String resource) {
+    if (resource.startsWith('assets')) {
+      return Image.asset(resource, fit: BoxFit.cover);
+    } else {
+      return Image.network(resource, fit: BoxFit.cover);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -72,25 +80,8 @@ class _DatingGalleryState extends State<DatingGallery> {
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
       child: GestureDetector(
         onTap: onTap,
-        child: Hero(
-          tag: tag,
-          child: Image.network(resource, fit: BoxFit.cover),
-        ),
+        child: Hero(tag: tag, child: _buildImage(resource)),
       ),
     );
   }
-}
-
-Widget thumbnail({onTap, required String tag, required String resource}) {
-  return Container(
-    margin: const EdgeInsets.only(right: 10.0, bottom: 10),
-    clipBehavior: Clip.hardEdge,
-    height: 70,
-    width: 100,
-    decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-    child: GestureDetector(
-      onTap: onTap,
-      child: Hero(tag: tag, child: Image.network(resource, fit: BoxFit.cover)),
-    ),
-  );
 }

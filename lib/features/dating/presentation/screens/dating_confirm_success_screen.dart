@@ -1,6 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:blur/features/dating/data/models/dating_model.dart';
+import 'package:blur/features/dating/presentation/widgets/poster_share/poster_share.dart';
 import 'package:blur/shared/image/image_widget.dart';
+import 'package:blur/shared/socialmedia_share/socialmedia_share_card.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -59,15 +61,26 @@ class _DatingConfirmSuccessScreenState extends State<DatingConfirmSuccessScreen>
                   Container(
                     width: double.infinity,
                     margin: const EdgeInsets.symmetric(horizontal: 32),
-                    constraints: BoxConstraints(minHeight: 200, maxHeight: 200),
-                    child: ImageWidget(imageUrl: widget.dating.coverImage),
+                    constraints: BoxConstraints(
+                      minHeight: 200,
+                      maxHeight: MediaQuery.of(context).size.height * 0.4,
+                      maxWidth: MediaQuery.of(context).size.width - 64,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: ImageWidget(
+                        imageUrl: widget.dating.photos.last,
+                        // fit: BoxFit.contain,
+                      ),
+                    ),
                   ),
                   FadeInUp(
                     child: Center(
                       child: Lottie.asset(
                         'assets/animations/lottie/congratulation.json',
                         controller: _controller,
-                        width: 400,
+                        width: 600,
+                        height: 300,
                         onLoaded: (composition) {
                           _controller
                             ..duration = composition.duration
@@ -79,6 +92,7 @@ class _DatingConfirmSuccessScreenState extends State<DatingConfirmSuccessScreen>
                 ],
               ),
             ),
+            SizedBox(height: 16),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Column(
@@ -119,81 +133,67 @@ class _DatingConfirmSuccessScreenState extends State<DatingConfirmSuccessScreen>
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        // Ensure the container fills the row
-                        width: double.infinity,
-                        margin: EdgeInsets.only(top: 4),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '不会破冰？AI为你准备了约会小贴士', // Add numbering
-                              style: theme.textTheme.titleMedium?.copyWith(
-                                color: Colors.grey.shade800,
-                              ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      // Ensure the container fills the row
+                      width: double.infinity,
+                      margin: EdgeInsets.only(top: 4),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '不会破冰？AI为你准备了约会小贴士', // Add numbering
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              color: Colors.grey.shade800,
                             ),
-                            Divider(color: Colors.grey.shade300),
-                            SizedBox(height: 8),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children:
-                                  widget.dating.dateTips
-                                      .asMap()
-                                      .entries
-                                      .map(
-                                        (entry) => Container(
-                                          // Ensure the container fills the row
-                                          width: double.infinity,
-                                          margin: EdgeInsets.only(
-                                            top: entry.key == 0 ? 0 : 4,
-                                          ),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                '${entry.key + 1}. ${entry.value}', // Add numbering
-                                                style: theme
-                                                    .textTheme
-                                                    .titleMedium
-                                                    ?.copyWith(
-                                                      color:
-                                                          Colors.grey.shade800,
-                                                    ),
-                                              ),
-                                              SizedBox(height: 4),
-                                            ],
-                                          ),
+                          ),
+                          Divider(color: Colors.grey.shade300),
+                          SizedBox(height: 8),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children:
+                                widget.dating.dateTips
+                                    .asMap()
+                                    .entries
+                                    .map(
+                                      (entry) => Container(
+                                        // Ensure the container fills the row
+                                        width: double.infinity,
+                                        margin: EdgeInsets.only(
+                                          top: entry.key == 0 ? 0 : 4,
                                         ),
-                                      )
-                                      .toList(),
-                            ),
-                          ],
-                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '${entry.key + 1}. ${entry.value}', // Add numbering
+                                              style: theme.textTheme.titleMedium
+                                                  ?.copyWith(
+                                                    color: Colors.grey.shade800,
+                                                  ),
+                                            ),
+                                            SizedBox(height: 4),
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                    .toList(),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 8),
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: 8),
+                  ],
                 ),
               ),
             ),
             SizedBox(height: 24),
             FadeInUp(
               delay: const Duration(milliseconds: 200),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: FullWidthButton(
-                  radius: 52,
-                  text: "分享海报到微信",
-                  onPressed: () {
-                    context.go('/home');
-                  },
-                ),
-              ),
+              child: SocialmediaShareButton(),
             ),
           ],
         ),

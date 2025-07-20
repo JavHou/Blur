@@ -88,15 +88,34 @@ class _MatchScreenState extends State<MatchScreen> {
 
   void _simulateAIResponse(String userMessage) {
     Future.delayed(Duration(seconds: 1), () {
-      final aiMessage = MatchMessageModel(
-        content: _generateAIResponse(userMessage),
+      var aiMessage = MatchMessageModel(
+        // content: _generateAIResponse(userMessage),
+        content: '✨ 匹配完成！已为您找到如下的高契合度的理想对象',
         direction: MessageDirection.received,
         senderType: SenderType.ai,
         timestamp: DateTime.now(),
-        aiThinking: '正在深度分析您的需求...\n考虑您的偏好和当前情况，为您匹配最合适的选项...',
-        datingModels: _generateDatingModels(userMessage),
+        aiThinking:
+            '🧠 AI智能分析中...\n\n🔍 正在深度解读您的需求偏好\n📊 分析您的客观条件：年龄、职业、地理位置、兴趣爱好\n💭 理解您的主观期待：性格匹配度、价值观契合度、生活方式相似性\n🎯 在10万+用户数据库中进行多维度筛选\n⚡ 运行深度学习匹配算法，计算兼容性指数\n🎨 结合您的审美偏好和约会场景需求\n💝 为您量身定制个性化推荐方案',
+        // datingModels: _generateDatingModels(userMessage),
+        datingModels: [datings[0], datings[1]],
       );
-
+      if (userMessage.contains('日记') || userMessage.contains('吐槽')) {
+        aiMessage = MatchMessageModel(
+          content: '好呀！今天跟十七的约会怎么样？有什么好玩或者吐槽的事情跟我分享吗？我会帮你自动润色成日记哦！',
+          direction: MessageDirection.received,
+          senderType: SenderType.ai,
+          timestamp: DateTime.now().subtract(Duration(minutes: 1)),
+        );
+      }
+      if (userMessage.contains('抓娃娃')) {
+        aiMessage = MatchMessageModel(
+          content:
+              'Dating日记｜第一次约会，我们在娃娃机前杠上了她约我见面，说想去个“压力小一点的地方”。结果目的地是商场负一楼的一整排娃娃机。“你擅长这个？”我问。“不会，但我觉得有意思。”她说。结果从第一台机子开始，她就陷入沉思——不是在想怎么抓，是在研究力学结构和夹爪角度。我站在旁边，看着她一脸认真地投了五十块，娃娃纹丝不动，倒是她频频回头看我表情。“你来吧。”她把位置让出来。于是，我开始教学。从“先晃晃看有没有动的”“要卡边”“下爪前拉一下角度”到“下去前提前放手”。她一边听一边点头，看起来比我当年辅导表弟写作业还认真。我们站在那里整整二十分钟，围了一圈路过的小朋友。我一边讲解，她一边操作，终于夹起一个毛茸茸的小熊，在半空中缓慢移动。我们两个像屏住呼吸一样盯着它——结果快落下那一瞬，一个五六岁的小孩扑上来，一把从出口拿走了娃娃。我当场愣住。她反应比我快，笑着弯腰对小孩说：“这个是姐姐夹的哦。”小孩的妈妈在旁边摆摆手，说：“哎呀小朋友嘛。”她看了我一眼，笑了笑，没说什么，只是重新又换了一张卡，说：“再来一个。”那一刻我突然有点破防。不是因为娃娃，而是她没急，也没演温柔——就是一副“走吧，再来一次”的笃定。最后我们什么都没带走，只在娃娃机旁拍了张合影。我穿着印着爆改kitty图案的白T恤，她T恤胸口写着“Anti Social Social Club”。两个人笑得像刚完成一场荒唐但不无意义的通关任务。我想，大概这就是我喜欢dating的理由——不是因为谁带我去哪儿，而是我们曾在某个没人注意的角落里，一起为了一只三十块的玩具，毫无保留地认真过一次。',
+          direction: MessageDirection.received,
+          senderType: SenderType.ai,
+          timestamp: DateTime.now().subtract(Duration(minutes: 1)),
+        );
+      }
       setState(() {
         _messages.add(aiMessage);
       });
@@ -111,45 +130,48 @@ class _MatchScreenState extends State<MatchScreen> {
   }
 
   String _generateAIResponse(String userMessage) {
-    if (userMessage.contains('咖啡') || userMessage.contains('coffee')) {
-      return '根据您的需求，我为您推荐了几位喜欢咖啡文化的匹配对象：';
-    } else if (userMessage.contains('电影') || userMessage.contains('看')) {
-      return '为您推荐几位喜欢观影的约会对象：';
-    } else if (userMessage.contains('运动') || userMessage.contains('健身')) {
-      return '为您推荐了热爱运动的约会伙伴：';
-    } else if (userMessage.contains('音乐')) {
-      return '为您推荐几位音乐爱好者：';
-    } else if (userMessage.contains('艺术') || userMessage.contains('摄影')) {
-      return '为您推荐有艺术气质的约会对象：';
-    } else {
-      return '抱歉，信息不足，请提供更多详细信息来为您匹配合适的约会对象';
-    }
+    return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
+
+    // if (userMessage.contains('咖啡') || userMessage.contains('coffee')) {
+    //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
+    // } else if (userMessage.contains('电影') || userMessage.contains('看')) {
+    //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
+    // } else if (userMessage.contains('运动') || userMessage.contains('健身')) {
+    //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
+    // } else if (userMessage.contains('音乐')) {
+    //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
+    // } else if (userMessage.contains('艺术') || userMessage.contains('摄影')) {
+    //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
+    // } else {
+    //   return '抱歉，信息不足，请提供更多详细信息来为您匹配合适的约会对象';
+    // }
   }
 
   List<DatingModel> _generateDatingModels(String userMessage) {
     // 根据用户消息内容返回相应的约会推荐
-    if (userMessage.contains('咖啡') || userMessage.contains('coffee')) {
-      return datings.where((d) => d.theme.contains('咖啡')).toList();
-    } else if (userMessage.contains('电影')) {
-      return datings.where((d) => d.theme.contains('观影')).toList();
-    } else if (userMessage.contains('运动') || userMessage.contains('健身')) {
-      return datings
-          .where(
-            (d) => d.theme.contains('Walk') || d.personalityType.contains('运动'),
-          )
-          .toList();
-    } else if (userMessage.contains('音乐')) {
-      return datings
-          .where(
-            (d) => d.theme.contains('音乐') || d.venueName.contains('livehouse'),
-          )
-          .toList();
-    } else if (userMessage.contains('艺术') || userMessage.contains('摄影')) {
-      return datings
-          .where((d) => d.theme.contains('艺术') || d.venueName.contains('798'))
-          .toList();
-    }
-    return [];
+    return [datings[0], datings[1]];
+    // if (userMessage.contains('咖啡') || userMessage.contains('coffee')) {
+    //   return datings.where((d) => d.theme.contains('咖啡')).toList();
+    // } else if (userMessage.contains('电影')) {
+    //   return datings.where((d) => d.theme.contains('观影')).toList();
+    // } else if (userMessage.contains('运动') || userMessage.contains('健身')) {
+    //   return datings
+    //       .where(
+    //         (d) => d.theme.contains('Walk') || d.personalityType.contains('运动'),
+    //       )
+    //       .toList();
+    // } else if (userMessage.contains('音乐')) {
+    //   return datings
+    //       .where(
+    //         (d) => d.theme.contains('音乐') || d.venueName.contains('livehouse'),
+    //       )
+    //       .toList();
+    // } else if (userMessage.contains('艺术') || userMessage.contains('摄影')) {
+    //   return datings
+    //       .where((d) => d.theme.contains('艺术') || d.venueName.contains('798'))
+    //       .toList();
+    // }
+    // return [];
   }
 
   // void _scrollToBottom() {
@@ -236,13 +258,23 @@ class _MatchScreenState extends State<MatchScreen> {
               ),
               child: Row(
                 children: [
+                  IconButton(
+                    onPressed: () {
+                      FocusScope.of(context).unfocus();
+                      _sendMessage();
+                    },
+                    icon: HugeIcon(
+                      icon: HugeIcons.strokeRoundedAiBrain03,
+                      color: Colors.black,
+                    ),
+                  ),
                   Expanded(
                     child: TextField(
                       controller: _messageController,
                       decoration: InputDecoration(
                         hintText: hintTexts[currentHintIndex],
                         prefixIcon: HugeIcon(
-                          icon: HugeIcons.strokeRoundedAiBrain03,
+                          icon: HugeIcons.strokeRoundedVoice,
                           color: Colors.black,
                         ),
                         suffixIcon: IconButton(
@@ -295,9 +327,9 @@ class _MatchScreenState extends State<MatchScreen> {
                       color: theme.primaryColor,
                     ),
                     style: IconButton.styleFrom(
-                      backgroundColor: theme.primaryColor.withAlpha(
-                        (0.1 * 255).toInt(),
-                      ),
+                      // backgroundColor: theme.primaryColor.withAlpha(
+                      //   (0.1 * 255).toInt(),
+                      // ),
                       padding: EdgeInsets.all(12),
                     ),
                   ),
