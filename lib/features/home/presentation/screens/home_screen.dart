@@ -13,9 +13,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late PageController _pageController;
-  int currentTab = 1;
+  int currentTab = 0;
 
-  final tabs = <Widget>[DiscoverTab(), MatchTab(), MeetTab()];
+  final tabs = <Widget>[MatchTab(), MeetTab()];
 
   void goToTab(int page) {
     setState(() {
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: 1);
+    _pageController = PageController(initialPage: 0);
   }
 
   @override
@@ -71,26 +71,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: HugeIcon(
                   icon:
                       currentTab == 0
-                          ? HugeIcons.bulkRoundedDiscoverCircle
-                          : HugeIcons.strokeRoundedDiscoverCircle,
-                  color:
-                      currentTab == 0
-                          ? Color(0xFFAB3FFF)
-                          : Colors.grey.shade600,
-                ),
-              ),
-              label: "Discover",
-            ),
-            BottomNavigationBarItem(
-              icon: Container(
-                margin: EdgeInsets.only(bottom: 2),
-                child: HugeIcon(
-                  icon:
-                      currentTab == 1
                           ? HugeIcons.duotoneRoundedLink01
                           : HugeIcons.strokeStandardLink01,
                   color:
-                      currentTab == 1
+                      currentTab == 0
                           ? Color(0xFFAB3FFF)
                           : Colors.grey.shade600,
                 ),
@@ -102,11 +86,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 margin: EdgeInsets.only(bottom: 2),
                 child: HugeIcon(
                   icon:
-                      currentTab == 2
+                      currentTab == 1
                           ? HugeIcons.bulkRoundedCalendar02
                           : HugeIcons.strokeRoundedCalendar02,
                   color:
-                      currentTab == 2
+                      currentTab == 1
                           ? Color(0xFFAB3FFF)
                           : Colors.grey.shade600,
                 ),
