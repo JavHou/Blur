@@ -14,6 +14,7 @@ class DatingModel {
   final String venueName;
   final double latitude;
   final double longitude;
+  final String distance;
   final DateTime dateTime;
   final String theme;
   final List<String> commonalities;
@@ -32,6 +33,7 @@ class DatingModel {
     required this.venueName,
     required this.latitude,
     required this.longitude,
+    required this.distance,
     required this.dateTime,
     required this.theme,
     required this.commonalities,
@@ -51,6 +53,7 @@ class DatingModel {
     venueName: json["venueName"],
     latitude: (json["latitude"] as num).toDouble(),
     longitude: (json["longitude"] as num).toDouble(),
+    distance: json["distance"] ?? "天涯海角",
     dateTime: DateTime.parse(json["dateTime"]),
     theme: json["theme"],
     commonalities: List<String>.from(json["commonalities"] ?? []),
@@ -97,6 +100,7 @@ List<DatingModel> datings = [
     longitude: 116.4074,
     dateTime: DateTime(2024, 1, 20, 15, 30),
     theme: "咖啡约会",
+    distance: "2.5 km",
     commonalities: ["都喜欢咖啡文化", "都是夜猫子", "都喜欢拍照记录生活"],
     differences: ["她更外向社交", "你更专注技术"],
     matchReason: "你们都有着对生活品质的追求，她的活力能平衡你的理性思维，而你的稳重也能给她安全感。咖啡厅的轻松氛围很适合你们初次见面。",
@@ -118,13 +122,14 @@ List<DatingModel> datings = [
     venueName: "CGV影城",
     latitude: 39.9163,
     longitude: 116.3972,
+    distance: "1.7 km",
     dateTime: DateTime(2024, 1, 21, 19, 00),
     theme: "观影约会",
     commonalities: ["都喜欢看喜剧电影", "都是B站深度用户", "都喜欢二次元文化"],
     differences: ["他更爱表现自己", "你更喜欢安静观察"],
     matchReason: "你们有相似的幽默感和兴趣爱好，他的开朗能带动气氛，让约会不会冷场。一起看电影是很好的破冰方式。",
     dateTips: ["选一部轻松的喜剧电影", "准备一些电影相关的梗", "可以约看完电影后去奶茶店聊天"],
-    coverImage: "assets/images/covers/movie_date_cover.jpg",
+    coverImage:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60",
     status: DatingStatus.past,
   ),
 
@@ -141,6 +146,7 @@ List<DatingModel> datings = [
     venueName: "朝阳公园",
     latitude: 39.9378,
     longitude: 116.4783,
+    distance: "0.3 km",
     dateTime: DateTime(2024, 1, 22, 9, 00),
     theme: "City Walk",
     commonalities: ["都喜欢户外活动", "都关注健康生活", "都喜欢早起"],
@@ -165,6 +171,8 @@ List<DatingModel> datings = [
     venueName: "三联书店",
     latitude: 39.9388,
     longitude: 116.3974,
+    distance: "1.6 km",
+
     dateTime: DateTime(2024, 1, 23, 14, 00),
     theme: "书店约会",
     commonalities: ["都喜欢阅读", "都有文艺情怀", "都喜欢安静的环境"],
@@ -188,6 +196,8 @@ List<DatingModel> datings = [
     venueName: "动漫主题咖啡厅",
     latitude: 39.9075,
     longitude: 116.3972,
+    distance: "6.6 km",
+
     dateTime: DateTime(2024, 1, 24, 16, 30),
     theme: "二次元主题约会",
     commonalities: ["都是动漫迷", "都玩手游", "都喜欢cosplay"],
@@ -212,6 +222,8 @@ List<DatingModel> datings = [
     venueName: "网红烤肉店",
     latitude: 39.9097,
     longitude: 116.4109,
+    distance: "8.8 km",
+
     dateTime: DateTime(2024, 1, 25, 18, 00),
     theme: "美食探店",
     commonalities: ["都是吃货", "都喜欢尝试新餐厅", "都会拍美食照片"],
@@ -235,6 +247,8 @@ List<DatingModel> datings = [
     venueName: "livehouse",
     latitude: 39.9334,
     longitude: 116.4333,
+    distance: "3.7 km",
+
     dateTime: DateTime(2024, 1, 26, 20, 00),
     theme: "音乐现场",
     commonalities: ["都喜欢独立音乐", "都会乐器", "都喜欢现场感"],
@@ -259,6 +273,8 @@ List<DatingModel> datings = [
     venueName: "798艺术区",
     latitude: 39.9888,
     longitude: 116.4986,
+    distance: "3.3 km",
+
     dateTime: DateTime(2024, 1, 27, 13, 30),
     theme: "艺术探索",
     commonalities: ["都喜欢艺术", "都有审美追求", "都喜欢拍照"],
@@ -282,6 +298,8 @@ List<DatingModel> datings = [
     venueName: "苹果直营店",
     latitude: 39.9075,
     longitude: 116.3914,
+    distance: "5.2 km",
+
     dateTime: DateTime(2024, 1, 28, 15, 00),
     theme: "科技体验",
     commonalities: ["都是科技迷", "都关注最新数码产品", "都有理工科思维"],
@@ -306,6 +324,8 @@ List<DatingModel> datings = [
     venueName: "植物园温室",
     latitude: 39.9656,
     longitude: 116.4919,
+    distance: "2.1 km",
+
     dateTime: DateTime(2024, 1, 29, 10, 30),
     theme: "自然治愈",
     commonalities: ["都喜欢安静环境", "都关注心理健康", "都喜欢植物"],

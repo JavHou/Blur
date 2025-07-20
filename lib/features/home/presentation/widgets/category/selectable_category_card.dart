@@ -7,6 +7,9 @@ class SelectableCategoryCard extends StatefulWidget {
   final bool isSelected;
   final Function()? onTap;
   final EdgeInsetsGeometry? padding;
+  final bool isSingleSelect;
+  final Function(String)? onSingleSelect;
+
   const SelectableCategoryCard({
     super.key,
     this.padding,
@@ -14,6 +17,8 @@ class SelectableCategoryCard extends StatefulWidget {
     required this.onTap,
     required this.icon,
     required this.isSelected,
+    this.isSingleSelect = false,
+    this.onSingleSelect,
   });
 
   @override

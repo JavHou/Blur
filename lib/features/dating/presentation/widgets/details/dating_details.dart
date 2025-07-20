@@ -69,7 +69,7 @@ class _DatingDetailsState extends State<DatingDetails> {
               Row(
                 children: [
                   HugeIcon(
-                    icon: HugeIcons.strokeStandardLocation01,
+                    icon: HugeIcons.strokeRoundedMaping,
                     color: Colors.grey.shade800,
                     size: 18,
                   ),
@@ -86,6 +86,34 @@ class _DatingDetailsState extends State<DatingDetails> {
                     onTap: () {},
                     child: Text(
                       widget.dating.venueName,
+                      style: theme.textTheme.labelMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              border(12),
+              Row(
+                children: [
+                  HugeIcon(
+                    icon: HugeIcons.strokeRoundedLocationFavourite01,
+                    color: Colors.grey.shade800,
+                    size: 18,
+                  ),
+                  SizedBox(width: 4),
+                  Text(
+                    "距离",
+                    style: theme.textTheme.labelMedium?.copyWith(
+                      color: Colors.blueGrey.shade700,
+                      letterSpacing: 0,
+                    ),
+                  ),
+                  Spacer(),
+                  InkWell(
+                    onTap: () {},
+                    child: Text(
+                      widget.dating.distance,
                       style: theme.textTheme.labelMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),

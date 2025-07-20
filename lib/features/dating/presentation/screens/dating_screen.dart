@@ -7,17 +7,8 @@ import 'package:blur/features/dating/presentation/widgets/location/dating_locati
 import 'package:blur/shared/buttons/full_width_button.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:blur/features/home/presentation/widgets/category/selectable_category_card.dart';
 import 'package:blur/features/dating/data/models/dating_model.dart';
-// import 'package:blur/features/dating/presentation/screens/dating_tour_screen.dart';
-// import 'package:blur/features/dating/presentation/widgets/about/dating_about.dart';
-// import 'package:blur/features/dating/presentation/widgets/details/dating_details.dart';
-// import 'package:blur/features/dating/presentation/widgets/gallery/dating_gallery.dart';
-// import 'package:blur/features/dating/presentation/widgets/host/dating_host_info.dart';
-// import 'package:blur/features/dating/presentation/widgets/info/dating_info_card.dart';
-// import 'package:blur/features/dating/presentation/widgets/location/dating_location.dart';
 import 'package:blur/shared/image/image_widget.dart';
-// import 'package:blur/shared/utils/number/number_utils.dart';
 import 'package:share_plus/share_plus.dart';
 
 class DatingScreen extends StatefulWidget {
@@ -309,6 +300,7 @@ class _DatingScreenState extends State<DatingScreen> {
                     SizedBox(height: 16),
                     // DatingHostInfo(),
                     SizedBox(height: 32),
+                    // TODO: 添加dating tips
                   ],
                 ),
               ),

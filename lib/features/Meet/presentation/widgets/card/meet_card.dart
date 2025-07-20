@@ -1,10 +1,8 @@
 import 'package:blur/features/dating/data/models/dating_model.dart';
+import 'package:blur/features/meet/presentation/widgets/meta_info/meta_info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hugeicons/hugeicons.dart';
 import 'package:blur/shared/image/image_widget.dart';
-import 'package:intl/intl.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 class MeetCard extends StatefulWidget {
   final DatingModel dating;
@@ -16,12 +14,6 @@ class MeetCard extends StatefulWidget {
 }
 
 class _MeetCardState extends State<MeetCard> {
-  @override
-  void initState() {
-    super.initState();
-    initializeDateFormatting('zh_CN'); // Initialize locale data for 'zh_CN'
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -101,40 +93,11 @@ class _MeetCardState extends State<MeetCard> {
                     ],
                   ),
                   SizedBox(height: 2),
-                  Row(
-                    children: [
-                      HugeIcon(
-                        icon: HugeIcons.strokeRoundedClock01,
-                        color: Colors.grey.shade800,
-                        size: 18,
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        DateFormat(
-                          'HH:mm EE',
-                          'zh_CN',
-                        ).format(widget.dating.dateTime),
-                        style: theme.textTheme.labelMedium?.copyWith(
-                          fontSize: 16 * 0.8,
-                          color: Colors.grey.shade700,
-                        ),
-                      ),
-                      SizedBox(width: 8),
-                      HugeIcon(
-                        icon: HugeIcons.strokeStandardLocation01,
-                        color: Colors.grey.shade800,
-                        size: 18,
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        widget.dating.venueName,
-                        style: theme.textTheme.labelMedium?.copyWith(
-                          fontSize: 16 * 0.8,
-                          color: Colors.grey.shade700,
-                        ),
-                      ),
-                    ],
+                  DatingMetaInfo(
+                    dateTime: widget.dating.dateTime,
+                    venueName: widget.dating.venueName,
                   ),
+                  SizedBox(height: 8),
                 ],
               ),
             ),

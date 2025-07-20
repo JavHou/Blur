@@ -2,11 +2,7 @@ import 'package:blur/features/home/presentation/widgets/tabs/match_tab.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/meet_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:blur/features/home/presentation/widgets/tabs/booking_tab.dart';
-// import 'package:blur/features/home/presentation/widgets/tabs/conversation_tab.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/discover_tab.dart';
-// import 'package:blur/features/home/presentation/widgets/tabs/home_tab.dart';
-// import 'package:blur/features/home/presentation/widgets/tabs/profile_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,17 +13,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late PageController _pageController;
-  int currentTab = 0;
+  int currentTab = 1;
 
-  final tabs = <Widget>[
-    // HomeTab(),
-    MeetTab(),
-    DiscoverTab(),
-    BookingTab(),
-    MatchTab(),
-    // ConversationTab(),
-    // ProfileTab(),
-  ];
+  final tabs = <Widget>[DiscoverTab(), MatchTab(), MeetTab()];
 
   void goToTab(int page) {
     setState(() {
@@ -40,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: 0);
+    _pageController = PageController(initialPage: 1);
   }
 
   @override
@@ -50,13 +38,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: PageView(
         controller: _pageController,
-        children: tabs,
         physics: NeverScrollableScrollPhysics(),
         onPageChanged: (page) {
           setState(() {
             currentTab = page;
           });
         },
+        children: tabs,
       ),
       bottomNavigationBar: Container(
         child: BottomNavigationBar(
@@ -83,15 +71,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: HugeIcon(
                   icon:
                       currentTab == 0
-                          ? HugeIcons.bulkRoundedHome05
-                          : HugeIcons.strokeRoundedHome05,
+                          ? HugeIcons.bulkRoundedDiscoverCircle
+                          : HugeIcons.strokeRoundedDiscoverCircle,
                   color:
                       currentTab == 0
                           ? Color(0xFFAB3FFF)
                           : Colors.grey.shade600,
                 ),
               ),
-              label: "Meet",
+              label: "Discover",
             ),
             BottomNavigationBarItem(
               icon: Container(
@@ -99,15 +87,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: HugeIcon(
                   icon:
                       currentTab == 1
-                          ? HugeIcons.bulkRoundedDiscoverCircle
-                          : HugeIcons.strokeRoundedDiscoverCircle,
+                          ? HugeIcons.duotoneRoundedLink01
+                          : HugeIcons.strokeStandardLink01,
                   color:
                       currentTab == 1
                           ? Color(0xFFAB3FFF)
                           : Colors.grey.shade600,
                 ),
               ),
-              label: "Discover",
+              label: "Match!",
             ),
             BottomNavigationBarItem(
               icon: Container(
@@ -123,23 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           : Colors.grey.shade600,
                 ),
               ),
-              label: "Booking",
-            ),
-            BottomNavigationBarItem(
-              icon: Container(
-                margin: EdgeInsets.only(bottom: 2),
-                child: HugeIcon(
-                  icon:
-                      currentTab == 3
-                          ? HugeIcons.duotoneRoundedLink01
-                          : HugeIcons.strokeStandardLink01,
-                  color:
-                      currentTab == 3
-                          ? Color(0xFFAB3FFF)
-                          : Colors.grey.shade600,
-                ),
-              ),
-              label: "Match",
+              label: "Meet",
             ),
           ],
         ),
