@@ -33,7 +33,7 @@ class _SubscriptionScreensState extends State<SubscriptionScreens> {
               ),
 
               SizedBox(height: 8),
-              Text('您当前的计划是：Flirt', style: theme.textTheme.titleLarge),
+              Text('您当前的计划是：免费', style: theme.textTheme.titleLarge),
               SizedBox(height: 32),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,7 +75,7 @@ class _SubscriptionScreensState extends State<SubscriptionScreens> {
                               SizedBox(height: 8),
 
                               Text(
-                                '每日签到和完成分享任务可获得额外积分，积分可用于兑换会员特权。',
+                                '每日签到和完成分享日记任务可获得额外积分，积分可用于兑换匹配特权。',
                                 style: theme.textTheme.titleMedium?.copyWith(
                                   color: Colors.grey.shade800,
                                   fontSize: 12,

@@ -20,14 +20,14 @@ class _SubscriptionPlanCardState extends State<SubscriptionPlanCard> {
           children: [
             const SizedBox(height: 16),
             Text(
-              ' Flirt 计划',
+              ' Premium 计划',
               style: theme.textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              '1. 免费使用所有基础功能\n2. 活动积分兑换',
+              '1. 充值30积分/月\n2. 专属客服支持',
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: Colors.grey.shade600,
               ),
@@ -42,36 +42,14 @@ class _SubscriptionPlanCardState extends State<SubscriptionPlanCard> {
             const SizedBox(height: 16),
             Divider(color: Colors.grey.shade300),
             Text(
-              ' Spark 计划',
+              'Supreme 计划',
               style: theme.textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              '1. Flirt 计划的所有功能\n2. 每天3次配对机会\n3. 优先客服支持',
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: Colors.grey.shade600,
-              ),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                // Handle button press
-              },
-              child: const Text('管理订阅'),
-            ),
-            const SizedBox(height: 16),
-            Divider(color: Colors.grey.shade300),
-            Text(
-              'Blaze 计划',
-              style: theme.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              '1. Spark 计划的所有功能\n2. 每天10次配对机会\n3. 专属客服支持\n4. 可以重新匹配已拒绝的配对',
+              '1. 充值100积分/月\n2. VIP客服支持\n3. 重新匹配已拒绝的配对',
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: Colors.grey.shade600,
               ),

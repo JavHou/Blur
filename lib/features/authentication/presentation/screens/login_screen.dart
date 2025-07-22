@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
 import 'package:blur/shared/inputs/base_input.dart';
+import 'package:hugeicons/hugeicons.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -88,20 +89,15 @@ class _LoginScreenState extends State<LoginScreen> {
                               shape: WidgetStatePropertyAll(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
-                                  side: BorderSide(color: Colors.grey.shade300),
+                                  side: BorderSide(color: Colors.grey.shade100),
                                 ),
                               ),
                             ),
                             onPressed: () {},
-                            icon: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.network(
-                                  "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png",
-                                  width: 28,
-                                  height: 28,
-                                ),
-                              ],
+                            icon: HugeIcon(
+                              icon: HugeIcons.strokeRoundedWechat,
+                              color: Colors.grey.shade700,
+                              size: 28,
                             ),
                           ),
                         ),
@@ -112,21 +108,26 @@ class _LoginScreenState extends State<LoginScreen> {
                               shape: WidgetStatePropertyAll(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
-                                  side: BorderSide(color: Colors.grey.shade300),
+                                  side: BorderSide(color: Colors.grey.shade100),
                                 ),
                               ),
                             ),
                             onPressed: () {},
-                            icon: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.network(
-                                  "https://cdn.freebiesupply.com/logos/large/2x/facebook-logo-2019.png",
-                                  width: 28,
-                                  height: 28,
-                                ),
-                              ],
+                            icon: HugeIcon(
+                              icon: HugeIcons.strokeRoundedApple,
+                              color: Colors.grey.shade700,
+                              size: 28,
                             ),
+                            // icon: Row(
+                            //   mainAxisAlignment: MainAxisAlignment.center,
+                            //   children: [
+                            //     Image.network(
+                            //       "https://cdn.freebiesupply.com/logos/large/2x/facebook-logo-2019.png",
+                            //       width: 28,
+                            //       height: 28,
+                            //     ),
+                            //   ],
+                            // ),
                           ),
                         ),
                         SizedBox(height: 8),
@@ -136,22 +137,28 @@ class _LoginScreenState extends State<LoginScreen> {
                               shape: WidgetStatePropertyAll(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
-                                  side: BorderSide(color: Colors.grey.shade300),
+                                  side: BorderSide(color: Colors.grey.shade100),
                                 ),
                               ),
                             ),
                             onPressed: () {},
-                            icon: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.network(
-                                  "https://cdn-icons-png.flaticon.com/512/0/747.png",
-                                  width: 28,
-                                  height: 28,
-                                ),
-                              ],
+                            icon: HugeIcon(
+                              icon: HugeIcons.strokeRoundedGoogle,
+                              color: Colors.grey.shade700,
+                              size: 28,
                             ),
                           ),
+                          //   icon: Row(
+                          //     mainAxisAlignment: MainAxisAlignment.center,
+                          //     children: [
+                          //       Image.network(
+                          //         "https://cdn-icons-png.flaticon.com/512/0/747.png",
+                          //         width: 28,
+                          //         height: 28,
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
                         ),
                       ],
                     ),
