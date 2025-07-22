@@ -84,7 +84,7 @@ class _UnacceptableTraitsStepScreenState
 
               // 标题
               Text(
-                '你不能接受的点？',
+                '你不能接受的点？(可选)',
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,

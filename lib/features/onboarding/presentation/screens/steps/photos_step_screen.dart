@@ -5,10 +5,7 @@ import 'package:blur/shared/buttons/full_width_button.dart';
 class PhotosStepScreen extends StatefulWidget {
   final UserProfileModel userProfile;
 
-  const PhotosStepScreen({
-    super.key,
-    required this.userProfile,
-  });
+  const PhotosStepScreen({super.key, required this.userProfile});
 
   @override
   State<PhotosStepScreen> createState() => _PhotosStepScreenState();
@@ -26,7 +23,9 @@ class _PhotosStepScreenState extends State<PhotosStepScreen> {
   void _addPhoto() {
     // 模拟添加照片
     setState(() {
-      _photos.add('https://mighty.tools/mockmind-api/content/human/96.jpg');
+      _photos.add(
+        'https://hips.hearstapps.com/hmg-prod/images/36757835-218188988836086-2521657792918454272-n-1532066478.jpg?crop=1xw:1xh;center,top&resize=980:*',
+      );
       widget.userProfile.photos = _photos;
     });
   }
@@ -126,7 +125,6 @@ class _PhotosStepScreenState extends State<PhotosStepScreen> {
               ),
 
               SizedBox(height: 24),
-
             ],
           ),
         ),

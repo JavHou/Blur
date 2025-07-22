@@ -1,6 +1,9 @@
 import 'package:blur/features/dating/data/models/dating_model.dart';
+import 'package:blur/features/dating/presentation/screens/dating_checkin_screen.dart';
+import 'package:blur/features/dating/presentation/screens/dating_confirm_screen.dart';
 import 'package:blur/features/dating/presentation/screens/dating_confirm_success_screen.dart';
 import 'package:blur/features/dating/presentation/screens/dating_screen.dart';
+import 'package:blur/features/setting/presentation/screens/subscription/screens/subscription_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blur/features/authentication/presentation/screens/forgot_password_screen.dart';
@@ -62,7 +65,13 @@ final GoRouter router = GoRouter(
       path: '/profile/setup',
       builder: (context, state) => UserProfileOnboardingScreen(),
     ),
-    GoRoute(path: '/home', builder: (context, state) => HomeScreen()),
+    GoRoute(
+      path: '/home',
+      builder: (context, state) {
+        final showFilter = state.uri.queryParameters['showFilter'] == 'true';
+        return HomeScreen(showFilterOnLoad: showFilter);
+      },
+    ),
     GoRoute(
       path: '/categories',
       builder: (context, state) => CategoryListScreen(),
@@ -102,6 +111,40 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
+      path: '/dating/:id/confirm',
+      builder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>?;
+        final dating = extra?['dating'] as DatingModel?;
+        final onUpdate = extra?['onUpdate'] as Function(DatingModel)?;
+        final uuid = state.pathParameters['id']!;
+
+        if (dating == null) {
+          return Scaffold(
+            body: Center(child: Text('Dating with uuid $uuid not found')),
+          );
+        }
+
+        return DatingconfirmScreen(dating: dating, onDatingUpdated: onUpdate);
+      },
+    ),
+
+    GoRoute(
+      path: '/dating/:id/checkin',
+      builder: (context, state) {
+        // final extra = state.extra as Map<String, dynamic>?;
+        // // final dating = extra?['dating'] as DatingModel?;
+        // final uuid = state.pathParameters['id']!;
+
+        // if (dating == null) {
+        //   return Scaffold(
+        //     body: Center(child: Text('Dating with uuid $uuid not found')),
+        //   );
+        // }
+
+        return DatingCheckinScreen();
+      },
+    ),
+    GoRoute(
       path: '/dating/:id/confirm/success',
       builder: (context, state) {
         final dating = state.extra as DatingModel?;
@@ -115,6 +158,10 @@ final GoRouter router = GoRouter(
 
         return DatingConfirmSuccessScreen(dating: dating);
       },
+    ),
+    GoRoute(
+      path: '/subscription',
+      builder: (context, state) => SubscriptionScreens(),
     ),
     GoRoute(
       path: '/properties',

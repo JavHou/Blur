@@ -34,7 +34,7 @@ class _UserProfileOnboardingScreenState
   bool _isLoading = false;
   late Timer _timer = Timer(Duration.zero, () {});
 
-  final int _totalSteps = 13;
+  final int _totalSteps = 8;
 
   final UserProfileModel _userProfile = UserProfileModel();
 
@@ -59,7 +59,8 @@ class _UserProfileOnboardingScreenState
     _timer = Timer.periodic(oneSec, (timer) {
       setState(() {
         _isLoading = false;
-        context.go('/home');
+        // Navigate to home with filter popup flag
+        context.go('/home?showFilter=true');
         timer.cancel();
       });
     });
@@ -144,7 +145,7 @@ class _UserProfileOnboardingScreenState
         child: Container(
           height: 60,
           child: FullWidthButton(
-            text: _currentStep < _totalSteps ? 'Continue' : "Finish",
+            text: _currentStep < _totalSteps ? '继续' : "完成",
             isLoading: _isLoading,
             onPressed: () {
               if (_currentStep < _totalSteps) {
@@ -172,13 +173,13 @@ class _UserProfileOnboardingScreenState
           AgeStepScreen(userProfile: _userProfile),
           LocationStepScreen(userProfile: _userProfile),
           PhotosStepScreen(userProfile: _userProfile),
-          MBTIStepScreen(userProfile: _userProfile),
-          PartnerExpectationsStepScreen(userProfile: _userProfile),
-          UnacceptableTraitsStepScreen(userProfile: _userProfile),
+          // MBTIStepScreen(userProfile: _userProfile),
+          // PartnerExpectationsStepScreen(userProfile: _userProfile),
+          // UnacceptableTraitsStepScreen(userProfile: _userProfile),
           ProfessionStepScreen(userProfile: _userProfile),
-          SleepScheduleStepScreen(userProfile: _userProfile),
+          // SleepScheduleStepScreen(userProfile: _userProfile),
           HobbiesStepScreen(userProfile: _userProfile),
-          DietaryHabitsStepScreen(userProfile: _userProfile),
+          // DietaryHabitsStepScreen(userProfile: _userProfile),
         ],
       ),
     );

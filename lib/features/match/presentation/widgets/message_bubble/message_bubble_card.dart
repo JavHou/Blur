@@ -128,7 +128,6 @@ class MessageBubbleCard extends StatelessWidget {
                               );
                             },
                           );
-                          MessageShareCard(message: message.content);
                         },
                         icon: HugeIcon(
                           icon: HugeIcons.strokeRoundedShare01,

@@ -67,6 +67,24 @@ class _DatingFAQCardState extends State<DatingFAQCard> {
                         fontSize: 12,
                       ),
                     ),
+                    ItemBorder(12),
+
+                    Text(
+                      '我的押金何时退还？', // Add numbering
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: Colors.grey.shade800,
+                        fontSize: 12,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+
+                    Text(
+                      '双方约会打卡后，押金将在24小时内退还至您的账户。如未打卡，押金将转给对方作为违约赔偿。',
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: Colors.grey.shade800,
+                        fontSize: 12,
+                      ),
+                    ),
                   ],
                 ),
               ),

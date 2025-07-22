@@ -1,3 +1,4 @@
+import 'package:blur/features/dating/presentation/widgets/filter/dating_filter.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/match_tab.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/meet_tab.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/profile_tab.dart';
@@ -6,7 +7,8 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/discover_tab.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final bool showFilterOnLoad;
+  const HomeScreen({super.key, this.showFilterOnLoad = false});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -30,6 +32,34 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: 0);
+
+    // Show filter popup after registration with 500ms delay
+    if (widget.showFilterOnLoad) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Future.delayed(Duration(milliseconds: 500), () {
+          _showFilterPopup();
+        });
+      });
+    }
+  }
+
+  void _showFilterPopup() {
+    showModalBottomSheet(
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24),
+          topRight: Radius.circular(24),
+        ),
+      ),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      builder: (context) {
+        return SizedBox(
+          height: MediaQuery.of(context).size.height * 0.5,
+          child: DatingFilter(),
+        );
+      },
+    );
   }
 
   @override

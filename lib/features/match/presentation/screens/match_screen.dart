@@ -4,16 +4,17 @@ import 'package:blur/features/dating/presentation/widgets/filter/dating_filter.d
 import 'package:blur/features/match/data/models/match_message_model.dart';
 import 'package:blur/features/match/presentation/widgets/message_bubble/message_bubble_card.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 class MatchScreen extends StatefulWidget {
   const MatchScreen({super.key});
 
   @override
-  State<MatchScreen> createState() => _MatchScreenState();
+  State<MatchScreen> createState() => MatchScreenState();
 }
 
-class _MatchScreenState extends State<MatchScreen> {
+class MatchScreenState extends State<MatchScreen> {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
 
   final List<String> hintTexts = [
@@ -27,6 +28,9 @@ class _MatchScreenState extends State<MatchScreen> {
   late Timer hintTimer;
   final TextEditingController _messageController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
+
+  // Use static list to persist chat history across tab switches
+  static List<MatchMessageModel> _persistentMessages = [];
   List<MatchMessageModel> _messages = [];
 
   @override
@@ -39,8 +43,8 @@ class _MatchScreenState extends State<MatchScreen> {
       });
     });
 
-    // 加载模拟数据
-    _loadMockMessages();
+    // Load persistent chat history instead of mock messages
+    _loadChatHistory();
   }
 
   @override
@@ -52,9 +56,15 @@ class _MatchScreenState extends State<MatchScreen> {
     super.dispose();
   }
 
-  void _loadMockMessages() {
+  void _loadChatHistory() {
     setState(() {
-      _messages = List.from(mockMessages);
+      // Load from persistent storage, fallback to mock if empty
+      if (_persistentMessages.isEmpty) {
+        _messages = List.from(mockMessages);
+        _persistentMessages = List.from(_messages);
+      } else {
+        _messages = List.from(_persistentMessages);
+      }
     });
   }
 
@@ -71,6 +81,8 @@ class _MatchScreenState extends State<MatchScreen> {
 
     setState(() {
       _messages.add(newMessage);
+      // Save to persistent storage
+      _persistentMessages.add(newMessage);
     });
 
     // 添加动画
@@ -101,7 +113,7 @@ class _MatchScreenState extends State<MatchScreen> {
       );
       if (userMessage.contains('日记') || userMessage.contains('吐槽')) {
         aiMessage = MatchMessageModel(
-          content: '好呀！今天跟十七的约会怎么样？有什么好玩或者吐槽的事情跟我分享吗？我会帮你自动润色成日记哦！',
+          content: '好呀！今天跟兔兔的约会怎么样？有什么好玩或者吐槽的事情跟我分享吗？我会帮你自动润色成日记哦！',
           direction: MessageDirection.received,
           senderType: SenderType.ai,
           timestamp: DateTime.now().subtract(Duration(minutes: 1)),
@@ -118,6 +130,8 @@ class _MatchScreenState extends State<MatchScreen> {
       }
       setState(() {
         _messages.add(aiMessage);
+        // Save AI response to persistent storage
+        _persistentMessages.add(aiMessage);
       });
 
       // 添加AI消息动画
@@ -125,54 +139,117 @@ class _MatchScreenState extends State<MatchScreen> {
         0,
         duration: Duration(milliseconds: 300),
       );
-      // _scrollToBottom();
+
+      // Print chat history for debugging
+      print('=== Chat History (${_persistentMessages.length} messages) ===');
+      for (int i = 0; i < _persistentMessages.length; i++) {
+        final msg = _persistentMessages[i];
+        print(
+          '${i + 1}. [${msg.senderType.name.toUpperCase()}] ${msg.timestamp}',
+        );
+        print(
+          '   ${msg.content.substring(0, msg.content.length > 50 ? 50 : msg.content.length)}${msg.content.length > 50 ? '...' : ''}',
+        );
+      }
+      print('=== End Chat History ===');
     });
   }
 
-  String _generateAIResponse(String userMessage) {
-    return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
-
-    // if (userMessage.contains('咖啡') || userMessage.contains('coffee')) {
-    //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
-    // } else if (userMessage.contains('电影') || userMessage.contains('看')) {
-    //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
-    // } else if (userMessage.contains('运动') || userMessage.contains('健身')) {
-    //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
-    // } else if (userMessage.contains('音乐')) {
-    //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
-    // } else if (userMessage.contains('艺术') || userMessage.contains('摄影')) {
-    //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
-    // } else {
-    //   return '抱歉，信息不足，请提供更多详细信息来为您匹配合适的约会对象';
-    // }
+  // Add method to clear chat history (useful for testing)
+  static void clearChatHistory() {
+    _persistentMessages.clear();
   }
 
-  List<DatingModel> _generateDatingModels(String userMessage) {
-    // 根据用户消息内容返回相应的约会推荐
-    return [datings[0], datings[1]];
-    // if (userMessage.contains('咖啡') || userMessage.contains('coffee')) {
-    //   return datings.where((d) => d.theme.contains('咖啡')).toList();
-    // } else if (userMessage.contains('电影')) {
-    //   return datings.where((d) => d.theme.contains('观影')).toList();
-    // } else if (userMessage.contains('运动') || userMessage.contains('健身')) {
-    //   return datings
-    //       .where(
-    //         (d) => d.theme.contains('Walk') || d.personalityType.contains('运动'),
-    //       )
-    //       .toList();
-    // } else if (userMessage.contains('音乐')) {
-    //   return datings
-    //       .where(
-    //         (d) => d.theme.contains('音乐') || d.venueName.contains('livehouse'),
-    //       )
-    //       .toList();
-    // } else if (userMessage.contains('艺术') || userMessage.contains('摄影')) {
-    //   return datings
-    //       .where((d) => d.theme.contains('艺术') || d.venueName.contains('798'))
-    //       .toList();
-    // }
-    // return [];
+  void _navigateToConfirm(DatingModel dating) async {
+    print('=== MatchScreen: Navigating to confirm for dating ${dating.id} ===');
+    final result = await context.push(
+      '/dating/${dating.id}/confirm',
+      extra: {
+        'dating': dating,
+        'onUpdate': (DatingModel updatedDating) {
+          print(
+            '=== MatchScreen: Received update callback for dating ${updatedDating.id} ===',
+          );
+          _updateDatingFromMatch(updatedDating);
+        },
+      },
+    );
+
+    // Refresh data if needed
+    if (result != null) {
+      print('=== MatchScreen: Got result, refreshing match data ===');
+      _refreshMatchData();
+    }
   }
+
+  void _updateDatingFromMatch(DatingModel updatedDating) {
+    // Update the dating model in messages if it exists
+    setState(() {
+      for (int i = 0; i < _messages.length; i++) {
+        if (_messages[i].datingModels != null) {
+          final datingIndex = _messages[i].datingModels!.indexWhere(
+            (d) => d.id == updatedDating.id,
+          );
+          if (datingIndex != -1) {
+            _messages[i].datingModels![datingIndex] = updatedDating;
+            _persistentMessages[i].datingModels![datingIndex] = updatedDating;
+          }
+        }
+      }
+    });
+  }
+
+  void _refreshMatchData() {
+    // Refresh match screen data if needed
+    setState(() {
+      // Additional refresh logic if required
+    });
+  }
+
+  // String _generateAIResponse(String userMessage) {
+  //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
+
+  //   // if (userMessage.contains('咖啡') || userMessage.contains('coffee')) {
+  //   //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
+  //   // } else if (userMessage.contains('电影') || userMessage.contains('看')) {
+  //   //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
+  //   // } else if (userMessage.contains('运动') || userMessage.contains('健身')) {
+  //   //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
+  //   // } else if (userMessage.contains('音乐')) {
+  //   //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
+  //   // } else if (userMessage.contains('艺术') || userMessage.contains('摄影')) {
+  //   //   return '✨ 匹配完成！已为您找到如下的高契合度的理想对象';
+  //   // } else {
+  //   //   return '抱歉，信息不足，请提供更多详细信息来为您匹配合适的约会对象';
+  //   // }
+  // }
+
+  // List<DatingModel> _generateDatingModels(String userMessage) {
+  //   // 根据用户消息内容返回相应的约会推荐
+  //   return [datings[0], datings[1]];
+  //   // if (userMessage.contains('咖啡') || userMessage.contains('coffee')) {
+  //   //   return datings.where((d) => d.theme.contains('咖啡')).toList();
+  //   // } else if (userMessage.contains('电影')) {
+  //   //   return datings.where((d) => d.theme.contains('观影')).toList();
+  //   // } else if (userMessage.contains('运动') || userMessage.contains('健身')) {
+  //   //   return datings
+  //   //       .where(
+  //   //         (d) => d.theme.contains('Walk') || d.personalityType.contains('运动'),
+  //   //       )
+  //   //       .toList();
+  //   // } else if (userMessage.contains('音乐')) {
+  //   //   return datings
+  //   //       .where(
+  //   //         (d) => d.theme.contains('音乐') || d.venueName.contains('livehouse'),
+  //   //       )
+  //   //       .toList();
+  //   // } else if (userMessage.contains('艺术') || userMessage.contains('摄影')) {
+  //   //   return datings
+  //   //       .where((d) => d.theme.contains('艺术') || d.venueName.contains('798'))
+  //   //       .toList();
+  //   // }
+  //   // return [];
+  // }
 
   // void _scrollToBottom() {
   //   Future.delayed(Duration(milliseconds: 100), () {
@@ -192,6 +269,9 @@ class _MatchScreenState extends State<MatchScreen> {
   //     context,
   //   ).showSnackBar(SnackBar(content: Text('点击了约会卡片')));
   // }
+
+  // Make persistent messages accessible from other screens
+  static List<MatchMessageModel> get persistentMessages => _persistentMessages;
 
   @override
   Widget build(BuildContext context) {

@@ -4,6 +4,7 @@ import 'package:blur/app/routes/app_router.dart';
 import 'package:blur/app/theme/app_theme.dart';
 
 void main() {
+  
   runApp(
     DevicePreview(
       enabled: false,

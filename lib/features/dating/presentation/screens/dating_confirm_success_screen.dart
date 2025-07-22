@@ -9,11 +9,12 @@ import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
 import 'package:lottie/lottie.dart';
+import 'package:blur/features/home/presentation/widgets/tabs/meet_tab.dart';
 
 class DatingConfirmSuccessScreen extends StatefulWidget {
   final DatingModel dating;
 
-  const DatingConfirmSuccessScreen({super.key, required, required this.dating});
+  const DatingConfirmSuccessScreen({super.key, required this.dating});
 
   @override
   State<DatingConfirmSuccessScreen> createState() =>
@@ -27,8 +28,12 @@ class _DatingConfirmSuccessScreenState extends State<DatingConfirmSuccessScreen>
   @override
   void initState() {
     super.initState();
-
     _controller = AnimationController(vsync: this);
+
+    // Ensure MeetTab refreshes when this success page loads
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      MeetTabState.globalRefreshCallback?.call();
+    });
   }
 
   @override
@@ -193,8 +198,21 @@ class _DatingConfirmSuccessScreenState extends State<DatingConfirmSuccessScreen>
             SizedBox(height: 24),
             FadeInUp(
               delay: const Duration(milliseconds: 200),
-              child: SocialmediaShareButton(),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: FullWidthButton(
+                  radius: 52,
+                  text: "返回主页",
+                  onPressed: () {
+                    context.go('/home');
+                  },
+                ),
+              ),
             ),
+            // FadeInUp(
+            //   delay: const Duration(milliseconds: 200),
+            //   child: SocialmediaShareButton(),
+            // ),
           ],
         ),
       ),

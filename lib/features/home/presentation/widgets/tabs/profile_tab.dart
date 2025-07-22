@@ -32,7 +32,7 @@ class _ProfileTabState extends State<ProfileTab> {
                     backgroundColor: Colors.grey.shade200,
                     child: ImageWidget(
                       imageUrl:
-                          "https://mighty.tools/mockmind-api/content/human/96.jpg",
+                          'https://hips.hearstapps.com/hmg-prod/images/36757835-218188988836086-2521657792918454272-n-1532066478.jpg?crop=1xw:1xh;center,top&resize=980:*',
                     ),
                   ),
                 ),
@@ -111,6 +111,7 @@ class _ProfileTabState extends State<ProfileTab> {
                               icon: HugeIcons.bulkRoundedListSetting,
                               isFirst: true,
                               onTap: () {
+                                context.push("/subscription");
                                 // context.push("/property/my/listing");
                               },
                             ),

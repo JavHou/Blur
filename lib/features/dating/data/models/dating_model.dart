@@ -23,7 +23,7 @@ class DatingModel {
   final String matchReason;
   final List<String> dateTips;
   final String coverImage;
-  final DatingStatus status;
+  DatingStatus status; // Remove 'final' to make it mutable
 
   DatingModel({
     required this.id,
@@ -83,6 +83,46 @@ class DatingModel {
     "coverImage": coverImage,
     "status": status.index,
   };
+
+  DatingModel copyWith({
+    DatingStatus? status,
+    String? id,
+    String? nickname,
+    List<String>? photos,
+    String? gender,
+    String? personalityType,
+    String? venueName,
+    double? latitude,
+    double? longitude,
+    String? distance,
+    DateTime? dateTime,
+    String? theme,
+    List<String>? commonalities,
+    List<String>? differences,
+    String? matchReason,
+    List<String>? dateTips,
+    String? coverImage,
+  }) {
+    return DatingModel(
+      id: id ?? this.id,
+      nickname: nickname ?? this.nickname,
+      photos: photos ?? this.photos,
+      gender: gender ?? this.gender,
+      personalityType: personalityType ?? this.personalityType,
+      venueName: venueName ?? this.venueName,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+      distance: distance ?? this.distance,
+      dateTime: dateTime ?? this.dateTime,
+      theme: theme ?? this.theme,
+      commonalities: commonalities ?? this.commonalities,
+      differences: differences ?? this.differences,
+      matchReason: matchReason ?? this.matchReason,
+      dateTips: dateTips ?? this.dateTips,
+      coverImage: coverImage ?? this.coverImage,
+      status: status ?? this.status,
+    );
+  }
 }
 
 List<DatingModel> datings = [
@@ -101,7 +141,7 @@ List<DatingModel> datings = [
     venueName: "蓝瓶咖啡 Blue Bottle",
     latitude: 39.9042,
     longitude: 116.4074,
-    dateTime: DateTime(2024, 1, 20, 15, 30),
+    dateTime: DateTime(2025, 7, 22, 15, 30),
     theme: "咖啡约会",
     distance: "2.5 km",
     commonalities: ["都喜欢咖啡文化", "都是夜猫子", "都喜欢拍照记录生活"],
@@ -128,7 +168,7 @@ List<DatingModel> datings = [
     latitude: 39.9163,
     longitude: 116.3972,
     distance: "1.7 km",
-    dateTime: DateTime(2024, 1, 21, 19, 00),
+    dateTime: DateTime(2025, 7, 22, 19, 00),
     theme: "咖啡约会",
     commonalities: ["都喜欢看喜剧电影", "都是B站深度用户", "都喜欢二次元文化"],
     differences: ["她更爱表现自己", "你更喜欢安静观察"],
@@ -138,31 +178,31 @@ List<DatingModel> datings = [
     status: DatingStatus.pending,
   ),
 
-  DatingModel(
-    id: "3",
-    nickname: "兔兔",
-    photos: [
-      "assets/images/tutu/tutu-0.jpg",
-      "assets/images/tutu/tutu-1.jpg",
-      "assets/images/tutu/tutu-2.jpg",
-      "assets/images/tutu/tutu-3.jpg",
-      "assets/images/tutu/tutu-6.jpg",
-    ],
-    gender: "女",
-    personalityType: "外企工作狂",
-    venueName: "蓝瓶咖啡 Blue Bottle",
-    latitude: 39.9042,
-    longitude: 116.4074,
-    dateTime: DateTime(2024, 1, 20, 15, 30),
-    theme: "咖啡约会",
-    distance: "2.5 km",
-    commonalities: ["都喜欢咖啡文化", "都是夜猫子", "都喜欢拍照记录生活"],
-    differences: ["她更外向社交", "你更专注技术"],
-    matchReason: "你们都有着对生活品质的追求，她的活力能平衡你的理性思维，而你的稳重也能给她安全感。咖啡厅的轻松氛围很适合你们初次见面。",
-    dateTips: ["准备一些有趣的话题", "可以聊聊最近的网红咖啡店", "记得夸夸她的穿搭"],
-    coverImage: "assets/images/tutu/tutu-0.jpg",
-    status: DatingStatus.upcoming,
-  ),
+  // DatingModel(
+  //   id: "3",
+  //   nickname: "兔兔",
+  //   photos: [
+  //     "assets/images/tutu/tutu-0.jpg",
+  //     "assets/images/tutu/tutu-1.jpg",
+  //     "assets/images/tutu/tutu-2.jpg",
+  //     "assets/images/tutu/tutu-3.jpg",
+  //     "assets/images/tutu/tutu-6.jpg",
+  //   ],
+  //   gender: "女",
+  //   personalityType: "外企工作狂",
+  //   venueName: "蓝瓶咖啡 Blue Bottle",
+  //   latitude: 39.9042,
+  //   longitude: 116.4074,
+  //   dateTime: DateTime(2025, 7, 22, 15, 30),
+  //   theme: "咖啡约会",
+  //   distance: "2.5 km",
+  //   commonalities: ["都喜欢咖啡文化", "都是夜猫子", "都喜欢拍照记录生活"],
+  //   differences: ["她更外向社交", "你更专注技术"],
+  //   matchReason: "你们都有着对生活品质的追求，她的活力能平衡你的理性思维，而你的稳重也能给她安全感。咖啡厅的轻松氛围很适合你们初次见面。",
+  //   dateTips: ["准备一些有趣的话题", "可以聊聊最近的网红咖啡店", "记得夸夸她的穿搭"],
+  //   coverImage: "assets/images/tutu/tutu-0.jpg",
+  //   status: DatingStatus.upcoming,
+  // ),
   // DatingModel(
   //   id: "3",
   //   nickname: "莉莉",

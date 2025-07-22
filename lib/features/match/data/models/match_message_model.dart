@@ -58,7 +58,7 @@ class MatchMessageModel {
 // 模拟消息数据
 List<MatchMessageModel> mockMessages = [
   MatchMessageModel(
-    content: '今天心情怎么样？有什么约会的好点子可以告诉我~',
+    content: '看看今日匹配？或者什么约会的好点子可以告诉我！~',
     direction: MessageDirection.received,
     senderType: SenderType.ai,
     timestamp: DateTime.now().subtract(Duration(minutes: 9)),
@@ -87,7 +87,7 @@ List<MatchMessageModel> mockMessages = [
   //   content: '第一次约会，他带我去抓娃娃，结果我成了老师，教了半天才抓到一个，最后还被小朋友抢走了，绝了哈哈！',
   //   direction: MessageDirection.sent,
   //   senderType: SenderType.human,
-  //   timestamp: DateTime.now().subtract(Duration(minutes: 1)),
+  //   timestamp: DateTime.now().subtrac t(Duration(minutes: 1)),
   // ),
   // MatchMessageModel(
   //   content:

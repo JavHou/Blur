@@ -1,21 +1,63 @@
 import 'package:blur/features/dating/data/models/dating_model.dart';
+import 'package:blur/features/dating/presentation/screens/dating_confirm_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:blur/features/meet/presentation/widgets/card/meet_card.dart';
+import 'package:go_router/go_router.dart';
 
 class MeetTab extends StatefulWidget {
   const MeetTab({super.key});
 
   @override
-  State<MeetTab> createState() => _MeetTabState();
+  State<MeetTab> createState() => MeetTabState();
 }
 
-class _MeetTabState extends State<MeetTab> with SingleTickerProviderStateMixin {
+class MeetTabState extends State<MeetTab> with SingleTickerProviderStateMixin {
+  // Add static callback for global refresh
+  static Function()? globalRefreshCallback;
+
+  List<DatingModel> _datings = datings; // Create local state copy
+
   List<DatingModel> get upcomingDatings =>
-      datings.where((d) => d.status == DatingStatus.upcoming).toList();
+      _datings.where((d) => d.status == DatingStatus.upcoming).toList();
   List<DatingModel> get pastDatings =>
-      datings.where((d) => d.status == DatingStatus.past).toList();
+      _datings.where((d) => d.status == DatingStatus.past).toList();
   List<DatingModel> get canceledDatings =>
-      datings.where((d) => d.status == DatingStatus.canceled).toList();
+      _datings.where((d) => d.status == DatingStatus.canceled).toList();
+
+  void _updateDating(DatingModel updatedDating) {
+    setState(() {
+      final index = _datings.indexWhere((d) => d.id == updatedDating.id);
+      if (index != -1) {
+        _datings[index] = updatedDating;
+      }
+    });
+  }
+
+  void _refreshDatings() {
+    print('=== MeetTab _refreshDatings called ===');
+    if (mounted) {
+      setState(() {
+        // Create a new list from global datings to trigger rebuild
+        _datings = List<DatingModel>.from(datings);
+        print('Updated _datings count: ${_datings.length}');
+        print('Upcoming datings count: ${upcomingDatings.length}');
+      });
+    } else {
+      print('WARNING: MeetTab is not mounted, skipping setState');
+    }
+  }
+
+  void _navigateToConfirm(DatingModel dating) async {
+    final result = await context.push(
+      '/dating/${dating.id}/confirm',
+      extra: {'dating': dating, 'onUpdate': _updateDating},
+    );
+
+    // Additional refresh if needed
+    if (result != null) {
+      _refreshDatings();
+    }
+  }
 
   String getStatusLabel(DatingModel dating) {
     switch (dating.status) {
@@ -31,15 +73,36 @@ class _MeetTabState extends State<MeetTab> with SingleTickerProviderStateMixin {
   }
 
   @override
+  void initState() {
+    super.initState();
+    print('=== MeetTab initState: Setting globalRefreshCallback ===');
+    print(
+      'Current globalRefreshCallback before setting: ${globalRefreshCallback != null}',
+    );
+    // Set global refresh callback
+    globalRefreshCallback = _refreshDatings;
+    print('globalRefreshCallback set to: ${globalRefreshCallback != null}');
+  }
+
+  @override
+  void dispose() {
+    print('=== MeetTab dispose: Clearing globalRefreshCallback ===');
+    print('Current globalRefreshCallback: ${globalRefreshCallback != null}');
+    // Clear global callback when disposing
+    if (globalRefreshCallback == _refreshDatings) {
+      globalRefreshCallback = null;
+      print('Cleared globalRefreshCallback');
+    }
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        // appBar: AppBar(
-        //   title: Text('Booking Tab', style: theme.textTheme.labelLarge,),
-        // ),
         appBar: AppBar(
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(16),
@@ -53,14 +116,12 @@ class _MeetTabState extends State<MeetTab> with SingleTickerProviderStateMixin {
               ),
               child: TabBar(
                 splashFactory: NoSplash.splashFactory,
-                // padding: EdgeInsets.all(0),
                 indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(52),
                   color: Colors.white,
                 ),
                 indicatorColor: Colors.black,
                 indicatorSize: TabBarIndicatorSize.tab,
-                // labelPadding: EdgeInsets.symmetric(horizontal: 16),
                 labelColor: Colors.black,
                 unselectedLabelColor: Colors.grey.shade600,
                 labelStyle: theme.textTheme.titleMedium?.copyWith(
@@ -102,9 +163,12 @@ class _MeetTabState extends State<MeetTab> with SingleTickerProviderStateMixin {
                           .map(
                             (dating) => Column(
                               children: [
-                                MeetCard(
-                                  dating: dating,
-                                  status: getStatusLabel(dating),
+                                GestureDetector(
+                                  onTap: () => _navigateToConfirm(dating),
+                                  child: MeetCard(
+                                    dating: dating,
+                                    status: getStatusLabel(dating),
+                                  ),
                                 ),
                                 SizedBox(height: 12),
                               ],

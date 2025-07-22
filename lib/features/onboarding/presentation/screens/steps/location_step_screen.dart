@@ -5,10 +5,7 @@ import 'package:blur/shared/buttons/full_width_button.dart';
 class LocationStepScreen extends StatefulWidget {
   final UserProfileModel userProfile;
 
-  const LocationStepScreen({
-    super.key,
-    required this.userProfile,
-  });
+  const LocationStepScreen({super.key, required this.userProfile});
 
   @override
   State<LocationStepScreen> createState() => _LocationStepScreenState();
@@ -106,6 +103,15 @@ class _LocationStepScreenState extends State<LocationStepScreen> {
                       ),
                     ),
                     SizedBox(height: 16),
+                    TextField(
+                      controller: _regionController,
+                      decoration: InputDecoration(
+                        labelText: '街道',
+                        hintText: '例如：西丽区',
+                        prefixIcon: Icon(Icons.location_on),
+                      ),
+                    ),
+                    SizedBox(height: 16),
                     Row(
                       children: [
                         Icon(
@@ -116,7 +122,7 @@ class _LocationStepScreenState extends State<LocationStepScreen> {
                         SizedBox(width: 8),
                         Expanded(
                           child: Text(
-                            '你的位置信息将用于计算与其他用户的距离',
+                            '你的位置信息将用于计算与其他用户的距离，未填写将自动使用当前定位来确定',
                             style: theme.textTheme.bodySmall?.copyWith(
                               color: Colors.grey.shade600,
                             ),
@@ -129,7 +135,6 @@ class _LocationStepScreenState extends State<LocationStepScreen> {
               ),
 
               SizedBox(height: 24),
-
             ],
           ),
         ),

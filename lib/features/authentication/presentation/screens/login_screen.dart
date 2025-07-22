@@ -62,7 +62,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     FullWidthButton(
                       text: "登录",
                       onPressed: () {
-                        context.go("/home");
+                        // context.go("/home");
+                        context.go('/home?showFilter=true');
                       },
                     ),
                   ],

@@ -1,4 +1,4 @@
-package com.example.blur
+package com.summer.blur
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -145,7 +145,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                 FadeTransition(
                   opacity: _descriptionOpacity,
                   child: Text(
-                    "先见面再说",
+                    "让心动打个照面",
                     style: theme.textTheme.labelLarge?.copyWith(
                       color: Colors.purple,
                       fontWeight: FontWeight.bold,
