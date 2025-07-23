@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:blur/features/home/presentation/widgets/category/selectable_category_card.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -16,8 +14,6 @@ class DatingFeatures extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

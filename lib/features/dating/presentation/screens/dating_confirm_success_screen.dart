@@ -1,8 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:blur/features/dating/data/models/dating_model.dart';
-import 'package:blur/features/dating/presentation/widgets/poster_share/poster_share.dart';
 import 'package:blur/shared/image/image_widget.dart';
-import 'package:blur/shared/socialmedia_share/socialmedia_share_card.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -54,6 +52,21 @@ class _DatingConfirmSuccessScreenState extends State<DatingConfirmSuccessScreen>
         // centerTitle: true,
         // backgroundColor: Colors.white,
         // foregroundColor: Colors.black,
+      ),
+      bottomNavigationBar: SafeArea(
+        child: FadeInUp(
+          delay: const Duration(milliseconds: 200),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: FullWidthButton(
+              radius: 52,
+              text: "返回主页",
+              onPressed: () {
+                context.go('/home');
+              },
+            ),
+          ),
+        ),
       ),
       body: SafeArea(
         child: Column(
@@ -192,20 +205,6 @@ class _DatingConfirmSuccessScreenState extends State<DatingConfirmSuccessScreen>
                     ),
                     SizedBox(height: 8),
                   ],
-                ),
-              ),
-            ),
-            SizedBox(height: 24),
-            FadeInUp(
-              delay: const Duration(milliseconds: 200),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: FullWidthButton(
-                  radius: 52,
-                  text: "返回主页",
-                  onPressed: () {
-                    context.go('/home');
-                  },
                 ),
               ),
             ),

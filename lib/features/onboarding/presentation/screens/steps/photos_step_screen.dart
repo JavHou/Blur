@@ -23,9 +23,7 @@ class _PhotosStepScreenState extends State<PhotosStepScreen> {
   void _addPhoto() {
     // 模拟添加照片
     setState(() {
-      _photos.add(
-        'https://hips.hearstapps.com/hmg-prod/images/36757835-218188988836086-2521657792918454272-n-1532066478.jpg?crop=1xw:1xh;center,top&resize=980:*',
-      );
+      _photos.add('assets/images/avatar.png');
       widget.userProfile.photos = _photos;
     });
   }
@@ -142,7 +140,8 @@ class _PhotosStepScreenState extends State<PhotosStepScreen> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.network(
+            // child: Image.network(
+            child: Image.asset(
               _photos[index],
               fit: BoxFit.cover,
               width: double.infinity,

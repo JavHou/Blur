@@ -1,9 +1,5 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:blur/features/dating/data/models/dating_model.dart';
 import 'package:blur/features/dating/presentation/widgets/faq/faq_card.dart';
-import 'package:blur/features/dating/presentation/widgets/poster_share/poster_share.dart';
-import 'package:blur/shared/image/image_widget.dart';
-import 'package:blur/shared/socialmedia_share/socialmedia_share_card.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -52,6 +48,39 @@ class _DatingCheckinScreenState extends State<DatingCheckinScreen>
         // centerTitle: true,
         // backgroundColor: Colors.white,
         // foregroundColor: Colors.black,
+      ),
+      bottomNavigationBar: SafeArea(
+        child: FadeInUp(
+          delay: const Duration(milliseconds: 200),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: FullWidthButton(
+              radius: 52,
+              text: "返回主页",
+              onPressed: () {
+                // // 关闭所有打开的 modal 和对话框
+                // Navigator.of(
+                //   context,
+                //   rootNavigator: true,
+                // ).popUntil((route) => route.isFirst);
+
+                // 然后导航到首页
+                context.go('/home');
+                // Navigator.of(context).popUntil((route) => route.isFirst);
+
+                // Navigator.of(
+                //   context,
+                //   rootNavigator: true,
+                // ).popAndPushNamed('/home');
+
+                // Navigator.of(context).pop();
+                // Navigator.of(context).pop();
+
+                // context.go('/home');
+              },
+            ),
+          ),
+        ),
       ),
       body: SafeArea(
         child: Column(
@@ -128,20 +157,7 @@ class _DatingCheckinScreenState extends State<DatingCheckinScreen>
                 child: DatingFAQCard(),
               ),
             ),
-            SizedBox(height: 24),
-            FadeInUp(
-              delay: const Duration(milliseconds: 200),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: FullWidthButton(
-                  radius: 52,
-                  text: "返回主页",
-                  onPressed: () {
-                    context.go('/home');
-                  },
-                ),
-              ),
-            ),
+
             // FadeInUp(
             //   delay: const Duration(milliseconds: 200),
             //   child: SocialmediaShareButton(),

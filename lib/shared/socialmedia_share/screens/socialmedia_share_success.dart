@@ -1,5 +1,4 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
@@ -40,7 +39,26 @@ class _SocialmediaShareSuccessScreenState
         elevation: 0,
         scrolledUnderElevation: 0,
         title: Text('分享成功', style: theme.textTheme.labelLarge),
-        // c
+      ),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: FullWidthButton(
+            radius: 52,
+            text: "返回主页",
+            onPressed: () {
+              print('Button pressed - navigating to home');
+
+              // 关闭所有打开的 modal 和对话框
+              Navigator.of(
+                context,
+                rootNavigator: true,
+              ).popUntil((route) => route.isFirst);
+
+              print('Button pressed done');
+            },
+          ),
+        ),
       ),
       body: SafeArea(
         child: Column(
@@ -60,40 +78,25 @@ class _SocialmediaShareSuccessScreenState
                 ),
               ),
             ),
-            SizedBox(height: 24),
+
             FadeInUp(
-              delay: const Duration(milliseconds: 200),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: FullWidthButton(
-                  radius: 52,
-                  color: Colors.black,
-                  text: "返回主页",
-                  onPressed: () {
-                    context.go('/home');
-                  },
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '感谢分享！活动积分稍后会自动发送到您的积分钱包',
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      // fontWeight: FontWeight.w600,
+                      color: Colors.grey.shade800,
+                      letterSpacing: 0.0,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                ],
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget border(double spacing) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: spacing),
-      child: DottedLine(
-        direction: Axis.horizontal,
-        lineLength: double.infinity,
-        lineThickness: 1.0,
-        dashLength: 4.0,
-        dashColor: Colors.grey.shade300,
-        dashRadius: 0.0,
-        dashGapLength: 4.0,
-        dashGapColor: Colors.transparent,
-        dashGapRadius: 0.0,
       ),
     );
   }

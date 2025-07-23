@@ -178,22 +178,6 @@ class _DatingScreenState extends State<DatingScreen> {
                 );
               },
             );
-            // showModalBottomSheet(
-            //   context: context,
-            //   shape: RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.only(
-            //       topLeft: Radius.circular(24),
-            //       topRight: Radius.circular(24),
-            //     ),
-            //   ),
-            //   clipBehavior: Clip.antiAliasWithSaveLayer,
-            //   builder: (context) {
-            //     return SizedBox(
-            //       height: deviceHeight * 0.7,
-            //       child: DatingDiaryScreen(),
-            //     );
-            //   },
-            // );
           },
         );
 
@@ -304,14 +288,6 @@ class _DatingScreenState extends State<DatingScreen> {
                     SizedBox(height: 16),
                     // 已完成的显示约会日记模块
                     if (widget.dating.status == DatingStatus.past) ...[
-                      Text(
-                        '您的押金已原路返回',
-                        style: theme.textTheme.labelLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      // DatingDiaryCard(),
                       Text(
                         '约会日记',
                         style: theme.textTheme.labelLarge?.copyWith(

@@ -32,7 +32,7 @@ class _ProfileTabState extends State<ProfileTab> {
                     backgroundColor: Colors.grey.shade200,
                     child: ImageWidget(
                       imageUrl:
-                          'https://hips.hearstapps.com/hmg-prod/images/36757835-218188988836086-2521657792918454272-n-1532066478.jpg?crop=1xw:1xh;center,top&resize=980:*',
+                          'assets/images/avatar.png',
                     ),
                   ),
                 ),
