@@ -3,7 +3,6 @@ import 'package:blur/features/dating/presentation/screens/dating_checkin_screen.
 import 'package:blur/features/dating/presentation/screens/dating_confirm_screen.dart';
 import 'package:blur/features/dating/presentation/screens/dating_confirm_success_screen.dart';
 import 'package:blur/features/dating/presentation/screens/dating_screen.dart';
-import 'package:blur/features/setting/presentation/screens/subscription/screens/subscription_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blur/features/authentication/presentation/screens/forgot_password_screen.dart';
@@ -14,23 +13,10 @@ import 'package:blur/features/authentication/presentation/screens/reset_password
 import 'package:blur/features/authentication/presentation/screens/verification/otp_verification_screen.dart';
 import 'package:blur/features/authentication/presentation/screens/register_success_screen.dart';
 import 'package:blur/features/onboarding/presentation/screens/user_profile_onboarding_screen.dart';
-import 'package:blur/features/category/presentation/screens/category_list_screen.dart';
-import 'package:blur/features/category/presentation/screens/category_view_screen.dart';
 import 'package:blur/features/chat/data/models/conversation_model.dart';
 import 'package:blur/features/chat/presentation/screens/chat_screen.dart';
-import 'package:blur/features/favorite/presentation/screens/favorite_list_screen.dart';
 import 'package:blur/features/home/presentation/screens/home_screen.dart';
-import 'package:blur/features/map/presentation/screens/map_view_screen.dart';
 import 'package:blur/features/notification/presentation/screens/notification_screen.dart';
-import 'package:blur/features/property/data/models/property_model.dart';
-import 'package:blur/features/property/presentation/screens/properties_screen.dart';
-import 'package:blur/features/property/presentation/screens/property_form_screen.dart';
-import 'package:blur/features/property/presentation/screens/my_property_listing_screen.dart';
-import 'package:blur/features/property/presentation/screens/property_screen.dart';
-import 'package:blur/features/property/presentation/screens/property_tour_screen.dart';
-import 'package:blur/features/property/presentation/screens/property_tour_success_screen.dart';
-import 'package:blur/features/property/presentation/widgets/add_property/property_success_step.dart';
-import 'package:blur/features/recently_viewed/presentation/screens/recently_viewed_list_screen.dart';
 import 'package:blur/features/setting/presentation/screens/help/help_screen.dart';
 import 'package:blur/features/setting/presentation/screens/notification_setting_screen.dart';
 import 'package:blur/features/setting/presentation/screens/security_setting_screen.dart';
@@ -38,12 +24,38 @@ import 'package:blur/features/setting/presentation/screens/setting_screen.dart';
 import 'package:blur/features/setting/presentation/screens/user/change_email_screen.dart';
 import 'package:blur/features/setting/presentation/screens/user/change_password_screen.dart';
 import 'package:blur/features/setting/presentation/screens/user/personal_information_screen.dart';
+import 'package:blur/features/abstraxion/presentation/abstraxion_screen.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: "/",
+  // 处理深链接的重定向逻辑
+  redirect: (context, state) {
+    final uri = state.uri;
+
+    // 深链接格式: blur://auth/callback?address=...&success=true&timestamp=...
+    if (uri.scheme == 'blur' && uri.path == '/callback') {
+      // 重定向到回调处理页面，保留查询参数
+      final queryString = uri.query.isNotEmpty ? '?${uri.query}' : '';
+      return '/auth/callback$queryString';
+    }
+
+    return null; // 不重定向
+  },
   routes: [
     GoRoute(path: '/', builder: (context, state) => OnboardingScreen()),
-    GoRoute(path: '/login', builder: (context, state) => LoginScreen()),
+    GoRoute(
+      path: '/login',
+      builder: (context, state) {
+        // 检查是否有认证回调参数和返回路径
+        final granted = state.uri.queryParameters['granted'];
+        final granter = state.uri.queryParameters['granter'];
+
+        return LoginScreen(
+          authCallbackGranted: granted,
+          authCallbackGranter: granter,
+        );
+      },
+    ),
     GoRoute(
       path: '/forgot-password',
       builder: (context, state) => ForgotPasswordScreen(),
@@ -70,29 +82,6 @@ final GoRouter router = GoRouter(
       builder: (context, state) {
         final showFilter = state.uri.queryParameters['showFilter'] == 'true';
         return HomeScreen(showFilterOnLoad: showFilter);
-      },
-    ),
-    GoRoute(
-      path: '/categories',
-      builder: (context, state) => CategoryListScreen(),
-    ),
-    GoRoute(
-      path: '/categories/:id/view',
-      builder: (context, state) => CategoryViewScreen(),
-    ),
-    GoRoute(
-      path: '/property/:id/view',
-      builder: (context, GoRouterState state) {
-        final property = state.extra as PropertyModel?;
-        final uuid = state.pathParameters['id']!;
-
-        if (property == null) {
-          return Scaffold(
-            body: Center(child: Text('Property with uuid $uuid not found')),
-          );
-        }
-
-        return PropertyScreen(property: property);
       },
     ),
     GoRoute(
@@ -159,36 +148,6 @@ final GoRouter router = GoRouter(
         return DatingConfirmSuccessScreen(dating: dating);
       },
     ),
-    GoRoute(
-      path: '/subscription',
-      builder: (context, state) => SubscriptionScreens(),
-    ),
-    GoRoute(
-      path: '/properties',
-      builder: (context, state) => PropertiesScreen(),
-    ),
-    GoRoute(
-      path: '/property/tour',
-      builder: (context, state) => PropertyTourScreen(),
-    ),
-    GoRoute(
-      path: '/property/tour/success',
-      builder: (context, state) => PropertyTourSuccessScreen(),
-    ),
-    GoRoute(
-      path: '/property/my/listing',
-      builder: (context, state) => MyPropertyListingScreen(),
-    ),
-    GoRoute(
-      path: '/property/add',
-      builder: (context, state) => PropertyFormScreen(),
-    ),
-    GoRoute(
-      path: '/property/add/success',
-      builder: (context, state) => PropertySuccessStep(),
-    ),
-
-    GoRoute(path: '/map', builder: (context, state) => MapViewScreen()),
 
     GoRoute(
       path: '/chats/:id/view',
@@ -209,14 +168,6 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/notifications',
       builder: (context, state) => NotificationScreen(),
-    ),
-    GoRoute(
-      path: '/favorite',
-      builder: (context, state) => FavoriteListScreen(),
-    ),
-    GoRoute(
-      path: '/recently-viewed',
-      builder: (context, state) => RecentlyViewedListScreen(),
     ),
     GoRoute(path: '/setting', builder: (context, state) => SettingScreen()),
     GoRoute(path: '/setting/help', builder: (context, state) => HelpScreen()),
@@ -239,6 +190,50 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/setting/change-email',
       builder: (context, state) => ChangeEmailScreen(),
+    ),
+    GoRoute(
+      path: '/abstraxion',
+      builder: (context, state) => AbstraxionScreen(),
+    ),
+    GoRoute(
+      path: '/auth/callback',
+      builder: (context, state) {
+        // 这是深度链接回调的处理页面
+        // 获取参数
+        final address = state.uri.queryParameters['address'];
+        final success = state.uri.queryParameters['success'];
+
+        // 延时1000ms后执行导航
+        Future.delayed(Duration(milliseconds: 1000), () {
+          if (success == 'true' && address != null && address.isNotEmpty) {
+            // 认证成功，跳转到主页
+            context.go('/home?showFilter=false');
+          } else {
+            // 认证失败，返回登录页面
+            context.go('/login');
+          }
+        });
+
+        // 显示一个临时的加载页面
+        return Scaffold(
+          backgroundColor: Colors.white,
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.purple),
+                ),
+                SizedBox(height: 16),
+                Text(
+                  '处理认证结果...',
+                  style: TextStyle(color: Colors.black, fontSize: 16),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     ),
   ],
 );

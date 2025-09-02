@@ -4,6 +4,8 @@ import 'package:blur/features/dating/data/models/dating_model.dart';
 import 'package:blur/features/dating/presentation/widgets/confirm_step/request_confirm_step_one.dart';
 import 'package:blur/features/dating/presentation/widgets/confirm_step/request_confirm_step_two.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/meet_tab.dart';
+import 'package:blur/core/services/crossmint_service.dart';
+import 'package:blur/core/services/payment_service.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
@@ -29,71 +31,137 @@ class _DatingconfirmScreenState extends State<DatingconfirmScreen> {
 
   late Timer _timer = Timer(Duration.zero, () {});
 
-  void process() {
+  final CrossmintService _crossmintService = CrossmintService();
+
+  // 押金相关配置
+  static const String USER_EMAIL = 'houjav@gmail.com'; // 应该从用户资料获取
+  static const String USER_NAME = 'Javen'; // 应该从用户资料获取
+
+  void process() async {
     setState(() {
       _isLoading = true;
     });
 
-    const oneSec = Duration(seconds: 1);
-    _timer = Timer.periodic(oneSec, (timer) {
+    try {
+      // 步骤1: 初始化 Stripe
+      await PaymentService.initializeStripe();
+
+      // 步骤2: 创建 Crossmint NFT 订单
+      final orderResponse = await _crossmintService.createNFTOrder(
+        dating: widget.dating,
+        userEmail: USER_EMAIL,
+        userName: USER_NAME,
+      );
+
+      // 步骤3: 处理 Stripe 支付
+      final paymentResult = await PaymentService.processPayment(
+        orderResponse: orderResponse,
+      );
+
+      if (paymentResult.success) {
+        // 步骤4: 验证支付状态
+        final isVerified = await PaymentService.verifyPayment(
+          orderId: paymentResult.orderId!,
+          crossmintService: _crossmintService,
+        );
+
+        if (isVerified) {
+          // 支付成功，更新约会状态
+          await _handlePaymentSuccess(paymentResult);
+        } else {
+          throw Exception('支付验证失败');
+        }
+      } else {
+        // 支付失败或取消
+        setState(() {
+          _isLoading = false;
+        });
+
+        if (paymentResult.errorCode != 'payment_canceled') {
+          _showErrorDialog('支付失败', paymentResult.error ?? '未知错误');
+        }
+      }
+    } catch (e) {
       setState(() {
         _isLoading = false;
-
-        // Use copyWith to update the status
-        final updatedDating = widget.dating.copyWith(
-          status: DatingStatus.upcoming,
-        );
-
-        print('=== DatingconfirmScreen: About to update dating ===');
-        print('Dating ID: ${updatedDating.id}');
-        print('New status: ${updatedDating.status}');
-
-        // Update global datings list first
-        final globalIndex = datings.indexWhere((d) => d.id == updatedDating.id);
-        if (globalIndex != -1) {
-          datings[globalIndex] = updatedDating;
-          print('Updated global datings at index $globalIndex');
-        } else {
-          print('ERROR: Dating not found in global datings list');
-        }
-
-        // Call the callback to update parent widget
-        widget.onDatingUpdated?.call(updatedDating);
-        print('Called parent widget callback');
-
-        // Notify MeetTab to refresh globally
-        print(
-          'Checking MeetTabState.globalRefreshCallback: ${MeetTabState.globalRefreshCallback != null}',
-        );
-        if (MeetTabState.globalRefreshCallback != null) {
-          print('Calling MeetTabState.globalRefreshCallback');
-          try {
-            MeetTabState.globalRefreshCallback!();
-            print('Successfully called globalRefreshCallback');
-          } catch (e) {
-            print('Error calling globalRefreshCallback: $e');
-          }
-        } else {
-          print('ERROR: MeetTabState.globalRefreshCallback is null');
-          print(
-            'This might happen if MeetTab is not currently active or has been disposed',
-          );
-
-          // Alternative: Try to refresh via navigation result
-          print('Will rely on navigation result to trigger refresh');
-        }
-
-        // Pop with result to trigger refresh in calling screen
-        Navigator.of(context).pop(updatedDating);
-
-        context.push(
-          '/dating/${updatedDating.id}/confirm/success',
-          extra: updatedDating,
-        );
-
-        timer.cancel();
       });
-    });
+      _showErrorDialog('处理失败', '创建订单或支付过程中出现错误: $e');
+    }
+  }
+
+  Future<void> _handlePaymentSuccess(PaymentResult paymentResult) async {
+    try {
+      // 使用 copyWith 更新约会状态
+      final updatedDating = widget.dating.copyWith(
+        status: DatingStatus.upcoming,
+        // 如果你的 DatingModel 有支付相关字段，在这里更新
+        // depositTransactionId: paymentResult.orderId,
+        // depositAmount: paymentResult.amount,
+      );
+
+      print('=== DatingconfirmScreen: Payment successful ===');
+      print('Dating ID: ${updatedDating.id}');
+      print('Order ID: ${paymentResult.orderId}');
+      print('Amount: ${paymentResult.amount} ${paymentResult.currency}');
+
+      // 更新全局约会列表
+      final globalIndex = datings.indexWhere((d) => d.id == updatedDating.id);
+      if (globalIndex != -1) {
+        datings[globalIndex] = updatedDating;
+        print('Updated global datings at index $globalIndex');
+      }
+
+      // 调用回调更新父组件
+      widget.onDatingUpdated?.call(updatedDating);
+
+      // 通知 MeetTab 刷新
+      if (MeetTabState.globalRefreshCallback != null) {
+        print('Calling MeetTabState.globalRefreshCallback');
+        MeetTabState.globalRefreshCallback!();
+      }
+
+      setState(() {
+        _isLoading = false;
+      });
+
+      // 返回结果并跳转到成功页面
+      Navigator.of(context).pop(updatedDating);
+
+      context.push(
+        '/dating/${updatedDating.id}/confirm/success',
+        extra: updatedDating,
+      );
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      _showErrorDialog('更新失败', '支付成功但更新约会状态失败: $e');
+    }
+  }
+
+  void _showErrorDialog(String title, String message) {
+    showDialog(
+      context: context,
+      builder:
+          (context) => AlertDialog(
+            title: Text(title),
+            content: Text(message),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('确定'),
+              ),
+            ],
+          ),
+    );
+  }
+
+  String _getButtonText() {
+    if (_currentStep <= 0) {
+      return '继续';
+    } else {
+      return _isLoading ? '正在处理支付...' : '购买约会 NFT 并确认';
+    }
   }
 
   @override
@@ -145,7 +213,7 @@ class _DatingconfirmScreenState extends State<DatingconfirmScreen> {
         child: SizedBox(
           height: 60,
           child: FullWidthButton(
-            text: _currentStep <= 0 ? '继续' : "确认",
+            text: _getButtonText(),
             isLoading: _isLoading,
             onPressed: () {
               if (_currentStep <= 0) {

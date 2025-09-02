@@ -136,6 +136,51 @@ class _DatingConfirmSuccessScreenState extends State<DatingConfirmSuccessScreen>
                       ],
                     ),
                   ),
+                  const SizedBox(height: 16),
+                  // // NFT 购买成功提示
+                  // FadeInUp(
+                  //   delay: const Duration(milliseconds: 150),
+                  //   child: Container(
+                  //     padding: const EdgeInsets.all(16),
+                  //     margin: const EdgeInsets.symmetric(horizontal: 16),
+                  //     decoration: BoxDecoration(
+                  //       color: Colors.green.shade50,
+                  //       borderRadius: BorderRadius.circular(12),
+                  //       border: Border.all(color: Colors.green.shade200),
+                  //     ),
+                  //     child: Row(
+                  //       children: [
+                  //         Icon(
+                  //           Icons.check_circle,
+                  //           color: Colors.green,
+                  //           size: 20,
+                  //         ),
+                  //         SizedBox(width: 12),
+                  //         Expanded(
+                  //           child: Column(
+                  //             crossAxisAlignment: CrossAxisAlignment.start,
+                  //             children: [
+                  //               Text(
+                  //                 'NFT 购买成功',
+                  //                 style: theme.textTheme.titleSmall?.copyWith(
+                  //                   color: Colors.green.shade800,
+                  //                   fontWeight: FontWeight.bold,
+                  //                 ),
+                  //               ),
+                  //               SizedBox(height: 4),
+                  //               Text(
+                  //                 '约会纪念 NFT 已购买，将发送到您的钱包',
+                  //                 style: theme.textTheme.bodySmall?.copyWith(
+                  //                   color: Colors.green.shade700,
+                  //                 ),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(height: 32),
                 ],
               ),

@@ -4,7 +4,6 @@ import 'package:blur/features/home/presentation/widgets/tabs/meet_tab.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/profile_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:blur/features/home/presentation/widgets/tabs/discover_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool showFilterOnLoad;

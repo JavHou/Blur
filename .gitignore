@@ -80,3 +80,6 @@ doc/api/
 *.jks
 *-key.properties
 
+
+
+node_modules/

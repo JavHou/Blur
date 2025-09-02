@@ -4,9 +4,17 @@ import 'package:go_router/go_router.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
 import 'package:blur/shared/inputs/base_input.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:blur/features/abstraxion/presentation/abstraxion_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final String? authCallbackGranted;
+  final String? authCallbackGranter;
+
+  const LoginScreen({
+    super.key,
+    this.authCallbackGranted,
+    this.authCallbackGranter,
+  });
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -35,36 +43,53 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(height: 80),
                     BaseInput(hint: "Email"),
                     SizedBox(height: 16),
-                    Column(
-                      children: [
-                        BaseInput(hint: "Password", obscureText: true),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: InkWell(
-                            onTap: () {
-                              context.push("/forgot-password");
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 8.0,
-                              ),
-                              child: Text(
-                                "忘记密码？",
-                                style: theme.textTheme.titleSmall?.copyWith(
-                                  color: Colors.blue.shade700,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    // Column(
+                    //   children: [
+                    //     BaseInput(hint: "Password", obscureText: true),
+                    //     Align(
+                    //       alignment: Alignment.centerRight,
+                    //       child: InkWell(
+                    //         onTap: () {
+                    //           context.push("/forgot-password");
+                    //         },
+                    //         child: Padding(
+                    //           padding: const EdgeInsets.symmetric(
+                    //             vertical: 8.0,
+                    //           ),
+                    //           child: Text(
+                    //             "忘记密码？",
+                    //             style: theme.textTheme.titleSmall?.copyWith(
+                    //               color: Colors.blue.shade700,
+                    //             ),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                     SizedBox(height: 16),
+
+                    // Opacity(
+                    //   opacity: _isBlockchainAuthenticating ? 0.5 : 1.0,
+                    //   child: FullWidthButton(
+                    //     text: "登录",
+                    //     onPressed: () {
+                    //       if (!_isBlockchainAuthenticating) {
+                    //         context.go('/home?showFilter=false');
+                    //       }
+                    //     },
+                    //   ),
+                    // ),
+                    // SizedBox(height: 16),
                     FullWidthButton(
-                      text: "登录",
+                      text: "Xion登录",
                       onPressed: () {
-                        // context.go("/home");
-                        context.go('/home?showFilter=true');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AbstraxionScreen(),
+                          ),
+                        );
                       },
                     ),
                   ],
@@ -83,24 +108,27 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          child: IconButton(
-                            style: ButtonStyle(
-                              shape: WidgetStatePropertyAll(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                  side: BorderSide(color: Colors.grey.shade100),
-                                ),
-                              ),
-                            ),
-                            onPressed: () {},
-                            icon: HugeIcon(
-                              icon: HugeIcons.strokeRoundedWechat,
-                              color: Colors.grey.shade700,
-                              size: 28,
-                            ),
-                          ),
-                        ),
+                        // Container(
+                        //   child: IconButton(
+                        //     style: ButtonStyle(
+                        //       shape: WidgetStatePropertyAll(
+                        //         RoundedRectangleBorder(
+                        //           borderRadius: BorderRadius.circular(12),
+                        //           side: BorderSide(
+                        //             color: Colors.grey.shade100,
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ),
+                        //     onPressed:
+                        //         _isBlockchainAuthenticating ? null : () {},
+                        //     icon: HugeIcon(
+                        //       icon: HugeIcons.strokeRoundedWechat,
+                        //       color: Colors.grey.shade700,
+                        //       size: 28,
+                        //     ),
+                        //   ),
+                        // ),
                         // SizedBox(height: 8),
                         Container(
                           child: IconButton(

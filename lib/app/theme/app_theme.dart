@@ -14,7 +14,7 @@ class AppTheme {
         elevation: 0,
         titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       ),
-      bottomAppBarTheme: BottomAppBarTheme(elevation: 8),
+      bottomAppBarTheme: BottomAppBarThemeData(elevation: 8),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(elevation: 8),
       buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
       switchTheme: SwitchThemeData(
@@ -138,7 +138,7 @@ class AppTheme {
         elevation: 0,
         titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       ),
-      bottomAppBarTheme: BottomAppBarTheme(elevation: 8),
+      bottomAppBarTheme: BottomAppBarThemeData(elevation: 8),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(elevation: 8),
       buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
       filledButtonTheme: FilledButtonThemeData(

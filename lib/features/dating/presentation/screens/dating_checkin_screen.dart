@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:blur/features/dating/presentation/widgets/faq/faq_card.dart';
+import 'package:blur/shared/border/item_border.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -18,6 +19,7 @@ class DatingCheckinScreen extends StatefulWidget {
 class _DatingCheckinScreenState extends State<DatingCheckinScreen>
     with TickerProviderStateMixin {
   late final AnimationController _controller;
+  final TextEditingController _messageController = TextEditingController();
 
   @override
   void initState() {
@@ -33,6 +35,8 @@ class _DatingCheckinScreenState extends State<DatingCheckinScreen>
   @override
   void dispose() {
     _controller.dispose();
+    _messageController.dispose();
+
     super.dispose();
   }
 
@@ -83,86 +87,104 @@ class _DatingCheckinScreenState extends State<DatingCheckinScreen>
         ),
       ),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 32),
-            FadeInUp(
-              child: Center(
-                child: Lottie.asset(
-                  'assets/animations/lottie/success.json',
-                  controller: _controller,
-                  width: 400,
-                  height: 200,
-                  onLoaded: (composition) {
-                    _controller
-                      ..duration = composition.duration
-                      ..forward();
-                  },
-                ),
-              ),
-            ),
-            SizedBox(height: 16),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                children: [
-                  FadeInUp(
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '享受见面的甜美时光吧',
-                              style: theme.textTheme.headlineSmall?.copyWith(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.green,
-                                letterSpacing: 0.5,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            HugeIcon(
-                              icon: HugeIcons.bulkRoundedCheckmarkBadge01,
-                              color: Colors.green,
-                              size: 24,
-                            ),
-                          ],
-                        ),
-                        // Text(
-                        //   '记得提醒对方打卡哦！双方打卡后才能返回押金',
-                        //   style: theme.textTheme.titleSmall?.copyWith(
-                        //     // fontWeight: FontWeight.w600,
-                        //     color: Colors.grey.shade400,
-                        //     letterSpacing: 0.5,
-                        //   ),
-                        // ),
-                      ],
-                    ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 32),
+              FadeInUp(
+                child: Center(
+                  child: Lottie.asset(
+                    'assets/animations/lottie/success.json',
+                    controller: _controller,
+                    width: 400,
+                    height: 200,
+                    onLoaded: (composition) {
+                      _controller
+                        ..duration = composition.duration
+                        ..forward();
+                    },
                   ),
-                  const SizedBox(height: 32),
-                ],
-              ),
-            ),
-            SizedBox(height: 32),
-            FadeInUp(
-              delay: const Duration(milliseconds: 100),
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                margin: const EdgeInsets.symmetric(horizontal: 32),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
-                  borderRadius: BorderRadius.circular(12),
                 ),
-                child: DatingFAQCard(),
               ),
-            ),
+              SizedBox(height: 16),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  children: [
+                    FadeInUp(
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '享受见面的甜美时光吧',
+                                style: theme.textTheme.headlineSmall?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.green,
+                                  letterSpacing: 0.5,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              HugeIcon(
+                                icon: HugeIcons.bulkRoundedCheckmarkBadge01,
+                                color: Colors.green,
+                                size: 24,
+                              ),
+                            ],
+                          ),
+                          // Text(
+                          //   '记得提醒对方打卡哦！双方打卡后才能返回押金',
+                          //   style: theme.textTheme.titleSmall?.copyWith(
+                          //     // fontWeight: FontWeight.w600,
+                          //     color: Colors.grey.shade400,
+                          //     letterSpacing: 0.5,
+                          //   ),
+                          // ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 32),
+                  ],
+                ),
+              ),
+              SizedBox(height: 32),
+              FadeInUp(
+                delay: const Duration(milliseconds: 100),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  margin: const EdgeInsets.symmetric(horizontal: 32),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade100,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    children: [
+                      DatingFAQCard(),
+                      ItemBorder(12),
 
-            // FadeInUp(
-            //   delay: const Duration(milliseconds: 200),
-            //   child: SocialmediaShareButton(),
-            // ),
-          ],
+                      TextField(
+                        controller: _messageController,
+                        decoration: InputDecoration(
+                          hintText: "找不到TA？给TA发个消息吧~",
+
+                          suffixIcon: HugeIcon(
+                            icon: HugeIcons.bulkRoundedSent,
+                            color: theme.primaryColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // FadeInUp(
+              //   delay: const Duration(milliseconds: 200),
+              //   child: SocialmediaShareButton(),
+              // ),
+            ],
+          ),
         ),
       ),
     );

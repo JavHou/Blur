@@ -45,6 +45,24 @@ class MatchScreenState extends State<MatchScreen> {
 
     // Load persistent chat history instead of mock messages
     _loadChatHistory();
+    // // 正确弹出筛选弹窗
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   final deviceHeight = MediaQuery.of(context).size.height;
+
+    //   showModalBottomSheet(
+    //     context: context,
+    //     shape: RoundedRectangleBorder(
+    //       borderRadius: BorderRadius.only(
+    //         topLeft: Radius.circular(24),
+    //         topRight: Radius.circular(24),
+    //       ),
+    //     ),
+    //     clipBehavior: Clip.antiAliasWithSaveLayer,
+    //     builder: (context) {
+    //       return SizedBox(height: deviceHeight * 0.5, child: DatingFilter());
+    //     },
+    //   );
+    // });
   }
 
   @override

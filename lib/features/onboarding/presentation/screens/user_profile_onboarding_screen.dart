@@ -60,7 +60,7 @@ class _UserProfileOnboardingScreenState
       setState(() {
         _isLoading = false;
         // Navigate to home with filter popup flag
-        context.go('/home?showFilter=true');
+        context.go('/home?showFilter=false');
         timer.cancel();
       });
     });
