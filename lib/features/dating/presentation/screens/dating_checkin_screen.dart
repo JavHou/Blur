@@ -8,6 +8,7 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
 import 'package:lottie/lottie.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/meet_tab.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class DatingCheckinScreen extends StatefulWidget {
   const DatingCheckinScreen({super.key});
@@ -48,7 +49,10 @@ class _DatingCheckinScreenState extends State<DatingCheckinScreen>
       appBar: AppBar(
         elevation: 0,
         scrolledUnderElevation: 0,
-        title: Text('签到成功', style: theme.textTheme.labelLarge),
+        title: Text(
+          context.l10n.checkinSuccessTitle,
+          style: theme.textTheme.labelLarge,
+        ),
         // centerTitle: true,
         // backgroundColor: Colors.white,
         // foregroundColor: Colors.black,
@@ -60,7 +64,7 @@ class _DatingCheckinScreenState extends State<DatingCheckinScreen>
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: FullWidthButton(
               radius: 52,
-              text: "返回主页",
+              text: context.l10n.returnHome,
               onPressed: () {
                 // // 关闭所有打开的 modal 和对话框
                 // Navigator.of(
@@ -119,7 +123,7 @@ class _DatingCheckinScreenState extends State<DatingCheckinScreen>
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                '享受见面的甜美时光吧',
+                                context.l10n.enjoySweetMoment,
                                 style: theme.textTheme.headlineSmall?.copyWith(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.green,
@@ -167,7 +171,7 @@ class _DatingCheckinScreenState extends State<DatingCheckinScreen>
                       TextField(
                         controller: _messageController,
                         decoration: InputDecoration(
-                          hintText: "找不到TA？给TA发个消息吧~",
+                          hintText: context.l10n.cantFindPartnerMessage,
 
                           suffixIcon: HugeIcon(
                             icon: HugeIcons.bulkRoundedSent,

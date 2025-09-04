@@ -6,6 +6,7 @@ import 'package:blur/features/dating/presentation/widgets/confirm_step/request_c
 import 'package:blur/features/home/presentation/widgets/tabs/meet_tab.dart';
 import 'package:blur/core/services/crossmint_service.dart';
 import 'package:blur/core/services/payment_service.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
@@ -69,7 +70,7 @@ class _DatingconfirmScreenState extends State<DatingconfirmScreen> {
           // 支付成功，更新约会状态
           await _handlePaymentSuccess(paymentResult);
         } else {
-          throw Exception('支付验证失败');
+          throw Exception(context.l10n.error);
         }
       } else {
         // 支付失败或取消
@@ -78,14 +79,17 @@ class _DatingconfirmScreenState extends State<DatingconfirmScreen> {
         });
 
         if (paymentResult.errorCode != 'payment_canceled') {
-          _showErrorDialog('支付失败', paymentResult.error ?? '未知错误');
+          _showErrorDialog(
+            context.l10n.error,
+            paymentResult.error ?? context.l10n.error,
+          );
         }
       }
     } catch (e) {
       setState(() {
         _isLoading = false;
       });
-      _showErrorDialog('处理失败', '创建订单或支付过程中出现错误: $e');
+      _showErrorDialog(context.l10n.error, '${context.l10n.error}: $e');
     }
   }
 
@@ -135,7 +139,7 @@ class _DatingconfirmScreenState extends State<DatingconfirmScreen> {
       setState(() {
         _isLoading = false;
       });
-      _showErrorDialog('更新失败', '支付成功但更新约会状态失败: $e');
+      _showErrorDialog(context.l10n.error, '${context.l10n.error}: $e');
     }
   }
 
@@ -149,7 +153,7 @@ class _DatingconfirmScreenState extends State<DatingconfirmScreen> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('确定'),
+                child: Text(context.l10n.ok),
               ),
             ],
           ),
@@ -158,9 +162,11 @@ class _DatingconfirmScreenState extends State<DatingconfirmScreen> {
 
   String _getButtonText() {
     if (_currentStep <= 0) {
-      return '继续';
+      return 'Continue'; // Using fallback as continueBtn may not exist
     } else {
-      return _isLoading ? '正在处理支付...' : '购买约会 NFT 并确认';
+      return _isLoading
+          ? 'Processing Payment...'
+          : context.l10n.buyNFTAndConfirm;
     }
   }
 
@@ -184,7 +190,10 @@ class _DatingconfirmScreenState extends State<DatingconfirmScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('确认约会🤩', style: theme.textTheme.labelLarge),
+        title: Text(
+          '${context.l10n.confirmDating} 🤩',
+          style: theme.textTheme.labelLarge,
+        ),
         leading: BackButton(
           onPressed: () {
             if (_currentStep > 0) {

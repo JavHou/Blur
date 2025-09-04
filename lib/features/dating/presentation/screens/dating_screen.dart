@@ -19,6 +19,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/meet_tab.dart';
 import 'package:blur/features/match/presentation/screens/match_screen.dart';
 import 'package:blur/features/match/data/models/match_message_model.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class DatingScreen extends StatefulWidget {
   final DatingModel dating;
@@ -67,7 +68,7 @@ class _DatingScreenState extends State<DatingScreen> {
                 // );
               },
               label: Text(
-                "我再想想",
+                context.l10n.letMeThink,
                 style: theme.textTheme.labelLarge?.copyWith(
                   color: Colors.white,
                 ),
@@ -102,7 +103,7 @@ class _DatingScreenState extends State<DatingScreen> {
                 );
               },
               label: Text(
-                "确认约会",
+                context.l10n.confirmDating,
                 style: theme.textTheme.labelLarge?.copyWith(
                   color: Colors.white,
                 ),
@@ -113,7 +114,7 @@ class _DatingScreenState extends State<DatingScreen> {
 
       case DatingStatus.upcoming:
         return FullWidthButton(
-          text: "约会打卡",
+          text: context.l10n.datingCheckin,
           onPressed: () {
             // Update dating status to past
             final updatedDating = widget.dating.copyWith(
@@ -131,8 +132,9 @@ class _DatingScreenState extends State<DatingScreen> {
 
             // Add new message to MatchScreen
             final newMessage = MatchMessageModel(
-              content:
-                  '今天跟${updatedDating.nickname}的约会怎么样？有什么好玩或者吐槽的事情跟我分享吗？我会帮你自动润色成日记哦！',
+              content: context.l10n.datingFeedbackMessage(
+                updatedDating.nickname,
+              ),
               direction: MessageDirection.received,
               senderType: SenderType.ai,
               timestamp: DateTime.now(),
@@ -157,7 +159,7 @@ class _DatingScreenState extends State<DatingScreen> {
         );
       case DatingStatus.past:
         return FullWidthButton(
-          text: "分享约会日记",
+          text: context.l10n.shareDatingDiary,
           onPressed: () {
             showModalBottomSheet(
               context: context,
@@ -192,7 +194,7 @@ class _DatingScreenState extends State<DatingScreen> {
       // );
       case DatingStatus.canceled:
         return FullWidthButton(
-          text: "已取消",
+          text: context.l10n.canceled,
           onPressed: () {},
           color: Colors.grey.shade400,
         );
@@ -210,7 +212,10 @@ class _DatingScreenState extends State<DatingScreen> {
       appBar: AppBar(
         elevation: 0,
         scrolledUnderElevation: 0,
-        title: Text('约会详情', style: theme.textTheme.labelLarge),
+        title: Text(
+          context.l10n.datingDetails,
+          style: theme.textTheme.labelLarge,
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -256,7 +261,7 @@ class _DatingScreenState extends State<DatingScreen> {
                   children: [
                     SizedBox(height: 16),
                     Text(
-                      '${widget.dating.nickname} 绝对是你最佳的约会对象！',
+                      context.l10n.perfectDatingPartner(widget.dating.nickname),
                       style: theme.textTheme.labelLarge,
                     ),
 
@@ -268,18 +273,27 @@ class _DatingScreenState extends State<DatingScreen> {
                     // DatingLocation(),
                     // SizedBox(height: 16),
                     SizedBox(height: 16),
-                    Text('相册', style: Theme.of(context).textTheme.labelLarge),
+                    Text(
+                      context.l10n.photoAlbum,
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
                     DatingGallery(dating: widget.dating),
 
                     SizedBox(height: 16),
-                    Text('此外AI发现了些彼此的共同点', style: theme.textTheme.labelLarge),
+                    Text(
+                      context.l10n.aiFoundCommonalities,
+                      style: theme.textTheme.labelLarge,
+                    ),
                     SizedBox(height: 8),
                     DatingFeatures(
                       features: widget.dating.commonalities,
                       isSelected: true,
                     ),
                     SizedBox(height: 16),
-                    Text('以及一些有趣的差异点', style: theme.textTheme.labelLarge),
+                    Text(
+                      context.l10n.interestingDifferences,
+                      style: theme.textTheme.labelLarge,
+                    ),
                     SizedBox(height: 8),
                     DatingFeatures(
                       features: widget.dating.differences,
@@ -289,7 +303,7 @@ class _DatingScreenState extends State<DatingScreen> {
                     // 已完成的显示约会日记模块
                     if (widget.dating.status == DatingStatus.past) ...[
                       Text(
-                        '约会日记',
+                        context.l10n.datingDiaryTitle,
                         style: theme.textTheme.labelLarge?.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
@@ -299,7 +313,7 @@ class _DatingScreenState extends State<DatingScreen> {
                       SizedBox(height: 16),
                     ],
                     Text(
-                      '常见问题',
+                      context.l10n.faq,
                       style: theme.textTheme.labelLarge?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),

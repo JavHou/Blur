@@ -1,7 +1,6 @@
 import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:blur/app/utils/datetime/datetime.dart';
 
@@ -10,7 +9,7 @@ class AdaptiveDatePicker extends StatelessWidget {
   final ValueChanged<DateTime> onDatePicked;
   final String dateFormat;
 
-  AdaptiveDatePicker({
+  const AdaptiveDatePicker({
     super.key,
     required this.initialDate,
     required this.onDatePicked,
@@ -52,35 +51,12 @@ class AdaptiveDatePicker extends StatelessWidget {
         initialDate: initialDate,
         firstDate: _firstDate,
         lastDate: _lastDate,
-        builder: (context, child) {
-          return Localizations.override(
-            context: context,
-            locale: const Locale('zh', 'CN'),
-            delegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            child: child,
-          );
-        },
       );
       if (pickedDate != null) {
+        if (!context.mounted) return;
         final pickedTime = await showTimePicker(
           context: context,
           initialTime: TimeOfDay.fromDateTime(initialDate),
-          builder: (context, child) {
-            return Localizations.override(
-              context: context,
-              locale: const Locale('zh', 'CN'),
-              delegates: const [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              child: child,
-            );
-          },
         );
         if (pickedTime != null) {
           final pickedDateTime = DateTime(
@@ -96,9 +72,26 @@ class AdaptiveDatePicker extends StatelessWidget {
     }
   }
 
-  String _formatDate(DateTime date) {
+  String _formatDate(DateTime date, BuildContext context) {
     try {
-      return DateFormat(dateFormat, 'zh_CN').format(date);
+      // 获取当前语言环境
+      final locale = Localizations.localeOf(context);
+      final languageCode = locale.languageCode;
+
+      // 根据语言环境设置格式
+      String localeString;
+      switch (languageCode) {
+        case 'zh':
+          localeString = 'zh_CN';
+          break;
+        case 'en':
+          localeString = 'en_US';
+          break;
+        default:
+          localeString = 'en_US';
+      }
+
+      return DateFormat(dateFormat, localeString).format(date);
     } catch (_) {
       return toHumanReadableDateTime(date);
     }
@@ -119,7 +112,7 @@ class AdaptiveDatePicker extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              _formatDate(initialDate),
+              _formatDate(initialDate, context),
               style: const TextStyle(fontWeight: FontWeight.w600),
             ),
             const Icon(Icons.arrow_drop_down),

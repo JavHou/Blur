@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:blur/features/onboarding/data/models/user_profile_model.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class NameStepScreen extends StatefulWidget {
   final UserProfileModel userProfile;
@@ -51,7 +52,7 @@ class _NameStepScreenState extends State<NameStepScreen> {
             children: [
               // 标题
               Text(
-                '你的名字是什么？',
+                context.l10n.whatIsYourName,
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -61,7 +62,7 @@ class _NameStepScreenState extends State<NameStepScreen> {
 
               // 副标题
               Text(
-                '请输入你的姓名或昵称，这将作为你的个人标识',
+                context.l10n.nameDescription,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: Colors.grey.shade700,
                 ),
@@ -77,11 +78,13 @@ class _NameStepScreenState extends State<NameStepScreen> {
                       autofocus: true,
                       keyboardType: TextInputType.name,
                       maxLines: 1,
-                      decoration: InputDecoration(hintText: '输入你的姓名或昵称'),
+                      decoration: InputDecoration(
+                        hintText: context.l10n.enterNameHint,
+                      ),
                     ),
                     SizedBox(height: 16),
                     Text(
-                      '这个名字将在你的个人资料中显示',
+                      context.l10n.nameDisplayNote,
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: Colors.grey.shade600,
                       ),

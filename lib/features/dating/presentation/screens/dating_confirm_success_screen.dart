@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:blur/features/dating/data/models/dating_model.dart';
 import 'package:blur/shared/image/image_widget.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -48,7 +49,10 @@ class _DatingConfirmSuccessScreenState extends State<DatingConfirmSuccessScreen>
       appBar: AppBar(
         elevation: 0,
         scrolledUnderElevation: 0,
-        title: Text('确认成功', style: theme.textTheme.labelLarge),
+        title: Text(
+          context.l10n.confirmSuccess,
+          style: theme.textTheme.labelLarge,
+        ),
         // centerTitle: true,
         // backgroundColor: Colors.white,
         // foregroundColor: Colors.black,
@@ -60,7 +64,7 @@ class _DatingConfirmSuccessScreenState extends State<DatingConfirmSuccessScreen>
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: FullWidthButton(
               radius: 52,
-              text: "返回主页",
+              text: context.l10n.returnHome,
               onPressed: () {
                 context.go('/home');
               },
@@ -119,12 +123,18 @@ class _DatingConfirmSuccessScreenState extends State<DatingConfirmSuccessScreen>
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          '您与 ${widget.dating.nickname} 的约会请求已发送!',
-                          style: theme.textTheme.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.green,
-                            letterSpacing: 0.5,
+                        Expanded(
+                          child: Text(
+                            context.l10n.datingRequestSent(
+                              widget.dating.nickname,
+                            ),
+                            style: theme.textTheme.headlineSmall?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.green,
+                              letterSpacing: 0.5,
+                            ),
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.visible,
                           ),
                         ),
                         const SizedBox(width: 8),
@@ -207,7 +217,7 @@ class _DatingConfirmSuccessScreenState extends State<DatingConfirmSuccessScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '不会破冰？AI为你准备了约会小贴士', // Add numbering
+                            context.l10n.datingTipsTitle,
                             style: theme.textTheme.titleMedium?.copyWith(
                               color: Colors.grey.shade800,
                             ),

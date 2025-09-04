@@ -4,6 +4,7 @@ import 'package:blur/features/home/presentation/widgets/tabs/meet_tab.dart';
 import 'package:blur/features/home/presentation/widgets/tabs/profile_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool showFilterOnLoad;
@@ -109,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           : Colors.grey.shade600,
                 ),
               ),
-              label: "Match!",
+              label: context.l10n.matchTab,
             ),
             BottomNavigationBarItem(
               icon: Container(
@@ -125,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           : Colors.grey.shade600,
                 ),
               ),
-              label: "Meet",
+              label: context.l10n.meet,
             ),
             BottomNavigationBarItem(
               icon: Container(
@@ -141,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           : Colors.grey.shade600,
                 ),
               ),
-              label: "Profile",
+              label: context.l10n.profile,
             ),
           ],
         ),

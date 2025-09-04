@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:blur/features/setting/presentation/widgets/card/setting_list_tile.dart';
 import 'package:blur/shared/image/image_widget.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
+import 'package:blur/features/abstraxion/services/account_service.dart';
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({super.key});
@@ -12,9 +14,12 @@ class ProfileTab extends StatefulWidget {
 }
 
 class _ProfileTabState extends State<ProfileTab> {
+  final AccountService _accountService = AccountService.instance;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final account = _accountService.currentAccount;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -30,17 +35,19 @@ class _ProfileTabState extends State<ProfileTab> {
                   child: CircleAvatar(
                     radius: 62,
                     backgroundColor: Colors.grey.shade200,
-                    child: ImageWidget(
-                      imageUrl:
-                          'assets/images/avatar.png',
-                    ),
+                    child: ImageWidget(imageUrl: 'assets/images/avatar.png'),
                   ),
                 ),
                 SizedBox(height: 16),
-                Text('Javen Hou', style: theme.textTheme.labelLarge),
+                Text(
+                  account?.nickname ?? 'Javen Hou',
+                  style: theme.textTheme.labelLarge,
+                ),
                 SizedBox(height: 2),
                 Text(
-                  'houjav@gmail.com',
+                  account?.isConnected == true && account?.address != null
+                      ? account!.formattedAddress
+                      : 'houjav@gmail.com',
                   style: theme.textTheme.bodyMedium?.copyWith(
                     color: Colors.blueGrey.shade800,
                   ),
@@ -107,7 +114,7 @@ class _ProfileTabState extends State<ProfileTab> {
                         child: Column(
                           children: [
                             SettingListTile(
-                              title: '会员订阅',
+                              title: context.l10n.membershipSubscription,
                               icon: HugeIcons.bulkRoundedListSetting,
                               isFirst: true,
                               onTap: () {
@@ -121,7 +128,7 @@ class _ProfileTabState extends State<ProfileTab> {
                               indent: 40,
                             ),
                             SettingListTile(
-                              title: '设置',
+                              title: context.l10n.settings,
                               icon: HugeIcons.bulkRoundedSettings02,
                               isLast: true,
                               onTap: () {

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:blur/features/onboarding/data/models/user_profile_model.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class HobbiesStepScreen extends StatefulWidget {
   final UserProfileModel userProfile;
 
-  const HobbiesStepScreen({
-    super.key,
-    required this.userProfile,
-  });
+  const HobbiesStepScreen({super.key, required this.userProfile});
 
   @override
   State<HobbiesStepScreen> createState() => _HobbiesStepScreenState();
@@ -17,26 +15,28 @@ class HobbiesStepScreen extends StatefulWidget {
 class _HobbiesStepScreenState extends State<HobbiesStepScreen> {
   List<String> _selectedHobbies = [];
 
-  final List<Map<String, String>> _hobbies = [
-    {'title': '电影', 'icon': '🎬'},
-    {'title': '音乐', 'icon': '🎵'},
-    {'title': '户外运动', 'icon': '🏃‍♂️'},
-    {'title': '美食探店', 'icon': '🍽️'},
-    {'title': '阅读', 'icon': '📚'},
-    {'title': '旅行', 'icon': '✈️'},
-    {'title': '游戏', 'icon': '🎮'},
-    {'title': '摄影', 'icon': '📸'},
-    {'title': '健身', 'icon': '💪'},
-    {'title': '绘画', 'icon': '🎨'},
-    {'title': '写作', 'icon': '✍️'},
-    {'title': '烹饪', 'icon': '👨‍🍳'},
-    {'title': '舞蹈', 'icon': '💃'},
-    {'title': '购物', 'icon': '🛍️'},
-    {'title': '宠物', 'icon': '🐕'},
-    {'title': '手工', 'icon': '🧵'},
-    {'title': '收藏', 'icon': '🏺'},
-    {'title': '园艺', 'icon': '🌱'},
-  ];
+  List<Map<String, String>> _getLocalizedHobbies(BuildContext context) {
+    return [
+      {'title': context.l10n.movies, 'icon': '🎬'},
+      {'title': context.l10n.music, 'icon': '🎵'},
+      {'title': context.l10n.outdoorSports, 'icon': '🏃‍♂️'},
+      {'title': context.l10n.foodExploring, 'icon': '🍽️'},
+      {'title': context.l10n.reading, 'icon': '📚'},
+      {'title': context.l10n.travel, 'icon': '✈️'},
+      {'title': context.l10n.gaming, 'icon': '🎮'},
+      {'title': context.l10n.photography, 'icon': '📸'},
+      {'title': context.l10n.fitness, 'icon': '💪'},
+      {'title': context.l10n.painting, 'icon': '🎨'},
+      {'title': context.l10n.writing, 'icon': '✍️'},
+      {'title': context.l10n.cooking, 'icon': '👨‍🍳'},
+      {'title': context.l10n.dancing, 'icon': '💃'},
+      {'title': context.l10n.shopping, 'icon': '🛍️'},
+      {'title': context.l10n.pets, 'icon': '🐕'},
+      {'title': context.l10n.crafts, 'icon': '🧵'},
+      {'title': context.l10n.collecting, 'icon': '🏺'},
+      {'title': context.l10n.gardening, 'icon': '🌱'},
+    ];
+  }
 
   @override
   void initState() {
@@ -72,7 +72,7 @@ class _HobbiesStepScreenState extends State<HobbiesStepScreen> {
 
               // 标题
               Text(
-                '你的兴趣爱好？',
+                context.l10n.yourHobbies,
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -82,7 +82,7 @@ class _HobbiesStepScreenState extends State<HobbiesStepScreen> {
 
               // 副标题
               Text(
-                '请选择你的兴趣爱好，可以多选',
+                context.l10n.hobbiesDescription,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: Colors.grey.shade700,
                 ),
@@ -101,13 +101,12 @@ class _HobbiesStepScreenState extends State<HobbiesStepScreen> {
                           mainAxisSpacing: 12,
                           childAspectRatio: 1.0,
                         ),
-                        itemCount: _hobbies.length,
+                        itemCount: _getLocalizedHobbies(context).length,
                         itemBuilder: (context, index) {
-                          final hobby = _hobbies[index];
+                          final hobby = _getLocalizedHobbies(context)[index];
                           final isSelected = _selectedHobbies.contains(
                             hobby['title'],
                           );
-
                           return GestureDetector(
                             onTap: () => _toggleHobby(hobby['title']!),
                             child: Container(
@@ -171,7 +170,9 @@ class _HobbiesStepScreenState extends State<HobbiesStepScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        '已选择 ${_selectedHobbies.length} 个兴趣爱好',
+                        context.l10n.selectedHobbiesCount(
+                          _selectedHobbies.length,
+                        ),
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: Colors.grey.shade700,
                         ),
@@ -183,7 +184,6 @@ class _HobbiesStepScreenState extends State<HobbiesStepScreen> {
               ),
 
               SizedBox(height: 24),
-
             ],
           ),
         ),

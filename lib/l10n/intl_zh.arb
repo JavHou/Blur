@@ -1,0 +1,1182 @@
+{
+    "@@locale": "zh",
+    "@@last_modified": "2025-09-02T00:00:00.000Z",
+    "appName": "模糊",
+    "@appName": {
+        "description": "应用程序名称"
+    },
+    "login": "登录",
+    "@login": {
+        "description": "登录按钮文本"
+    },
+    "register": "注册",
+    "@register": {
+        "description": "注册按钮文本"
+    },
+    "email": "邮箱",
+    "@email": {
+        "description": "邮箱字段标签"
+    },
+    "password": "密码",
+    "@password": {
+        "description": "密码字段标签"
+    },
+    "confirmPassword": "确认密码",
+    "@confirmPassword": {
+        "description": "确认密码字段标签"
+    },
+    "forgotPassword": "忘记密码？",
+    "@forgotPassword": {
+        "description": "忘记密码链接文本"
+    },
+    "resetPassword": "重置密码",
+    "@resetPassword": {
+        "description": "重置密码按钮文本"
+    },
+    "verification": "验证",
+    "@verification": {
+        "description": "验证屏幕标题"
+    },
+    "verificationCode": "验证码",
+    "@verificationCode": {
+        "description": "验证码字段标签"
+    },
+    "resendCode": "重新发送验证码",
+    "@resendCode": {
+        "description": "重新发送验证码按钮文本"
+    },
+    "onboarding": "欢迎",
+    "@onboarding": {
+        "description": "引导屏幕标题"
+    },
+    "home": "首页",
+    "@home": {
+        "description": "首页标签标题"
+    },
+    "chat": "聊天",
+    "@chat": {
+        "description": "聊天标签标题"
+    },
+    "dating": "约会",
+    "@dating": {
+        "description": "约会标签标题"
+    },
+    "match": "匹配",
+    "@match": {
+        "description": "匹配标签标题"
+    },
+    "settings": "设置",
+    "@settings": {
+        "description": "设置标签标题"
+    },
+    "profile": "个人资料",
+    "@profile": {
+        "description": "个人资料屏幕标题"
+    },
+    "notifications": "通知",
+    "@notifications": {
+        "description": "通知屏幕标题"
+    },
+    "search": "搜索",
+    "@search": {
+        "description": "搜索占位符文本"
+    },
+    "filter": "筛选",
+    "@filter": {
+        "description": "筛选按钮文本"
+    },
+    "location": "位置",
+    "@location": {
+        "description": "位置字段标签"
+    },
+    "age": "年龄",
+    "@age": {
+        "description": "年龄字段标签"
+    },
+    "about": "关于",
+    "@about": {
+        "description": "关于部分标题"
+    },
+    "gallery": "图库",
+    "@gallery": {
+        "description": "图库部分标题"
+    },
+    "confirm": "确认",
+    "@confirm": {
+        "description": "确认按钮文本"
+    },
+    "cancel": "取消",
+    "@cancel": {
+        "description": "取消按钮文本"
+    },
+    "save": "保存",
+    "@save": {
+        "description": "保存按钮文本"
+    },
+    "edit": "编辑",
+    "@edit": {
+        "description": "编辑按钮文本"
+    },
+    "delete": "删除",
+    "@delete": {
+        "description": "删除按钮文本"
+    },
+    "share": "分享",
+    "@share": {
+        "description": "分享按钮文本"
+    },
+    "send": "发送",
+    "@send": {
+        "description": "发送按钮文本"
+    },
+    "message": "消息",
+    "@message": {
+        "description": "消息字段标签"
+    },
+    "conversation": "对话",
+    "@conversation": {
+        "description": "对话屏幕标题"
+    },
+    "datingDiary": "约会日记",
+    "@datingDiary": {
+        "description": "约会日记屏幕标题"
+    },
+    "checkin": "签到",
+    "@checkin": {
+        "description": "签到按钮文本"
+    },
+    "success": "成功",
+    "@success": {
+        "description": "成功消息"
+    },
+    "error": "错误",
+    "@error": {
+        "description": "错误消息"
+    },
+    "loading": "加载中...",
+    "@loading": {
+        "description": "加载消息"
+    },
+    "noData": "暂无数据",
+    "@noData": {
+        "description": "无数据消息"
+    },
+    "retry": "重试",
+    "@retry": {
+        "description": "重试按钮文本"
+    },
+    "back": "返回",
+    "@back": {
+        "description": "返回按钮文本"
+    },
+    "next": "下一步",
+    "@next": {
+        "description": "下一步按钮文本"
+    },
+    "done": "完成",
+    "@done": {
+        "description": "完成按钮文本"
+    },
+    "close": "关闭",
+    "@close": {
+        "description": "关闭按钮文本"
+    },
+    "processingAuthResult": "处理认证结果...",
+    "@processingAuthResult": {
+        "description": "认证回调页面的加载文本"
+    },
+    "datingNotFound": "约会 {uuid} 未找到",
+    "@datingNotFound": {
+        "description": "约会未找到错误信息",
+        "placeholders": {
+            "uuid": {
+                "type": "String",
+                "description": "约会的唯一标识符"
+            }
+        }
+    },
+    "chatNotFound": "聊天 {uuid} 未找到",
+    "@chatNotFound": {
+        "description": "聊天未找到错误信息",
+        "placeholders": {
+            "uuid": {
+                "type": "String",
+                "description": "聊天的唯一标识符"
+            }
+        }
+    },
+    "yes": "是",
+    "@yes": {
+        "description": "是按钮文本"
+    },
+    "no": "否",
+    "@no": {
+        "description": "否按钮文本"
+    },
+    "ok": "确定",
+    "@ok": {
+        "description": "确定按钮文本"
+    },
+    "otherMethods": "其他方式",
+    "@otherMethods": {
+        "description": "其他登录方式文本"
+    },
+    "noAccount": "没有账号？ ",
+    "@noAccount": {
+        "description": "没有账号文本"
+    },
+    "registerNow": "立即注册",
+    "@registerNow": {
+        "description": "立即注册链接文本"
+    },
+    "meet": "见面",
+    "@meet": {
+        "description": "见面标签标题"
+    },
+    "matchTab": "匹配！",
+    "@matchTab": {
+        "description": "匹配标签标题带感叹号"
+    },
+    "languageSettings": "语言设置",
+    "@languageSettings": {
+        "description": "语言设置屏幕标题"
+    },
+    "restartApp": "请重启应用以应用新的语言设置",
+    "@restartApp": {
+        "description": "重启应用消息"
+    },
+    "english": "English",
+    "@english": {
+        "description": "英语语言选项"
+    },
+    "chinese": "中文",
+    "@chinese": {
+        "description": "中文语言选项"
+    },
+    "selectLanguage": "选择语言",
+    "@selectLanguage": {
+        "description": "选择语言提示"
+    },
+    "dateTime": "日期时间",
+    "@dateTime": {
+        "description": "日期时间标签"
+    },
+    "checkinSuccess": "签到成功！",
+    "@checkinSuccess": {
+        "description": "签到成功消息"
+    },
+    "diary": "日记",
+    "@diary": {
+        "description": "日记屏幕标题"
+    },
+    "poster": "海报",
+    "@poster": {
+        "description": "海报部分标题"
+    },
+    "shareSuccess": "分享成功！",
+    "@shareSuccess": {
+        "description": "分享成功消息"
+    },
+    "upcoming": "即将到来",
+    "@upcoming": {
+        "description": "即将到来状态"
+    },
+    "past": "已过去",
+    "@past": {
+        "description": "已过去状态"
+    },
+    "canceled": "已取消",
+    "@canceled": {
+        "description": "已取消状态"
+    },
+    "addToCalendar": "🗓️ 添加到日历",
+    "@addToCalendar": {
+        "description": "添加到日历按钮文本"
+    },
+    "completed": "✅ 已完成",
+    "@completed": {
+        "description": "已完成状态"
+    },
+    "pending": "⏱️ 待定",
+    "@pending": {
+        "description": "待定状态"
+    },
+    "dateWith": "与 {nickname} 的约会",
+    "@dateWith": {
+        "description": "与昵称的约会文本",
+        "placeholders": {
+            "nickname": {
+                "type": "String"
+            }
+        }
+    },
+    "filterTitle": "过滤器",
+    "@filterTitle": {
+        "description": "过滤器标题"
+    },
+    "distanceRange": "距离范围",
+    "@distanceRange": {
+        "description": "距离范围标签"
+    },
+    "minDistance": "最小距离 (KM)",
+    "@minDistance": {
+        "description": "最小距离输入框标签"
+    },
+    "maxDistance": "最大距离 (KM)",
+    "@maxDistance": {
+        "description": "最大距离输入框标签"
+    },
+    "minDistanceHint": "1 KM",
+    "@minDistanceHint": {
+        "description": "最小距离输入框提示"
+    },
+    "maxDistanceHint": "30 KM",
+    "@maxDistanceHint": {
+        "description": "最大距离输入框提示"
+    },
+    "freeTime": "空闲时间",
+    "@freeTime": {
+        "description": "空闲时间标签"
+    },
+    "all": "所有",
+    "@all": {
+        "description": "所有选项"
+    },
+    "weekend": "周末",
+    "@weekend": {
+        "description": "周末选项"
+    },
+    "applyFilter": "应用过滤器",
+    "@applyFilter": {
+        "description": "应用过滤器按钮"
+    },
+    "resetFilter": "重置",
+    "@resetFilter": {
+        "description": "重置过滤器按钮"
+    },
+    "datingDetails": "约会详情",
+    "@datingDetails": {
+        "description": "约会详情屏幕标题"
+    },
+    "checkinSuccessTitle": "签到成功",
+    "@checkinSuccessTitle": {
+        "description": "签到成功屏幕标题"
+    },
+    "enjoySweetMoment": "享受见面的甜美时光吧",
+    "@enjoySweetMoment": {
+        "description": "签到成功页面的祝福文本"
+    },
+    "cantFindPartnerMessage": "找不到TA？给TA发个消息吧~",
+    "@cantFindPartnerMessage": {
+        "description": "签到成功页面的消息输入提示"
+    },
+    "confirmSuccess": "确认成功",
+    "@confirmSuccess": {
+        "description": "确认成功屏幕标题"
+    },
+    "shareToWechat": "分享海报到微信",
+    "@shareToWechat": {
+        "description": "分享到微信按钮"
+    },
+    "returnHome": "返回主页",
+    "@returnHome": {
+        "description": "返回主页按钮"
+    },
+    "datingCheckin": "约会打卡",
+    "@datingCheckin": {
+        "description": "约会打卡按钮"
+    },
+    "shareDatingDiary": "分享约会日记",
+    "@shareDatingDiary": {
+        "description": "分享约会日记按钮"
+    },
+    "submitDiary": "提交日记",
+    "@submitDiary": {
+        "description": "提交日记按钮"
+    },
+    "diaryPlaceholder": "约会中有什么好玩的事情？或者来吐槽！提交后AI会自动进行自动美化",
+    "@diaryPlaceholder": {
+        "description": "日记输入占位符"
+    },
+    "buyNFTAndConfirm": "确认",
+    "@buyNFTAndConfirm": {
+        "description": "购买 NFT 并确认按钮"
+    },
+    "processingPayment": "正在处理支付...",
+    "@processingPayment": {
+        "description": "正在处理支付文本"
+    },
+    "continueBtn": "继续",
+    "@continueBtn": {
+        "description": "继续按钮"
+    },
+    "membershipSubscription": "会员订阅",
+    "@membershipSubscription": {
+        "description": "个人资料中的会员订阅选项"
+    },
+    "onboardingTagline": "让心动打个照面",
+    "@onboardingTagline": {
+        "description": "引导页面的标语"
+    },
+    "letMeThink": "我再想想",
+    "@letMeThink": {
+        "description": "约会决定按钮文本"
+    },
+    "confirmDating": "确认约会",
+    "@confirmDating": {
+        "description": "确认约会按钮文本"
+    },
+    "datingFeedbackMessage": "今天跟{nickname}的约会怎么样？有什么好玩或者吐槽的事情跟我分享吗？我会帮你自动润色成日记哦！",
+    "@datingFeedbackMessage": {
+        "description": "AI询问约会反馈的消息",
+        "placeholders": {
+            "nickname": {
+                "type": "String",
+                "description": "约会对象的昵称"
+            }
+        }
+    },
+    "perfectDatingPartner": "{nickname} 绝对是你最佳的约会对象！",
+    "@perfectDatingPartner": {
+        "description": "完美约会对象文本",
+        "placeholders": {
+            "nickname": {
+                "type": "String",
+                "description": "约会对象的昵称"
+            }
+        }
+    },
+    "photoAlbum": "相册",
+    "@photoAlbum": {
+        "description": "相册部分标题"
+    },
+    "aiFoundCommonalities": "此外AI发现了些彼此的共同点",
+    "@aiFoundCommonalities": {
+        "description": "AI发现共同点部分标题"
+    },
+    "interestingDifferences": "以及一些有趣的差异点",
+    "@interestingDifferences": {
+        "description": "有趣差异点部分标题"
+    },
+    "datingDiaryTitle": "约会日记",
+    "@datingDiaryTitle": {
+        "description": "约会日记部分标题"
+    },
+    "faq": "常见问题",
+    "@faq": {
+        "description": "常见问题部分标题"
+    },
+    "faqDatingSafetyQuestion": "我的约会安全吗？",
+    "@faqDatingSafetyQuestion": {
+        "description": "关于约会安全的常见问题"
+    },
+    "faqDatingSafetyAnswer": "我们非常重视用户的安全。所有约会都需要支付押金，约会完成后全额退款。若未协商一致情况下违约，押金将转给对方作为赔偿。此外，我们提供\"一键报警\"和\"实时位置共享\"等安全功能，确保您的安全。",
+    "@faqDatingSafetyAnswer": {
+        "description": "关于约会安全的常见问题答案"
+    },
+    "faqEmergencyQuestion": "约会过程中遇到危险怎么办？",
+    "@faqEmergencyQuestion": {
+        "description": "关于紧急情况的常见问题"
+    },
+    "faqEmergencyAnswer": "使用平台内的 \"一键报警\" 功能，快速联系警方，拨打平台客服热线寻求帮助， 平台24小时为您的安全保驾护航。",
+    "@faqEmergencyAnswer": {
+        "description": "关于紧急情况的常见问题答案"
+    },
+    "faqDepositRefundQuestion": "我的押金何时退还？",
+    "@faqDepositRefundQuestion": {
+        "description": "关于押金退还的常见问题"
+    },
+    "faqDepositRefundAnswer": "双方约会打卡后，押金将在24小时内退还至您的账户。如未打卡，押金将转给对方作为违约赔偿。",
+    "@faqDepositRefundAnswer": {
+        "description": "关于押金退还的常见问题答案"
+    },
+    "matchReason": "匹配理由",
+    "@matchReason": {
+        "description": "匹配理由部分标题"
+    },
+    "showMore": "显示更多",
+    "@showMore": {
+        "description": "可展开内容的显示更多文本"
+    },
+    "showLess": "显示更少",
+    "@showLess": {
+        "description": "可展开内容的显示更少文本"
+    },
+    "userInfo": "用户信息",
+    "@userInfo": {
+        "description": "用户信息部分标题"
+    },
+    "basicInfo": "基本信息",
+    "@basicInfo": {
+        "description": "基本信息部分标题"
+    },
+    "ageRange": "年龄",
+    "@ageRange": {
+        "description": "年龄范围字段标签"
+    },
+    "height": "身高",
+    "@height": {
+        "description": "身高字段标签"
+    },
+    "homeTown": "家乡",
+    "@homeTown": {
+        "description": "家乡字段标签"
+    },
+    "education": "教育",
+    "@education": {
+        "description": "教育字段标签"
+    },
+    "job": "职业",
+    "@job": {
+        "description": "职业字段标签"
+    },
+    "datingRequestSent": "您与 {nickname} 的约会请求已发送!",
+    "@datingRequestSent": {
+        "description": "约会请求已发送消息",
+        "placeholders": {
+            "nickname": {
+                "type": "String",
+                "description": "对方的昵称"
+            }
+        }
+    },
+    "datingTipsTitle": "不会破冰？AI为你准备了约会小贴士",
+    "@datingTipsTitle": {
+        "description": "约会小贴士部分标题"
+    },
+    "abstraxionAuth": "Abstraxion 认证",
+    "@abstraxionAuth": {
+        "description": "Abstraxion认证屏幕标题"
+    },
+    "reconnect": "重新连接",
+    "@reconnect": {
+        "description": "重新连接按钮提示"
+    },
+    "connectingToServer": "正在连接服务器...",
+    "@connectingToServer": {
+        "description": "连接服务器加载消息"
+    },
+    "connectionError": "连接错误",
+    "@connectionError": {
+        "description": "连接错误标题"
+    },
+    "blockchainAuth": "区块链认证",
+    "@blockchainAuth": {
+        "description": "区块链认证标题"
+    },
+    "authInstructions": "点击下方按钮，在浏览器中完成安全认证",
+    "@authInstructions": {
+        "description": "认证说明文本"
+    },
+    "startAuth": "开始认证",
+    "@startAuth": {
+        "description": "开始认证按钮文本"
+    },
+    "serverStatus": "服务器状态: {status}",
+    "@serverStatus": {
+        "description": "服务器状态文本",
+        "placeholders": {
+            "status": {
+                "type": "String",
+                "description": "连接状态"
+            }
+        }
+    },
+    "connected": "已连接",
+    "@connected": {
+        "description": "已连接状态"
+    },
+    "disconnected": "未连接",
+    "@disconnected": {
+        "description": "未连接状态"
+    },
+    "serverNotConnected": "服务器未连接，请稍后重试",
+    "@serverNotConnected": {
+        "description": "服务器未连接提示消息"
+    },
+    "completeAuthInBrowser": "请在浏览器中完成认证...",
+    "@completeAuthInBrowser": {
+        "description": "在浏览器中完成认证消息"
+    },
+    "authStartFailed": "启动认证失败",
+    "@authStartFailed": {
+        "description": "认证启动失败消息"
+    },
+    "authStartError": "认证启动失败: {error}",
+    "@authStartError": {
+        "description": "认证启动错误消息",
+        "placeholders": {
+            "error": {
+                "type": "String",
+                "description": "错误详情"
+            }
+        }
+    },
+    "connectServerFirst": "请先连接服务器",
+    "@connectServerFirst": {
+        "description": "请先连接服务器消息"
+    },
+    "cannotConnectToReactServer": "无法连接到React服务器，请确保服务器正在运行",
+    "@cannotConnectToReactServer": {
+        "description": "无法连接到React服务器错误消息"
+    },
+    "connectionFailed": "连接失败: {error}",
+    "@connectionFailed": {
+        "description": "连接失败错误消息",
+        "placeholders": {
+            "error": {
+                "type": "String",
+                "description": "错误详情"
+            }
+        }
+    },
+    "startBlurJourney": "开启Blur之旅！",
+    "@startBlurJourney": {
+        "description": "开启Blur之旅成功消息"
+    },
+    "startNow": "立即开始！",
+    "@startNow": {
+        "description": "立即开始按钮文本"
+    },
+    "accountCreatedSuccess": "账户创建成功, 请完善信息帮助AI更好配对到理想型.",
+    "@accountCreatedSuccess": {
+        "description": "账户创建成功消息"
+    },
+    "whatIsYourName": "你的名字是什么？",
+    "@whatIsYourName": {
+        "description": "姓名步骤屏幕标题"
+    },
+    "nameDescription": "请输入你的姓名或昵称，这将作为你的个人标识",
+    "@nameDescription": {
+        "description": "姓名步骤描述"
+    },
+    "enterNameHint": "输入你的姓名或昵称",
+    "@enterNameHint": {
+        "description": "姓名输入提示文本"
+    },
+    "nameDisplayNote": "这个名字将在你的个人资料中显示",
+    "@nameDisplayNote": {
+        "description": "姓名显示说明"
+    },
+    "yourMBTIType": "你的MBTI类型是？",
+    "@yourMBTIType": {
+        "description": "MBTI步骤屏幕标题"
+    },
+    "mbtiDescription": "请选择你的MBTI人格类型，这将帮助我们更好地为你匹配",
+    "@mbtiDescription": {
+        "description": "MBTI步骤描述"
+    },
+    "mbtiTestNote": "不知道自己的MBTI类型？可以稍后在线测试",
+    "@mbtiTestNote": {
+        "description": "MBTI测试说明"
+    },
+    "yourHobbies": "你的兴趣爱好？",
+    "@yourHobbies": {
+        "description": "兴趣爱好步骤屏幕标题"
+    },
+    "hobbiesDescription": "请选择你的兴趣爱好，可以多选",
+    "@hobbiesDescription": {
+        "description": "兴趣爱好步骤描述"
+    },
+    "selectedHobbiesCount": "已选择 {count} 个兴趣爱好",
+    "@selectedHobbiesCount": {
+        "description": "已选择兴趣爱好数量",
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "description": "已选择兴趣爱好数量"
+            }
+        }
+    },
+    "movies": "电影",
+    "@movies": {
+        "description": "电影爱好"
+    },
+    "music": "音乐",
+    "@music": {
+        "description": "音乐爱好"
+    },
+    "outdoorSports": "户外运动",
+    "@outdoorSports": {
+        "description": "户外运动爱好"
+    },
+    "foodExploring": "美食探店",
+    "@foodExploring": {
+        "description": "美食探店爱好"
+    },
+    "reading": "阅读",
+    "@reading": {
+        "description": "阅读爱好"
+    },
+    "travel": "旅行",
+    "@travel": {
+        "description": "旅行爱好"
+    },
+    "gaming": "游戏",
+    "@gaming": {
+        "description": "游戏爱好"
+    },
+    "photography": "摄影",
+    "@photography": {
+        "description": "摄影爱好"
+    },
+    "fitness": "健身",
+    "@fitness": {
+        "description": "健身爱好"
+    },
+    "painting": "绘画",
+    "@painting": {
+        "description": "绘画爱好"
+    },
+    "writing": "写作",
+    "@writing": {
+        "description": "写作爱好"
+    },
+    "cooking": "烹饪",
+    "@cooking": {
+        "description": "烹饪爱好"
+    },
+    "dancing": "舞蹈",
+    "@dancing": {
+        "description": "舞蹈爱好"
+    },
+    "shopping": "购物",
+    "@shopping": {
+        "description": "购物爱好"
+    },
+    "pets": "宠物",
+    "@pets": {
+        "description": "宠物爱好"
+    },
+    "crafts": "手工",
+    "@crafts": {
+        "description": "手工爱好"
+    },
+    "collecting": "收藏",
+    "@collecting": {
+        "description": "收藏爱好"
+    },
+    "gardening": "园艺",
+    "@gardening": {
+        "description": "园艺爱好"
+    },
+    "vegetarian": "素食",
+    "@vegetarian": {
+        "description": "素食饮食习惯"
+    },
+    "lightEating": "清淡",
+    "@lightEating": {
+        "description": "清淡饮食习惯"
+    },
+    "spicyFood": "爱吃辣",
+    "@spicyFood": {
+        "description": "爱吃辣饮食习惯"
+    },
+    "sweetFood": "爱吃甜",
+    "@sweetFood": {
+        "description": "爱吃甜饮食习惯"
+    },
+    "meatLover": "爱吃肉",
+    "@meatLover": {
+        "description": "爱吃肉饮食习惯"
+    },
+    "whatIsYourAge": "你的年龄是？",
+    "@whatIsYourAge": {
+        "description": "年龄步骤屏幕标题"
+    },
+    "ageDescription": "请选择你的出生日期",
+    "@ageDescription": {
+        "description": "年龄步骤描述"
+    },
+    "selectBirthDate": "选择出生日期",
+    "@selectBirthDate": {
+        "description": "选择出生日期占位符"
+    },
+    "ageYears": "{age}岁",
+    "@ageYears": {
+        "description": "年龄显示格式",
+        "placeholders": {
+            "age": {
+                "type": "int",
+                "example": "25"
+            }
+        }
+    },
+    "ageRequirement": "你必须年满18岁才能使用此应用",
+    "@ageRequirement": {
+        "description": "年龄要求提示"
+    },
+    "enterAge": "输入你的年龄",
+    "@enterAge": {
+        "description": "年龄输入提示"
+    },
+    "whatIsYourGender": "你的性别是？",
+    "@whatIsYourGender": {
+        "description": "性别步骤屏幕标题"
+    },
+    "genderDescription": "请选择你的性别",
+    "@genderDescription": {
+        "description": "性别步骤描述"
+    },
+    "male": "男性",
+    "@male": {
+        "description": "男性性别选项"
+    },
+    "female": "女性",
+    "@female": {
+        "description": "女性性别选项"
+    },
+    "nonBinary": "非二元性别",
+    "@nonBinary": {
+        "description": "非二元性别选项"
+    },
+    "addYourPhotos": "添加你的照片",
+    "@addYourPhotos": {
+        "description": "照片步骤屏幕标题"
+    },
+    "photosDescription": "添加至少2张照片展示你的个性",
+    "@photosDescription": {
+        "description": "照片步骤描述"
+    },
+    "addPhoto": "添加照片",
+    "@addPhoto": {
+        "description": "添加照片按钮文本"
+    },
+    "upgradeSubscriptionPlan": "升级您的订阅计划",
+    "@upgradeSubscriptionPlan": {
+        "description": "订阅屏幕标题"
+    },
+    "currentPlan": "您当前的计划是：免费",
+    "@currentPlan": {
+        "description": "当前计划状态文本"
+    },
+    "comingSoon": "即将到来...",
+    "@comingSoon": {
+        "description": "即将到来文本"
+    },
+    "xionMembershipPlan": "Xion 会员计划",
+    "@xionMembershipPlan": {
+        "description": "Xion会员计划标题"
+    },
+    "xionMembershipDescription": "1. 资格认证：持有50000个XION代币的活跃用户\n2. 量身定制的VIP恋爱俱乐部\n3. 精心设计的5场恋爱体验",
+    "@xionMembershipDescription": {
+        "description": "Xion会员计划描述"
+    },
+    "verifyEligibility": "验证资格",
+    "@verifyEligibility": {
+        "description": "验证资格按钮文本"
+    },
+    "tips": "Tips:",
+    "@tips": {
+        "description": "提示标签"
+    },
+    "dontWantToPay": "不想付费？",
+    "@dontWantToPay": {
+        "description": "不想付费问题"
+    },
+    "dailySignInTip": "每日签到和完成分享日记任务可获得额外积分，积分可用于兑换匹配特权。",
+    "@dailySignInTip": {
+        "description": "每日签到提示文本"
+    },
+    "premiumPlan": "Premium 计划",
+    "@premiumPlan": {
+        "description": "Premium计划标题"
+    },
+    "premiumPlanDescription": "1. 充值30积分/月\n2. 专属客服支持",
+    "@premiumPlanDescription": {
+        "description": "Premium计划描述"
+    },
+    "manageSubscription": "管理订阅",
+    "@manageSubscription": {
+        "description": "管理订阅按钮文本"
+    },
+    "supremePlan": "Supreme 计划",
+    "@supremePlan": {
+        "description": "Supreme计划标题"
+    },
+    "supremePlanDescription": "1. 充值100积分/月\n2. VIP客服支持\n3. 重新匹配已拒绝的配对",
+    "@supremePlanDescription": {
+        "description": "Supreme计划描述"
+    },
+    "stepOfTotal": "步骤 {current} / {total}",
+    "@stepOfTotal": {
+        "description": "步骤计数器文本",
+        "placeholders": {
+            "current": {
+                "type": "String"
+            },
+            "total": {
+                "type": "String"
+            }
+        }
+    },
+    "continueButton": "继续",
+    "@continueButton": {
+        "description": "继续按钮文本"
+    },
+    "completeButton": "完成",
+    "@completeButton": {
+        "description": "完成按钮文本"
+    },
+    "other": "其他",
+    "@other": {
+        "description": "其他性别选项"
+    },
+    "whatIsYourSexualOrientation": "你的性取向是？",
+    "@whatIsYourSexualOrientation": {
+        "description": "性取向步骤屏幕标题"
+    },
+    "pleaseSelectGenderYouAreLookingFor": "请选择你寻找的对象性别",
+    "@pleaseSelectGenderYouAreLookingFor": {
+        "description": "性取向步骤描述"
+    },
+    "lookingForMales": "寻找男性",
+    "@lookingForMales": {
+        "description": "寻找男性选项"
+    },
+    "lookingForFemales": "寻找女性",
+    "@lookingForFemales": {
+        "description": "寻找女性选项"
+    },
+    "lookingForBoth": "均可",
+    "@lookingForBoth": {
+        "description": "寻找两种性别选项"
+    },
+    "whereDoYouLive": "你住在哪里？",
+    "@whereDoYouLive": {
+        "description": "位置步骤屏幕标题"
+    },
+    "locationDescription": "请输入你的居住城市和区域，这将用于匹配附近的用户",
+    "@locationDescription": {
+        "description": "位置步骤描述"
+    },
+    "city": "城市",
+    "@city": {
+        "description": "城市字段标签"
+    },
+    "cityExample": "例如：北京",
+    "@cityExample": {
+        "description": "城市字段占位符"
+    },
+    "area": "区域",
+    "@area": {
+        "description": "区域字段标签"
+    },
+    "areaExample": "例如：朝阳区",
+    "@areaExample": {
+        "description": "区域字段占位符"
+    },
+    "street": "街道",
+    "@street": {
+        "description": "街道字段标签"
+    },
+    "streetExample": "例如：西丽区",
+    "@streetExample": {
+        "description": "街道字段占位符"
+    },
+    "locationInfo": "你的位置信息将用于计算与其他用户的距离，未填写将自动使用当前定位来确定",
+    "@locationInfo": {
+        "description": "位置信息文本"
+    },
+    "whatIsYourProfession": "你的职业是什么？",
+    "@whatIsYourProfession": {
+        "description": "职业步骤屏幕标题"
+    },
+    "professionDescription": "请选择你的职业和所在行业（可选填）",
+    "@professionDescription": {
+        "description": "职业步骤描述"
+    },
+    "profession": "职业",
+    "@profession": {
+        "description": "职业标签"
+    },
+    "industry": "行业",
+    "@industry": {
+        "description": "行业标签"
+    },
+    "industryOptional": "行业 (可选)",
+    "@industryOptional": {
+        "description": "行业可选标签"
+    },
+    "professionSummary": "职业: {profession}{industry}",
+    "@professionSummary": {
+        "description": "职业总结文本",
+        "placeholders": {
+            "profession": {
+                "type": "String"
+            },
+            "industry": {
+                "type": "String"
+            }
+        }
+    },
+    "photosStepDescription": "请上传至少3张照片，最多9张。包含不同表情和生活场景的照片，让 AI 更好地认识你",
+    "@photosStepDescription": {
+        "description": "照片步骤描述"
+    },
+    "photosCounter": "{count} / 9 张照片 (最少需要3张)",
+    "@photosCounter": {
+        "description": "照片计数器文本",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "addPhotoButton": "添加照片",
+    "@addPhotoButton": {
+        "description": "添加照片按钮文本"
+    },
+    "student": "学生",
+    "@student": {
+        "description": "学生职业"
+    },
+    "teacher": "教师",
+    "@teacher": {
+        "description": "教师职业"
+    },
+    "doctor": "医生",
+    "@doctor": {
+        "description": "医生职业"
+    },
+    "engineer": "工程师",
+    "@engineer": {
+        "description": "工程师职业"
+    },
+    "designer": "设计师",
+    "@designer": {
+        "description": "设计师职业"
+    },
+    "sales": "销售",
+    "@sales": {
+        "description": "销售职业"
+    },
+    "operations": "运营",
+    "@operations": {
+        "description": "运营职业"
+    },
+    "marketing": "市场",
+    "@marketing": {
+        "description": "市场职业"
+    },
+    "productManager": "产品经理",
+    "@productManager": {
+        "description": "产品经理职业"
+    },
+    "programmer": "程序员",
+    "@programmer": {
+        "description": "程序员职业"
+    },
+    "lawyer": "律师",
+    "@lawyer": {
+        "description": "律师职业"
+    },
+    "accountant": "会计师",
+    "@accountant": {
+        "description": "会计师职业"
+    },
+    "finance": "金融",
+    "@finance": {
+        "description": "金融职业"
+    },
+    "consultant": "咨询师",
+    "@consultant": {
+        "description": "咨询师职业"
+    },
+    "entrepreneur": "创业者",
+    "@entrepreneur": {
+        "description": "创业者职业"
+    },
+    "freelancer": "自由职业",
+    "@freelancer": {
+        "description": "自由职业职业"
+    },
+    "internet": "互联网",
+    "@internet": {
+        "description": "互联网行业"
+    },
+    "healthcare": "医疗",
+    "@healthcare": {
+        "description": "医疗行业"
+    },
+    "manufacturing": "制造业",
+    "@manufacturing": {
+        "description": "制造业行业"
+    },
+    "realEstate": "房地产",
+    "@realEstate": {
+        "description": "房地产行业"
+    },
+    "retail": "零售",
+    "@retail": {
+        "description": "零售行业"
+    },
+    "media": "媒体",
+    "@media": {
+        "description": "媒体行业"
+    },
+    "legal": "法律",
+    "@legal": {
+        "description": "法律行业"
+    },
+    "arts": "艺术",
+    "@arts": {
+        "description": "艺术行业"
+    },
+    "sports": "体育",
+    "@sports": {
+        "description": "体育行业"
+    },
+    "government": "政府",
+    "@government": {
+        "description": "政府行业"
+    },
+    "nonprofit": "非营利组织",
+    "@nonprofit": {
+        "description": "非营利组织行业"
+    },
+    "locationDetails": "地点详情",
+    "@locationDetails": {
+        "description": "地点详情标题"
+    },
+    "theme": "主题",
+    "@theme": {
+        "description": "约会主题标签"
+    },
+    "address": "地址",
+    "@address": {
+        "description": "地址标签"
+    },
+    "distance": "距离",
+    "@distance": {
+        "description": "距离标签"
+    },
+    "time": "时间",
+    "@time": {
+        "description": "时间标签"
+    },
+    "pleaseConfirmDatingInfo": "请确认约会信息",
+    "@pleaseConfirmDatingInfo": {
+        "description": "确认约会信息标题"
+    },
+    "payDeposit": "支付押金",
+    "@payDeposit": {
+        "description": "支付押金标题"
+    },
+    "whyPayDeposit": "为什么要支付押金？",
+    "@whyPayDeposit": {
+        "description": "为什么支付押金问题"
+    },
+    "depositExplanation": "支付押金是为了保护双方权益。约会完成后自动全额退款，若未协商一致情况下违约，押金将转给对方作为赔偿。",
+    "@depositExplanation": {
+        "description": "押金说明文本"
+    },
+    "isMyDepositSafe": "我的押金安全吗？",
+    "@isMyDepositSafe": {
+        "description": "押金安全问题"
+    },
+    "depositSafetyExplanation": "您的押金完全安全！我们使用业界先进的区块链技术，确保您的资金可查，可追溯。平台无法私自操作您的资金，仅有您本人可以操作。",
+    "@depositSafetyExplanation": {
+        "description": "押金安全说明文本"
+    }
+}

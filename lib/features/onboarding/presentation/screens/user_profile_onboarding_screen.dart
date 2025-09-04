@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:blur/shared/buttons/full_width_button.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blur/features/onboarding/presentation/widgets/onboarding_progress_bar.dart';
@@ -34,7 +35,7 @@ class _UserProfileOnboardingScreenState
   bool _isLoading = false;
   late Timer _timer = Timer(Duration.zero, () {});
 
-  final int _totalSteps = 8;
+  final int _totalSteps = 7;
 
   final UserProfileModel _userProfile = UserProfileModel();
 
@@ -102,7 +103,10 @@ class _UserProfileOnboardingScreenState
         // elevation: 0,
         // automaticallyImplyLeading: false,
         title: Text(
-          "Step ${_currentStep.toString()} of ${_totalSteps.toString()}",
+          context.l10n.stepOfTotal(
+            _currentStep.toString(),
+            _totalSteps.toString(),
+          ),
           style: theme.textTheme.labelLarge,
         ),
         // title: Column(
@@ -145,7 +149,10 @@ class _UserProfileOnboardingScreenState
         child: Container(
           height: 60,
           child: FullWidthButton(
-            text: _currentStep < _totalSteps ? '继续' : "完成",
+            text:
+                _currentStep < _totalSteps
+                    ? context.l10n.continueButton
+                    : context.l10n.completeButton,
             isLoading: _isLoading,
             onPressed: () {
               if (_currentStep < _totalSteps) {
@@ -171,7 +178,7 @@ class _UserProfileOnboardingScreenState
           GenderStepScreen(userProfile: _userProfile),
           SexualOrientationStepScreen(userProfile: _userProfile),
           AgeStepScreen(userProfile: _userProfile),
-          LocationStepScreen(userProfile: _userProfile),
+          // LocationStepScreen(userProfile: _userProfile),
           PhotosStepScreen(userProfile: _userProfile),
           // MBTIStepScreen(userProfile: _userProfile),
           // PartnerExpectationsStepScreen(userProfile: _userProfile),

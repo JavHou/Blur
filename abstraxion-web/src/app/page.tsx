@@ -1,7 +1,6 @@
 "use client";
 import { useAbstraxionAccount, useModal } from "@burnt-labs/abstraxion";
 import { Abstraxion } from "@burnt-labs/abstraxion";
-import { Button } from "@burnt-labs/ui";
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
@@ -10,6 +9,8 @@ function HomeContent() {
   const [, setShow] = useModal();
   const searchParams = useSearchParams();
   const [isConnecting, setIsConnecting] = useState(false);
+  const [isHoveringConnect, setIsHoveringConnect] = useState(false);
+  const [isHoveringFlutter, setIsHoveringFlutter] = useState(false);
 
   const sendToFlutter = (data: { address: string; status: string; success: boolean }) => {
     console.log('Sending to Flutter:', data);
@@ -108,47 +109,105 @@ function HomeContent() {
   };
 
   return (
-    <main className="m-auto flex min-h-screen max-w-xs flex-col items-center justify-center gap-4 p-4">
-      <h1 className="text-2xl font-bold tracking-tighter text-white">ABSTRAXION</h1>
+    <main className="min-h-screen bg-black flex flex-col relative overflow-hidden">
+      {/* 背景装饰 */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-black pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-xl"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-purple-500/10 rounded-full blur-xl"></div>
 
-      <Button
-        fullWidth
-        onClick={handleConnect}
-        structure="base"
-        disabled={isConnecting}
-      >
-        {isConnecting ? (
-          <div className="flex items-center justify-center gap-2">
-            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-            CONNECTING...
+      {/* 主要内容区域 */}
+      <div className="flex-1 flex items-center justify-center p-4">
+        <div className="relative z-10 w-full max-w-sm mx-auto">
+          {/* Logo 区域 */}
+          <div className="text-center mb-12">
+            {/* <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mb-6 shadow-lg">
+              <span className="text-2xl font-bold text-white">A</span>
+            </div> */}
+            {/* <h1 className="text-3xl font-bold tracking-tight text-white mb-2">
+              ABSTRAXION
+            </h1>
+            <p className="text-gray-400 text-sm">
+              Connect your wallet securely
+            </p> */}
           </div>
-        ) : account?.bech32Address ? (
-          <div className="flex items-center justify-center">VIEW ACCOUNT</div>
-        ) : (
-          "CONNECT"
-        )}
-      </Button>
 
-      {account?.bech32Address && (
-        <div className="text-white text-sm mt-2 text-center">
-          <div>Connected: {account.bech32Address.slice(0, 10)}...</div>
-          {(searchParams.get('callback') || searchParams.get('deeplink') || searchParams.get('auto_redirect') || searchParams.get('granted')) && (
-            <div className="text-green-400 text-xs mt-1">
-              Auto-redirecting to app...
-            </div>
-          )}
+          {/* 连接按钮 */}
+          <div className="space-y-6">
+            <button
+              onClick={handleConnect}
+              disabled={isConnecting}
+              className={`
+                  w-full py-4 px-6 rounded-2xl font-semibold text-lg transition-all duration-200
+                  border-2 border-white
+                  bg-white text-black hover:bg-gray-100 shadow-lg hover:shadow-gray-500/25
+                  transform hover:scale-[1.02] active:scale-[0.98] shadow-xl
+                  ${isConnecting ? 'bg-gray-300 cursor-not-allowed' : ''}
+                  ${account?.bech32Address ? 'bg-white text-black hover:bg-gray-100 shadow-lg hover:shadow-gray-500/25' : ''}
+                `}
+              style={{ boxSizing: 'border-box' }}
+            >
+              {isConnecting ? (
+                <div className="flex items-center justify-center gap-3">
+                  <div className="spinner"></div>
+                  <span>CONNECTING...</span>
+                </div>
+              ) : account?.bech32Address ? (
+                <div className="flex items-center justify-center gap-2">
+                  <div className="status-indicator status-connected"></div>
+                  <span>VIEW ACCOUNT</span>
+                </div>
+              ) : (
+                <span>CONNECT</span>
+              )}
+            </button>
+
+            {/* 账户信息卡片 */}
+            {account?.bech32Address && (
+              <div className="card mt-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="status-indicator status-connected"></div>
+                  <span className="text-sm font-medium text-green-400">Connected</span>
+                </div>
+
+                <div className="bg-gray-700/50 rounded-xl p-4 mb-4">
+                  <div className="text-xs text-gray-400 mb-1">Wallet Address</div>
+                  <div className="text-white font-mono text-sm break-all">
+                    {account.bech32Address}
+                  </div>
+                </div>
+
+                {(searchParams.get('callback') || searchParams.get('deeplink') || searchParams.get('auto_redirect') || searchParams.get('granted')) && (
+                  <div className="flex items-center gap-2 text-green-400 text-sm">
+                    <div className="spinner" style={{ width: '16px', height: '16px' }}></div>
+                    <span>Redirecting to app...</span>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Flutter 发送按钮 */}
+            {/* {account?.bech32Address && (
+              <button
+                onClick={handleSendToFlutter}
+                className="w-full py-3 px-6 rounded-xl font-medium text-white bg-gray-700 hover:bg-gray-600 transition-all duration-200 border-2 border-white shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
+                style={{ boxSizing: 'border-box' }}
+              >
+                Send to Flutter
+              </button>
+            )} */}
+          </div>
         </div>
-      )}
+      </div>
 
-      {account?.bech32Address && (
-        <Button
-          fullWidth
-          onClick={handleSendToFlutter}
-          structure="base"
-        >
-          Send to Flutter
-        </Button>
-      )}
+      {/* 安全提示 - 放置在页面中下部分 */}
+      <div className="relative z-10 pb-8 px-4 flex justify-center">
+        <div className="inline-flex items-center gap-2 text-xs text-gray-500 bg-gray-800/50 px-3 py-2 rounded-lg">
+          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+          </svg>
+          <span>Secured by Xion Abstraxion</span>
+        </div>
+      </div>
 
       <Abstraxion onClose={() => {
         setShow(false);
@@ -161,9 +220,34 @@ function HomeContent() {
 export default function Home() {
   return (
     <Suspense fallback={
-      <main className="m-auto flex min-h-screen max-w-xs flex-col items-center justify-center gap-4 p-4">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-        <h1 className="text-2xl font-bold tracking-tighter text-white">Loading...</h1>
+      <main className="min-h-screen bg-black flex flex-col relative overflow-hidden">
+        {/* 背景装饰 */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-black pointer-events-none"></div>
+
+        {/* 主要内容区域 */}
+        <div className="flex-1 flex items-center justify-center p-4">
+          <div className="relative z-10 flex flex-col items-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mb-6 shadow-lg">
+              <span className="text-2xl font-bold text-white">A</span>
+            </div>
+
+            <div className="spinner mb-4" style={{ width: '32px', height: '32px' }}></div>
+
+            <h1 className="text-2xl font-bold tracking-tight text-white">
+              Loading...
+            </h1>
+          </div>
+        </div>
+
+        {/* 安全提示 - 放置在页面中下部分 */}
+        <div className="relative z-10 pb-8 px-4 flex justify-center">
+          <div className="inline-flex items-center gap-2 text-xs text-gray-500 bg-gray-800/50 px-3 py-2 rounded-lg">
+            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <span>Secured by Abstraxion</span>
+          </div>
+        </div>
       </main>
     }>
       <HomeContent />

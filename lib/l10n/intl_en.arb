@@ -1,0 +1,1183 @@
+{
+    "@@locale": "en",
+    "@@last_modified": "2025-09-02T00:00:00.000Z",
+    "appName": "Blur",
+    "@appName": {
+        "description": "The application name"
+    },
+    "login": "Login",
+    "@login": {
+        "description": "Login button text"
+    },
+    "register": "Register",
+    "@register": {
+        "description": "Register button text"
+    },
+    "email": "Email",
+    "@email": {
+        "description": "Email field label"
+    },
+    "password": "Password",
+    "@password": {
+        "description": "Password field label"
+    },
+    "confirmPassword": "Confirm Password",
+    "@confirmPassword": {
+        "description": "Confirm password field label"
+    },
+    "forgotPassword": "Forgot Password?",
+    "@forgotPassword": {
+        "description": "Forgot password link text"
+    },
+    "resetPassword": "Reset Password",
+    "@resetPassword": {
+        "description": "Reset password button text"
+    },
+    "verification": "Verification",
+    "@verification": {
+        "description": "Verification screen title"
+    },
+    "verificationCode": "Verification Code",
+    "@verificationCode": {
+        "description": "Verification code field label"
+    },
+    "resendCode": "Resend Code",
+    "@resendCode": {
+        "description": "Resend verification code button text"
+    },
+    "onboarding": "Welcome",
+    "@onboarding": {
+        "description": "Onboarding screen title"
+    },
+    "home": "Home",
+    "@home": {
+        "description": "Home tab title"
+    },
+    "chat": "Chat",
+    "@chat": {
+        "description": "Chat tab title"
+    },
+    "dating": "Dating",
+    "@dating": {
+        "description": "Dating tab title"
+    },
+    "match": "Match",
+    "@match": {
+        "description": "Match tab title"
+    },
+    "settings": "Settings",
+    "@settings": {
+        "description": "Settings tab title"
+    },
+    "profile": "Profile",
+    "@profile": {
+        "description": "Profile screen title"
+    },
+    "notifications": "Notifications",
+    "@notifications": {
+        "description": "Notifications screen title"
+    },
+    "search": "Search",
+    "@search": {
+        "description": "Search placeholder text"
+    },
+    "filter": "Filter",
+    "@filter": {
+        "description": "Filter button text"
+    },
+    "location": "Location",
+    "@location": {
+        "description": "Location field label"
+    },
+    "age": "Age",
+    "@age": {
+        "description": "Age field label"
+    },
+    "about": "About",
+    "@about": {
+        "description": "About section title"
+    },
+    "gallery": "Gallery",
+    "@gallery": {
+        "description": "Gallery section title"
+    },
+    "confirm": "Confirm",
+    "@confirm": {
+        "description": "Confirm button text"
+    },
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Cancel button text"
+    },
+    "save": "Save",
+    "@save": {
+        "description": "Save button text"
+    },
+    "edit": "Edit",
+    "@edit": {
+        "description": "Edit button text"
+    },
+    "delete": "Delete",
+    "@delete": {
+        "description": "Delete button text"
+    },
+    "share": "Share",
+    "@share": {
+        "description": "Share button text"
+    },
+    "send": "Send",
+    "@send": {
+        "description": "Send button text"
+    },
+    "message": "Message",
+    "@message": {
+        "description": "Message field label"
+    },
+    "conversation": "Conversation",
+    "@conversation": {
+        "description": "Conversation screen title"
+    },
+    "datingDiary": "Dating Diary",
+    "@datingDiary": {
+        "description": "Dating diary screen title"
+    },
+    "checkin": "Check In",
+    "@checkin": {
+        "description": "Check in button text"
+    },
+    "success": "Success",
+    "@success": {
+        "description": "Success message"
+    },
+    "error": "Error",
+    "@error": {
+        "description": "Error message"
+    },
+    "loading": "Loading...",
+    "@loading": {
+        "description": "Loading message"
+    },
+    "noData": "No data available",
+    "@noData": {
+        "description": "No data message"
+    },
+    "retry": "Retry",
+    "@retry": {
+        "description": "Retry button text"
+    },
+    "back": "Back",
+    "@back": {
+        "description": "Back button text"
+    },
+    "next": "Next",
+    "@next": {
+        "description": "Next button text"
+    },
+    "done": "Done",
+    "@done": {
+        "description": "Done button text"
+    },
+    "close": "Close",
+    "@close": {
+        "description": "Close button text"
+    },
+    "processingAuthResult": "Processing authentication result...",
+    "@processingAuthResult": {
+        "description": "Loading text for authentication callback page"
+    },
+    "datingNotFound": "Dating with uuid {uuid} not found",
+    "@datingNotFound": {
+        "description": "Dating not found error message",
+        "placeholders": {
+            "uuid": {
+                "type": "String",
+                "description": "The unique identifier of the dating"
+            }
+        }
+    },
+    "chatNotFound": "Chat with uuid {uuid} not found",
+    "@chatNotFound": {
+        "description": "Chat not found error message",
+        "placeholders": {
+            "uuid": {
+                "type": "String",
+                "description": "The unique identifier of the chat"
+            }
+        }
+    },
+    "yes": "Yes",
+    "@yes": {
+        "description": "Yes button text"
+    },
+    "no": "No",
+    "@no": {
+        "description": "No button text"
+    },
+    "ok": "OK",
+    "@ok": {
+        "description": "OK button text"
+    },
+    "otherMethods": "Other Methods",
+    "@otherMethods": {
+        "description": "Other login methods text"
+    },
+    "noAccount": "Don't have an account? ",
+    "@noAccount": {
+        "description": "No account text"
+    },
+    "registerNow": "Register Now",
+    "@registerNow": {
+        "description": "Register now link text"
+    },
+    "meet": "Meet",
+    "@meet": {
+        "description": "Meet tab title"
+    },
+    "matchTab": "Match!",
+    "@matchTab": {
+        "description": "Match tab title with exclamation"
+    },
+    "languageSettings": "Language Settings",
+    "@languageSettings": {
+        "description": "Language settings screen title"
+    },
+    "restartApp": "Please restart the app to apply the new language settings",
+    "@restartApp": {
+        "description": "Restart app message"
+    },
+    "english": "English",
+    "@english": {
+        "description": "English language option"
+    },
+    "chinese": "中文",
+    "@chinese": {
+        "description": "Chinese language option"
+    },
+    "selectLanguage": "Select Language",
+    "@selectLanguage": {
+        "description": "Select language prompt"
+    },
+    "dateTime": "Date & Time",
+    "@dateTime": {
+        "description": "Date and time label"
+    },
+    "checkinSuccess": "Check-in successful!",
+    "@checkinSuccess": {
+        "description": "Check-in success message"
+    },
+    "diary": "Diary",
+    "@diary": {
+        "description": "Diary screen title"
+    },
+    "poster": "Poster",
+    "@poster": {
+        "description": "Poster section title"
+    },
+    "shareSuccess": "Shared successfully!",
+    "@shareSuccess": {
+        "description": "Share success message"
+    },
+    "upcoming": "Upcoming",
+    "@upcoming": {
+        "description": "Upcoming status"
+    },
+    "past": "Past",
+    "@past": {
+        "description": "Past status"
+    },
+    "canceled": "Canceled",
+    "@canceled": {
+        "description": "Canceled status"
+    },
+    "addToCalendar": "🗓️ Add to Calendar",
+    "@addToCalendar": {
+        "description": "Add to calendar button text"
+    },
+    "completed": "✅ Completed",
+    "@completed": {
+        "description": "Completed status"
+    },
+    "pending": "⏱️ Pending",
+    "@pending": {
+        "description": "Pending status"
+    },
+    "dateWith": "Date with {nickname}",
+    "@dateWith": {
+        "description": "Date with nickname text",
+        "placeholders": {
+            "nickname": {
+                "type": "String",
+                "description": "The nickname of the person"
+            }
+        }
+    },
+    "filterTitle": "Filter",
+    "@filterTitle": {
+        "description": "Filter title"
+    },
+    "distanceRange": "Distance Range",
+    "@distanceRange": {
+        "description": "Distance range label"
+    },
+    "minDistance": "Min Distance (KM)",
+    "@minDistance": {
+        "description": "Minimum distance input label"
+    },
+    "maxDistance": "Max Distance (KM)",
+    "@maxDistance": {
+        "description": "Maximum distance input label"
+    },
+    "minDistanceHint": "1 KM",
+    "@minDistanceHint": {
+        "description": "Minimum distance input hint"
+    },
+    "maxDistanceHint": "30 KM",
+    "@maxDistanceHint": {
+        "description": "Maximum distance input hint"
+    },
+    "freeTime": "Free Time",
+    "@freeTime": {
+        "description": "Free time label"
+    },
+    "all": "All",
+    "@all": {
+        "description": "All option"
+    },
+    "weekend": "Weekend",
+    "@weekend": {
+        "description": "Weekend option"
+    },
+    "applyFilter": "Apply Filter",
+    "@applyFilter": {
+        "description": "Apply filter button"
+    },
+    "resetFilter": "Reset",
+    "@resetFilter": {
+        "description": "Reset filter button"
+    },
+    "datingDetails": "Dating Details",
+    "@datingDetails": {
+        "description": "Dating details screen title"
+    },
+    "checkinSuccessTitle": "Check-in Successful",
+    "@checkinSuccessTitle": {
+        "description": "Check-in success screen title"
+    },
+    "enjoySweetMoment": "Enjoy the sweet moments of meeting!",
+    "@enjoySweetMoment": {
+        "description": "Blessing text on check-in success page"
+    },
+    "cantFindPartnerMessage": "Can't find them? Send them a message!",
+    "@cantFindPartnerMessage": {
+        "description": "Message input hint on check-in success page"
+    },
+    "confirmSuccess": "Confirmation Successful",
+    "@confirmSuccess": {
+        "description": "Confirm success screen title"
+    },
+    "shareToWechat": "Share Poster to WeChat",
+    "@shareToWechat": {
+        "description": "Share to WeChat button"
+    },
+    "returnHome": "Return Home",
+    "@returnHome": {
+        "description": "Return home button"
+    },
+    "datingCheckin": "Dating Check-in",
+    "@datingCheckin": {
+        "description": "Dating check-in button"
+    },
+    "shareDatingDiary": "Share Dating Diary",
+    "@shareDatingDiary": {
+        "description": "Share dating diary button"
+    },
+    "submitDiary": "Submit Diary",
+    "@submitDiary": {
+        "description": "Submit diary button"
+    },
+    "diaryPlaceholder": "What interesting things happened during the date? Or come and complain! AI will automatically beautify after submission",
+    "@diaryPlaceholder": {
+        "description": "Diary input placeholder"
+    },
+    "buyNFTAndConfirm": "Confirm",
+    "@buyNFTAndConfirm": {
+        "description": "Buy NFT and confirm button"
+    },
+    "processingPayment": "Processing Payment...",
+    "@processingPayment": {
+        "description": "Processing payment text"
+    },
+    "continueBtn": "Continue",
+    "@continueBtn": {
+        "description": "Continue button"
+    },
+    "membershipSubscription": "Membership Subscription",
+    "@membershipSubscription": {
+        "description": "Membership subscription option in profile"
+    },
+    "onboardingTagline": "See me, then talk to me",
+    "@onboardingTagline": {
+        "description": "Onboarding screen tagline"
+    },
+    "letMeThink": "Let me think",
+    "@letMeThink": {
+        "description": "Dating decision button text"
+    },
+    "confirmDating": "Confirm Dating",
+    "@confirmDating": {
+        "description": "Confirm dating button text"
+    },
+    "datingFeedbackMessage": "How was your date with {nickname} today? Share any fun or interesting things with me, and I'll help polish it into a diary entry!",
+    "@datingFeedbackMessage": {
+        "description": "AI message asking for dating feedback",
+        "placeholders": {
+            "nickname": {
+                "type": "String",
+                "description": "The dating partner's nickname"
+            }
+        }
+    },
+    "perfectDatingPartner": "{nickname} is definitely your perfect dating partner!",
+    "@perfectDatingPartner": {
+        "description": "Perfect dating partner text",
+        "placeholders": {
+            "nickname": {
+                "type": "String",
+                "description": "The dating partner's nickname"
+            }
+        }
+    },
+    "photoAlbum": "Photo Album",
+    "@photoAlbum": {
+        "description": "Photo album section title"
+    },
+    "aiFoundCommonalities": "AI also discovered some commonalities between you",
+    "@aiFoundCommonalities": {
+        "description": "AI found commonalities section title"
+    },
+    "interestingDifferences": "And some interesting differences",
+    "@interestingDifferences": {
+        "description": "Interesting differences section title"
+    },
+    "datingDiaryTitle": "Dating Diary",
+    "@datingDiaryTitle": {
+        "description": "Dating diary section title"
+    },
+    "faq": "FAQ",
+    "@faq": {
+        "description": "FAQ section title"
+    },
+    "faqDatingSafetyQuestion": "Is my date safe?",
+    "@faqDatingSafetyQuestion": {
+        "description": "FAQ question about dating safety"
+    },
+    "faqDatingSafetyAnswer": "We take user safety very seriously. All dates require a deposit, which is fully refunded after the date is completed. If there is a breach of contract without mutual agreement, the deposit will be transferred to the other party as compensation. Additionally, we provide safety features such as \"one-touch emergency\" and \"real-time location sharing\" to ensure your safety.",
+    "@faqDatingSafetyAnswer": {
+        "description": "FAQ answer about dating safety"
+    },
+    "faqEmergencyQuestion": "What to do if I encounter danger during a date?",
+    "@faqEmergencyQuestion": {
+        "description": "FAQ question about emergency situations"
+    },
+    "faqEmergencyAnswer": "Use the \"one-touch emergency\" feature in the platform to quickly contact the police, call the platform customer service hotline for help. The platform provides 24-hour safety protection for you.",
+    "@faqEmergencyAnswer": {
+        "description": "FAQ answer about emergency situations"
+    },
+    "faqDepositRefundQuestion": "When will my deposit be refunded?",
+    "@faqDepositRefundQuestion": {
+        "description": "FAQ question about deposit refund"
+    },
+    "faqDepositRefundAnswer": "After both parties check in for the date, the deposit will be refunded to your account within 24 hours. If there is no check-in, the deposit will be transferred to the other party as breach compensation.",
+    "@faqDepositRefundAnswer": {
+        "description": "FAQ answer about deposit refund"
+    },
+    "matchReason": "Match Reason",
+    "@matchReason": {
+        "description": "Match reason section title"
+    },
+    "showMore": "Show more",
+    "@showMore": {
+        "description": "Show more text for expandable content"
+    },
+    "showLess": "Show less",
+    "@showLess": {
+        "description": "Show less text for expandable content"
+    },
+    "userInfo": "User Info",
+    "@userInfo": {
+        "description": "User information section title"
+    },
+    "basicInfo": "Basic Info",
+    "@basicInfo": {
+        "description": "Basic information section title"
+    },
+    "ageRange": "Age",
+    "@ageRange": {
+        "description": "Age range field label"
+    },
+    "height": "Height",
+    "@height": {
+        "description": "Height field label"
+    },
+    "homeTown": "Hometown",
+    "@homeTown": {
+        "description": "Hometown field label"
+    },
+    "education": "Education",
+    "@education": {
+        "description": "Education field label"
+    },
+    "job": "Job",
+    "@job": {
+        "description": "Job field label"
+    },
+    "datingRequestSent": "Your dating request with {nickname} has been sent!",
+    "@datingRequestSent": {
+        "description": "Dating request sent message",
+        "placeholders": {
+            "nickname": {
+                "type": "String",
+                "description": "The nickname of the person"
+            }
+        }
+    },
+    "datingTipsTitle": "Need help breaking the ice? AI has prepared dating tips for you",
+    "@datingTipsTitle": {
+        "description": "Dating tips section title"
+    },
+    "abstraxionAuth": "Abstraxion Authentication",
+    "@abstraxionAuth": {
+        "description": "Abstraxion authentication screen title"
+    },
+    "reconnect": "Reconnect",
+    "@reconnect": {
+        "description": "Reconnect button tooltip"
+    },
+    "connectingToServer": "Connecting to server...",
+    "@connectingToServer": {
+        "description": "Connecting to server loading message"
+    },
+    "connectionError": "Connection Error",
+    "@connectionError": {
+        "description": "Connection error title"
+    },
+    "blockchainAuth": "Blockchain Authentication",
+    "@blockchainAuth": {
+        "description": "Blockchain authentication title"
+    },
+    "authInstructions": "Click the button below to complete secure authentication in your browser",
+    "@authInstructions": {
+        "description": "Authentication instructions text"
+    },
+    "startAuth": "Start Authentication",
+    "@startAuth": {
+        "description": "Start authentication button text"
+    },
+    "serverStatus": "Server Status: {status}",
+    "@serverStatus": {
+        "description": "Server status text",
+        "placeholders": {
+            "status": {
+                "type": "String",
+                "description": "Connection status"
+            }
+        }
+    },
+    "connected": "Connected",
+    "@connected": {
+        "description": "Connected status"
+    },
+    "disconnected": "Disconnected",
+    "@disconnected": {
+        "description": "Disconnected status"
+    },
+    "serverNotConnected": "Server not connected, please try again later",
+    "@serverNotConnected": {
+        "description": "Server not connected snackbar message"
+    },
+    "completeAuthInBrowser": "Please complete authentication in your browser...",
+    "@completeAuthInBrowser": {
+        "description": "Complete authentication in browser message"
+    },
+    "authStartFailed": "Failed to start authentication",
+    "@authStartFailed": {
+        "description": "Authentication start failed message"
+    },
+    "authStartError": "Authentication start failed: {error}",
+    "@authStartError": {
+        "description": "Authentication start error message",
+        "placeholders": {
+            "error": {
+                "type": "String",
+                "description": "Error details"
+            }
+        }
+    },
+    "connectServerFirst": "Please connect to server first",
+    "@connectServerFirst": {
+        "description": "Connect server first message"
+    },
+    "cannotConnectToReactServer": "Cannot connect to React server, please ensure the server is running",
+    "@cannotConnectToReactServer": {
+        "description": "Cannot connect to React server error message"
+    },
+    "connectionFailed": "Connection failed: {error}",
+    "@connectionFailed": {
+        "description": "Connection failed error message",
+        "placeholders": {
+            "error": {
+                "type": "String",
+                "description": "Error details"
+            }
+        }
+    },
+    "startBlurJourney": "Start Your Blur Journey!",
+    "@startBlurJourney": {
+        "description": "Start Blur journey success message"
+    },
+    "startNow": "Start Now!",
+    "@startNow": {
+        "description": "Start now button text"
+    },
+    "accountCreatedSuccess": "Account created successfully, please complete your profile to help AI better match your ideal type.",
+    "@accountCreatedSuccess": {
+        "description": "Account creation success message"
+    },
+    "whatIsYourName": "What's your name?",
+    "@whatIsYourName": {
+        "description": "Name step screen title"
+    },
+    "nameDescription": "Please enter your name or nickname, this will serve as your personal identifier",
+    "@nameDescription": {
+        "description": "Name step description"
+    },
+    "enterNameHint": "Enter your name or nickname",
+    "@enterNameHint": {
+        "description": "Name input hint text"
+    },
+    "nameDisplayNote": "This name will be displayed in your profile",
+    "@nameDisplayNote": {
+        "description": "Name display note"
+    },
+    "yourMBTIType": "What's your MBTI type?",
+    "@yourMBTIType": {
+        "description": "MBTI step screen title"
+    },
+    "mbtiDescription": "Please select your MBTI personality type, this will help us match you better",
+    "@mbtiDescription": {
+        "description": "MBTI step description"
+    },
+    "mbtiTestNote": "Don't know your MBTI type? You can take an online test later",
+    "@mbtiTestNote": {
+        "description": "MBTI test note"
+    },
+    "yourHobbies": "What are your hobbies?",
+    "@yourHobbies": {
+        "description": "Hobbies step screen title"
+    },
+    "hobbiesDescription": "Please select your hobbies, multiple selections allowed",
+    "@hobbiesDescription": {
+        "description": "Hobbies step description"
+    },
+    "selectedHobbiesCount": "Selected {count} hobbies",
+    "@selectedHobbiesCount": {
+        "description": "Selected hobbies count",
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "description": "Number of selected hobbies"
+            }
+        }
+    },
+    "movies": "Movies",
+    "@movies": {
+        "description": "Movies hobby"
+    },
+    "music": "Music",
+    "@music": {
+        "description": "Music hobby"
+    },
+    "outdoorSports": "Outdoor Sports",
+    "@outdoorSports": {
+        "description": "Outdoor sports hobby"
+    },
+    "foodExploring": "Food Exploring",
+    "@foodExploring": {
+        "description": "Food exploring hobby"
+    },
+    "reading": "Reading",
+    "@reading": {
+        "description": "Reading hobby"
+    },
+    "travel": "Travel",
+    "@travel": {
+        "description": "Travel hobby"
+    },
+    "gaming": "Gaming",
+    "@gaming": {
+        "description": "Gaming hobby"
+    },
+    "photography": "Photography",
+    "@photography": {
+        "description": "Photography hobby"
+    },
+    "fitness": "Fitness",
+    "@fitness": {
+        "description": "Fitness hobby"
+    },
+    "painting": "Painting",
+    "@painting": {
+        "description": "Painting hobby"
+    },
+    "writing": "Writing",
+    "@writing": {
+        "description": "Writing hobby"
+    },
+    "cooking": "Cooking",
+    "@cooking": {
+        "description": "Cooking hobby"
+    },
+    "dancing": "Dancing",
+    "@dancing": {
+        "description": "Dancing hobby"
+    },
+    "shopping": "Shopping",
+    "@shopping": {
+        "description": "Shopping hobby"
+    },
+    "pets": "Pets",
+    "@pets": {
+        "description": "Pets hobby"
+    },
+    "crafts": "Crafts",
+    "@crafts": {
+        "description": "Crafts hobby"
+    },
+    "collecting": "Collecting",
+    "@collecting": {
+        "description": "Collecting hobby"
+    },
+    "gardening": "Gardening",
+    "@gardening": {
+        "description": "Gardening hobby"
+    },
+    "vegetarian": "Vegetarian",
+    "@vegetarian": {
+        "description": "Vegetarian dietary habit"
+    },
+    "lightEating": "Light Eating",
+    "@lightEating": {
+        "description": "Light eating dietary habit"
+    },
+    "spicyFood": "Spicy Food",
+    "@spicyFood": {
+        "description": "Spicy food dietary habit"
+    },
+    "sweetFood": "Sweet Food",
+    "@sweetFood": {
+        "description": "Sweet food dietary habit"
+    },
+    "meatLover": "Meat Lover",
+    "@meatLover": {
+        "description": "Meat lover dietary habit"
+    },
+    "whatIsYourAge": "What's your age?",
+    "@whatIsYourAge": {
+        "description": "Age step screen title"
+    },
+    "ageDescription": "Please select your birth date",
+    "@ageDescription": {
+        "description": "Age step description"
+    },
+    "selectBirthDate": "Select birth date",
+    "@selectBirthDate": {
+        "description": "Select birth date placeholder"
+    },
+    "ageYears": "{age} years old",
+    "@ageYears": {
+        "description": "Age display format",
+        "placeholders": {
+            "age": {
+                "type": "int",
+                "example": "25"
+            }
+        }
+    },
+    "ageRequirement": "You must be at least 18 years old to use this app",
+    "@ageRequirement": {
+        "description": "Age requirement notice"
+    },
+    "enterAge": "Enter your age",
+    "@enterAge": {
+        "description": "Age input hint"
+    },
+    "whatIsYourGender": "What's your gender?",
+    "@whatIsYourGender": {
+        "description": "Gender step screen title"
+    },
+    "genderDescription": "Please select your gender",
+    "@genderDescription": {
+        "description": "Gender step description"
+    },
+    "male": "Male",
+    "@male": {
+        "description": "Male gender option"
+    },
+    "female": "Female",
+    "@female": {
+        "description": "Female gender option"
+    },
+    "nonBinary": "Non-binary",
+    "@nonBinary": {
+        "description": "Non-binary gender option"
+    },
+    "addYourPhotos": "Add your photos",
+    "@addYourPhotos": {
+        "description": "Photos step screen title"
+    },
+    "photosDescription": "Add at least 2 photos to show your personality",
+    "@photosDescription": {
+        "description": "Photos step description"
+    },
+    "addPhoto": "Add Photo",
+    "@addPhoto": {
+        "description": "Add photo button text"
+    },
+    "upgradeSubscriptionPlan": "Upgrade Your Subscription Plan",
+    "@upgradeSubscriptionPlan": {
+        "description": "Subscription screen title"
+    },
+    "currentPlan": "Your current plan is: Free",
+    "@currentPlan": {
+        "description": "Current plan status text"
+    },
+    "comingSoon": "Coming soon...",
+    "@comingSoon": {
+        "description": "Coming soon text"
+    },
+    "xionMembershipPlan": "Xion Membership Plan",
+    "@xionMembershipPlan": {
+        "description": "Xion membership plan title"
+    },
+    "xionMembershipDescription": "1. Qualification certification: Active users holding 50,000 XION tokens\n2. Tailored VIP dating club\n3. Carefully designed 5 dating experiences",
+    "@xionMembershipDescription": {
+        "description": "Xion membership plan description"
+    },
+    "verifyEligibility": "Verify Eligibility",
+    "@verifyEligibility": {
+        "description": "Verify eligibility button text"
+    },
+    "tips": "Tips:",
+    "@tips": {
+        "description": "Tips label"
+    },
+    "dontWantToPay": "Don't want to pay?",
+    "@dontWantToPay": {
+        "description": "Don't want to pay question"
+    },
+    "dailySignInTip": "Daily sign-in and completing diary sharing tasks can earn extra points, which can be used to redeem matching privileges.",
+    "@dailySignInTip": {
+        "description": "Daily sign-in tip text"
+    },
+    "premiumPlan": "Premium Plan",
+    "@premiumPlan": {
+        "description": "Premium plan title"
+    },
+    "premiumPlanDescription": "1. Recharge 30 points/month\n2. Exclusive customer support",
+    "@premiumPlanDescription": {
+        "description": "Premium plan description"
+    },
+    "manageSubscription": "Manage Subscription",
+    "@manageSubscription": {
+        "description": "Manage subscription button text"
+    },
+    "supremePlan": "Supreme Plan",
+    "@supremePlan": {
+        "description": "Supreme plan title"
+    },
+    "supremePlanDescription": "1. Recharge 100 points/month\n2. VIP customer support\n3. Rematch rejected matches",
+    "@supremePlanDescription": {
+        "description": "Supreme plan description"
+    },
+    "stepOfTotal": "Step {current} of {total}",
+    "@stepOfTotal": {
+        "description": "Step counter text",
+        "placeholders": {
+            "current": {
+                "type": "String"
+            },
+            "total": {
+                "type": "String"
+            }
+        }
+    },
+    "continueButton": "Continue",
+    "@continueButton": {
+        "description": "Continue button text"
+    },
+    "completeButton": "Complete",
+    "@completeButton": {
+        "description": "Complete button text"
+    },
+    "other": "Other",
+    "@other": {
+        "description": "Other gender option"
+    },
+    "whatIsYourSexualOrientation": "What is your sexual orientation?",
+    "@whatIsYourSexualOrientation": {
+        "description": "Sexual orientation step screen title"
+    },
+    "pleaseSelectGenderYouAreLookingFor": "Please select the gender you are looking for",
+    "@pleaseSelectGenderYouAreLookingFor": {
+        "description": "Sexual orientation step description"
+    },
+    "lookingForMales": "Looking for males",
+    "@lookingForMales": {
+        "description": "Looking for males option"
+    },
+    "lookingForFemales": "Looking for females",
+    "@lookingForFemales": {
+        "description": "Looking for females option"
+    },
+    "lookingForBoth": "Both",
+    "@lookingForBoth": {
+        "description": "Looking for both genders option"
+    },
+    "whereDoYouLive": "Where do you live?",
+    "@whereDoYouLive": {
+        "description": "Location step screen title"
+    },
+    "locationDescription": "Please enter your city and area, this will be used to match nearby users",
+    "@locationDescription": {
+        "description": "Location step description"
+    },
+    "city": "City",
+    "@city": {
+        "description": "City field label"
+    },
+    "cityExample": "e.g., Beijing",
+    "@cityExample": {
+        "description": "City field placeholder"
+    },
+    "area": "Area",
+    "@area": {
+        "description": "Area field label"
+    },
+    "areaExample": "e.g., Chaoyang District",
+    "@areaExample": {
+        "description": "Area field placeholder"
+    },
+    "street": "Street",
+    "@street": {
+        "description": "Street field label"
+    },
+    "streetExample": "e.g., Xili District",
+    "@streetExample": {
+        "description": "Street field placeholder"
+    },
+    "locationInfo": "Your location information will be used to calculate distance from other users. If not filled, current location will be used automatically",
+    "@locationInfo": {
+        "description": "Location info text"
+    },
+    "whatIsYourProfession": "What is your profession?",
+    "@whatIsYourProfession": {
+        "description": "Profession step screen title"
+    },
+    "professionDescription": "Please select your profession and industry (optional)",
+    "@professionDescription": {
+        "description": "Profession step description"
+    },
+    "profession": "Profession",
+    "@profession": {
+        "description": "Profession label"
+    },
+    "industry": "Industry",
+    "@industry": {
+        "description": "Industry label"
+    },
+    "industryOptional": "Industry (optional)",
+    "@industryOptional": {
+        "description": "Industry optional label"
+    },
+    "professionSummary": "Profession: {profession}{industry}",
+    "@professionSummary": {
+        "description": "Profession summary text",
+        "placeholders": {
+            "profession": {
+                "type": "String"
+            },
+            "industry": {
+                "type": "String"
+            }
+        }
+    },
+    "photosStepDescription": "Please upload at least 3 photos, up to 9. Include photos with different expressions and life scenes to help AI get to know you better",
+    "@photosStepDescription": {
+        "description": "Photos step description"
+    },
+    "photosCounter": "{count} / 9 photos (minimum 3 required)",
+    "@photosCounter": {
+        "description": "Photos counter text",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "addPhotoButton": "Add Photo",
+    "@addPhotoButton": {
+        "description": "Add photo button text"
+    },
+    "student": "Student",
+    "@student": {
+        "description": "Student profession"
+    },
+    "teacher": "Teacher",
+    "@teacher": {
+        "description": "Teacher profession"
+    },
+    "doctor": "Doctor",
+    "@doctor": {
+        "description": "Doctor profession"
+    },
+    "engineer": "Engineer",
+    "@engineer": {
+        "description": "Engineer profession"
+    },
+    "designer": "Designer",
+    "@designer": {
+        "description": "Designer profession"
+    },
+    "sales": "Sales",
+    "@sales": {
+        "description": "Sales profession"
+    },
+    "operations": "Operations",
+    "@operations": {
+        "description": "Operations profession"
+    },
+    "marketing": "Marketing",
+    "@marketing": {
+        "description": "Marketing profession"
+    },
+    "productManager": "Product Manager",
+    "@productManager": {
+        "description": "Product Manager profession"
+    },
+    "programmer": "Programmer",
+    "@programmer": {
+        "description": "Programmer profession"
+    },
+    "lawyer": "Lawyer",
+    "@lawyer": {
+        "description": "Lawyer profession"
+    },
+    "accountant": "Accountant",
+    "@accountant": {
+        "description": "Accountant profession"
+    },
+    "finance": "Finance",
+    "@finance": {
+        "description": "Finance profession"
+    },
+    "consultant": "Consultant",
+    "@consultant": {
+        "description": "Consultant profession"
+    },
+    "entrepreneur": "Entrepreneur",
+    "@entrepreneur": {
+        "description": "Entrepreneur profession"
+    },
+    "freelancer": "Freelancer",
+    "@freelancer": {
+        "description": "Freelancer profession"
+    },
+    "internet": "Internet",
+    "@internet": {
+        "description": "Internet industry"
+    },
+    "healthcare": "Healthcare",
+    "@healthcare": {
+        "description": "Healthcare industry"
+    },
+    "manufacturing": "Manufacturing",
+    "@manufacturing": {
+        "description": "Manufacturing industry"
+    },
+    "realEstate": "Real Estate",
+    "@realEstate": {
+        "description": "Real Estate industry"
+    },
+    "retail": "Retail",
+    "@retail": {
+        "description": "Retail industry"
+    },
+    "media": "Media",
+    "@media": {
+        "description": "Media industry"
+    },
+    "legal": "Legal",
+    "@legal": {
+        "description": "Legal industry"
+    },
+    "arts": "Arts",
+    "@arts": {
+        "description": "Arts industry"
+    },
+    "sports": "Sports",
+    "@sports": {
+        "description": "Sports industry"
+    },
+    "government": "Government",
+    "@government": {
+        "description": "Government industry"
+    },
+    "nonprofit": "Non-profit",
+    "@nonprofit": {
+        "description": "Non-profit industry"
+    },
+    "locationDetails": "Location Details",
+    "@locationDetails": {
+        "description": "Location details title"
+    },
+    "theme": "Theme",
+    "@theme": {
+        "description": "Dating theme label"
+    },
+    "address": "Address",
+    "@address": {
+        "description": "Address label"
+    },
+    "distance": "Distance",
+    "@distance": {
+        "description": "Distance label"
+    },
+    "time": "Time",
+    "@time": {
+        "description": "Time label"
+    },
+    "pleaseConfirmDatingInfo": "Please confirm dating information",
+    "@pleaseConfirmDatingInfo": {
+        "description": "Confirm dating info title"
+    },
+    "payDeposit": "Pay Deposit",
+    "@payDeposit": {
+        "description": "Pay deposit title"
+    },
+    "whyPayDeposit": "Why pay a deposit?",
+    "@whyPayDeposit": {
+        "description": "Why pay deposit question"
+    },
+    "depositExplanation": "The deposit is to protect both parties' rights. It will be automatically refunded in full after the date is completed. If you break the agreement without mutual consent, the deposit will be transferred to the other party as compensation.",
+    "@depositExplanation": {
+        "description": "Deposit explanation text"
+    },
+    "isMyDepositSafe": "Is my deposit safe?",
+    "@isMyDepositSafe": {
+        "description": "Deposit safety question"
+    },
+    "depositSafetyExplanation": "Your deposit is completely safe! We use advanced blockchain technology to ensure your funds are traceable and verifiable. The platform cannot operate your funds without authorization - only you can operate them.",
+    "@depositSafetyExplanation": {
+        "description": "Deposit safety explanation text"
+    }
+}

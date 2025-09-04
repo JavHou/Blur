@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:blur/features/onboarding/data/models/user_profile_model.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class SexualOrientationStepScreen extends StatefulWidget {
   final UserProfileModel userProfile;
 
-  const SexualOrientationStepScreen({
-    super.key,
-    required this.userProfile,
-  });
+  const SexualOrientationStepScreen({super.key, required this.userProfile});
 
   @override
   State<SexualOrientationStepScreen> createState() =>
@@ -34,6 +32,14 @@ class _SexualOrientationStepScreenState
 
   bool get canContinue => _selectedOrientation != null;
 
+  List<Map<String, String>> _getLocalizedOrientationOptions() {
+    return [
+      {'title': context.l10n.lookingForMales, 'value': '寻找男性'},
+      {'title': context.l10n.lookingForFemales, 'value': '寻找女性'},
+      {'title': context.l10n.lookingForBoth, 'value': '均可'},
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -49,7 +55,7 @@ class _SexualOrientationStepScreenState
 
               // 标题
               Text(
-                '你的性取向是？',
+                context.l10n.whatIsYourSexualOrientation,
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -59,7 +65,7 @@ class _SexualOrientationStepScreenState
 
               // 副标题
               Text(
-                '请选择你寻找的对象性别',
+                context.l10n.pleaseSelectGenderYouAreLookingFor,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: Colors.grey.shade700,
                 ),
@@ -69,18 +75,24 @@ class _SexualOrientationStepScreenState
               // 性取向选项
               Expanded(
                 child: Column(
-                  children: [
-                    _buildOrientationOption('寻找男性', '寻找男性'),
-                    SizedBox(height: 16),
-                    _buildOrientationOption('寻找女性', '寻找女性'),
-                    SizedBox(height: 16),
-                    _buildOrientationOption('均可', '均可'),
-                  ],
+                  children:
+                      _getLocalizedOrientationOptions().map((option) {
+                        return Column(
+                          children: [
+                            _buildOrientationOption(
+                              option['title']!,
+                              option['value']!,
+                            ),
+                            if (option !=
+                                _getLocalizedOrientationOptions().last)
+                              SizedBox(height: 16),
+                          ],
+                        );
+                      }).toList(),
                 ),
               ),
 
               SizedBox(height: 24),
-
             ],
           ),
         ),

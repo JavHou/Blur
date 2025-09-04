@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class SubscriptionPlanCard extends StatefulWidget {
   const SubscriptionPlanCard({super.key});
@@ -20,14 +21,14 @@ class _SubscriptionPlanCardState extends State<SubscriptionPlanCard> {
           children: [
             const SizedBox(height: 16),
             Text(
-              ' Premium 计划',
+              context.l10n.premiumPlan,
               style: theme.textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              '1. 充值30积分/月\n2. 专属客服支持',
+              context.l10n.premiumPlanDescription,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: Colors.grey.shade600,
               ),
@@ -37,19 +38,19 @@ class _SubscriptionPlanCardState extends State<SubscriptionPlanCard> {
               onPressed: () {
                 // Handle button press
               },
-              child: const Text('管理订阅'),
+              child: Text(context.l10n.manageSubscription),
             ),
             const SizedBox(height: 16),
             Divider(color: Colors.grey.shade300),
             Text(
-              'Supreme 计划',
+              context.l10n.supremePlan,
               style: theme.textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              '1. 充值100积分/月\n2. VIP客服支持\n3. 重新匹配已拒绝的配对',
+              context.l10n.supremePlanDescription,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: Colors.grey.shade600,
               ),
@@ -59,7 +60,7 @@ class _SubscriptionPlanCardState extends State<SubscriptionPlanCard> {
               onPressed: () {
                 // Handle button press
               },
-              child: const Text('管理订阅'),
+              child: Text(context.l10n.manageSubscription),
             ),
           ],
         ),

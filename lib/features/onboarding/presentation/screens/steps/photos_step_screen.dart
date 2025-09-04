@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:blur/features/onboarding/data/models/user_profile_model.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class PhotosStepScreen extends StatefulWidget {
   final UserProfileModel userProfile;
@@ -52,7 +53,7 @@ class _PhotosStepScreenState extends State<PhotosStepScreen> {
 
               // 标题
               Text(
-                '添加你的照片',
+                context.l10n.addYourPhotos,
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -62,7 +63,7 @@ class _PhotosStepScreenState extends State<PhotosStepScreen> {
 
               // 副标题
               Text(
-                '请上传至少3张照片，最多9张。包含不同表情和生活场景的照片，让 AI 更好地认识你',
+                context.l10n.photosStepDescription,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: Colors.grey.shade700,
                 ),
@@ -85,7 +86,7 @@ class _PhotosStepScreenState extends State<PhotosStepScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        '${_photos.length} / 9 张照片 (最少需要3张)',
+                        context.l10n.photosCounter(_photos.length),
                         style: theme.textTheme.titleMedium?.copyWith(
                           color:
                               _photos.length >= 3
@@ -190,7 +191,7 @@ class _PhotosStepScreenState extends State<PhotosStepScreen> {
             ),
             SizedBox(height: 8),
             Text(
-              '添加照片',
+              context.l10n.addPhotoButton,
               style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
             ),
           ],

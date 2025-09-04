@@ -3,6 +3,7 @@ import 'package:blur/features/dating/presentation/screens/dating_checkin_screen.
 import 'package:blur/features/dating/presentation/screens/dating_confirm_screen.dart';
 import 'package:blur/features/dating/presentation/screens/dating_confirm_success_screen.dart';
 import 'package:blur/features/dating/presentation/screens/dating_screen.dart';
+import 'package:blur/features/setting/presentation/screens/subscription/screens/subscription_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blur/features/authentication/presentation/screens/forgot_password_screen.dart';
@@ -25,6 +26,8 @@ import 'package:blur/features/setting/presentation/screens/user/change_email_scr
 import 'package:blur/features/setting/presentation/screens/user/change_password_screen.dart';
 import 'package:blur/features/setting/presentation/screens/user/personal_information_screen.dart';
 import 'package:blur/features/abstraxion/presentation/abstraxion_screen.dart';
+import 'package:blur/features/abstraxion/services/account_service.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: "/",
@@ -92,7 +95,11 @@ final GoRouter router = GoRouter(
 
         if (dating == null) {
           return Scaffold(
-            body: Center(child: Text('Dating with uuid $uuid not found')),
+            body: Center(
+              child: Builder(
+                builder: (context) => Text(context.l10n.datingNotFound(uuid)),
+              ),
+            ),
           );
         }
 
@@ -109,7 +116,11 @@ final GoRouter router = GoRouter(
 
         if (dating == null) {
           return Scaffold(
-            body: Center(child: Text('Dating with uuid $uuid not found')),
+            body: Center(
+              child: Builder(
+                builder: (context) => Text(context.l10n.datingNotFound(uuid)),
+              ),
+            ),
           );
         }
 
@@ -141,7 +152,11 @@ final GoRouter router = GoRouter(
 
         if (dating == null) {
           return Scaffold(
-            body: Center(child: Text('Dating with uuid $uuid not found')),
+            body: Center(
+              child: Builder(
+                builder: (context) => Text(context.l10n.datingNotFound(uuid)),
+              ),
+            ),
           );
         }
 
@@ -157,7 +172,11 @@ final GoRouter router = GoRouter(
 
         if (conversation == null) {
           return Scaffold(
-            body: Center(child: Text('Chat with uuid $uuid not found')),
+            body: Center(
+              child: Builder(
+                builder: (context) => Text(context.l10n.chatNotFound(uuid)),
+              ),
+            ),
           );
         }
 
@@ -174,6 +193,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/setting/notification',
       builder: (context, state) => NotificationSettingScreen(),
+    ),
+    GoRoute(
+      path: '/subscription',
+      builder: (context, state) => SubscriptionScreens(),
     ),
     GoRoute(
       path: '/setting/security',
@@ -204,10 +227,23 @@ final GoRouter router = GoRouter(
         final success = state.uri.queryParameters['success'];
 
         // 延时1000ms后执行导航
-        Future.delayed(Duration(milliseconds: 1000), () {
+        Future.delayed(Duration(milliseconds: 1000), () async {
           if (success == 'true' && address != null && address.isNotEmpty) {
-            // 认证成功，跳转到主页
-            context.go('/home?showFilter=false');
+            // 认证成功，保存钱包地址到账户
+            try {
+              final accountService = AccountService.instance;
+              await accountService.saveWalletAddress(
+                address,
+                nickname: 'Javen Hou', // 可以从用户资料获取
+                email: 'houjav@gmail.com', // 可以从用户资料获取
+              );
+              print('✅ 钱包地址已保存: $address');
+            } catch (e) {
+              print('❌ 保存钱包地址失败: $e');
+            }
+
+            // 跳转到成功页面
+            context.go('/register/success');
           } else {
             // 认证失败，返回登录页面
             context.go('/login');
@@ -226,7 +262,7 @@ final GoRouter router = GoRouter(
                 ),
                 SizedBox(height: 16),
                 Text(
-                  '处理认证结果...',
+                  context.l10n.processingAuthResult,
                   style: TextStyle(color: Colors.black, fontSize: 16),
                 ),
               ],

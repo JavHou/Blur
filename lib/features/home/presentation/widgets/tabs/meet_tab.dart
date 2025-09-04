@@ -3,6 +3,7 @@ import 'package:blur/features/dating/presentation/screens/dating_confirm_screen.
 import 'package:flutter/material.dart';
 import 'package:blur/features/meet/presentation/widgets/card/meet_card.dart';
 import 'package:go_router/go_router.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class MeetTab extends StatefulWidget {
   const MeetTab({super.key});
@@ -62,13 +63,13 @@ class MeetTabState extends State<MeetTab> with SingleTickerProviderStateMixin {
   String getStatusLabel(DatingModel dating) {
     switch (dating.status) {
       case DatingStatus.upcoming:
-        return "🗓️ 添加到日历";
+        return context.l10n.addToCalendar;
       case DatingStatus.past:
-        return "✅ 已完成";
+        return context.l10n.completed;
       case DatingStatus.canceled:
-        return "❌ 已取消";
+        return "❌ ${context.l10n.canceled}";
       default:
-        return "⏱️ Pending";
+        return context.l10n.pending;
     }
   }
 
@@ -132,19 +133,19 @@ class MeetTabState extends State<MeetTab> with SingleTickerProviderStateMixin {
                   Tab(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text("即将到来")],
+                      children: [Text(context.l10n.upcoming)],
                     ),
                   ),
                   Tab(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text("已完成")],
+                      children: [Text(context.l10n.past)],
                     ),
                   ),
                   Tab(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text("已取消")],
+                      children: [Text(context.l10n.canceled)],
                     ),
                   ),
                 ],

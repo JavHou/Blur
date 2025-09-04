@@ -1,5 +1,6 @@
 import 'package:blur/features/abstraxion/services/simple_abstraxion_service.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 import 'package:flutter/material.dart';
 
 class AbstraxionScreen extends StatefulWidget {
@@ -41,14 +42,14 @@ class _AbstraxionScreenState extends State<AbstraxionScreen> {
         print('✅ 服务器连接成功: $serverUrl');
       } else {
         setState(() {
-          _error = '无法连接到React服务器，请确保服务器正在运行';
+          _error = context.l10n.cannotConnectToReactServer;
           _isLoading = false;
         });
         print('❌ 服务器连接失败');
       }
     } catch (e) {
       setState(() {
-        _error = '连接失败: $e';
+        _error = context.l10n.connectionFailed(e.toString());
         _isLoading = false;
       });
       print('❌ 连接异常: $e');
@@ -59,8 +60,8 @@ class _AbstraxionScreenState extends State<AbstraxionScreen> {
   Future<void> _startAuthentication() async {
     if (!_service.isConnected) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('服务器未连接，请稍后重试'),
+        SnackBar(
+          content: Text(context.l10n.serverNotConnected),
           backgroundColor: Colors.orange,
         ),
       );
@@ -80,14 +81,17 @@ class _AbstraxionScreenState extends State<AbstraxionScreen> {
 
       if (success) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('请在浏览器中完成认证...'),
+          SnackBar(
+            content: Text(context.l10n.completeAuthInBrowser),
             duration: Duration(seconds: 3),
           ),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('启动认证失败'), backgroundColor: Colors.red),
+          SnackBar(
+            content: Text(context.l10n.authStartFailed),
+            backgroundColor: Colors.red,
+          ),
         );
       }
     } catch (e) {
@@ -96,7 +100,10 @@ class _AbstraxionScreenState extends State<AbstraxionScreen> {
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('认证启动失败: $e'), backgroundColor: Colors.red),
+        SnackBar(
+          content: Text(context.l10n.authStartError(e.toString())),
+          backgroundColor: Colors.red,
+        ),
       );
     }
   }
@@ -108,7 +115,7 @@ class _AbstraxionScreenState extends State<AbstraxionScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        title: const Text('Abstraxion 认证'),
+        title: Text(context.l10n.abstraxionAuth),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
@@ -116,7 +123,7 @@ class _AbstraxionScreenState extends State<AbstraxionScreen> {
               _service.resetConnection();
               _connectToServer();
             },
-            tooltip: '重新连接',
+            tooltip: context.l10n.reconnect,
           ),
         ],
       ),
@@ -126,7 +133,7 @@ class _AbstraxionScreenState extends State<AbstraxionScreen> {
 
   Widget _buildBody() {
     if (_isLoading) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -135,7 +142,7 @@ class _AbstraxionScreenState extends State<AbstraxionScreen> {
             ),
             SizedBox(height: 16),
             Text(
-              '正在连接服务器...',
+              context.l10n.connectingToServer,
               style: TextStyle(color: Colors.black, fontSize: 16),
             ),
           ],
@@ -152,8 +159,8 @@ class _AbstraxionScreenState extends State<AbstraxionScreen> {
             children: [
               const Icon(Icons.error_outline, color: Colors.red, size: 64),
               const SizedBox(height: 16),
-              const Text(
-                '连接错误',
+              Text(
+                context.l10n.connectionError,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -173,7 +180,7 @@ class _AbstraxionScreenState extends State<AbstraxionScreen> {
                   backgroundColor: Colors.purple,
                   foregroundColor: Colors.white,
                 ),
-                child: const Text('重试'),
+                child: Text(context.l10n.retry),
               ),
             ],
           ),
@@ -190,8 +197,8 @@ class _AbstraxionScreenState extends State<AbstraxionScreen> {
         children: [
           const Icon(Icons.security, size: 80, color: Colors.purple),
           const SizedBox(height: 32),
-          const Text(
-            '区块链认证',
+          Text(
+            context.l10n.blockchainAuth,
             style: TextStyle(
               color: Colors.black,
               fontSize: 28,
@@ -199,21 +206,21 @@ class _AbstraxionScreenState extends State<AbstraxionScreen> {
             ),
           ),
           const SizedBox(height: 16),
-          const Text(
-            '点击下方按钮，在浏览器中完成安全认证',
+          Text(
+            context.l10n.authInstructions,
             style: TextStyle(color: Colors.black54, fontSize: 16),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 48),
           FullWidthButton(
-            text: '开始认证',
+            text: context.l10n.startAuth,
             onPressed:
                 _service.isConnected
                     ? () => _startAuthentication()
                     : () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('请先连接服务器'),
+                        SnackBar(
+                          content: Text(context.l10n.connectServerFirst),
                           backgroundColor: Colors.orange,
                         ),
                       );
@@ -221,7 +228,11 @@ class _AbstraxionScreenState extends State<AbstraxionScreen> {
           ),
           const SizedBox(height: 24),
           Text(
-            '服务器状态: ${_service.isConnected ? "已连接" : "未连接"}',
+            context.l10n.serverStatus(
+              _service.isConnected
+                  ? context.l10n.connected
+                  : context.l10n.disconnected,
+            ),
             style: TextStyle(
               color: _service.isConnected ? Colors.purple : Colors.orange,
               fontSize: 14,

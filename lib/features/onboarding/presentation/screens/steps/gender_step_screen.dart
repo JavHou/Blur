@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:blur/features/onboarding/data/models/user_profile_model.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class GenderStepScreen extends StatefulWidget {
   final UserProfileModel userProfile;
@@ -29,6 +30,14 @@ class _GenderStepScreenState extends State<GenderStepScreen> {
 
   bool get canContinue => _selectedGender != null;
 
+  List<Map<String, String>> _getLocalizedGenderOptions() {
+    return [
+      {'title': context.l10n.male, 'value': '男'},
+      {'title': context.l10n.female, 'value': '女'},
+      {'title': context.l10n.other, 'value': '其他'},
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -44,7 +53,7 @@ class _GenderStepScreenState extends State<GenderStepScreen> {
 
               // 标题
               Text(
-                '你的性别是？',
+                context.l10n.whatIsYourGender,
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -54,7 +63,7 @@ class _GenderStepScreenState extends State<GenderStepScreen> {
 
               // 副标题
               Text(
-                '请选择你的性别',
+                context.l10n.genderDescription,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: Colors.grey.shade700,
                 ),
@@ -64,13 +73,19 @@ class _GenderStepScreenState extends State<GenderStepScreen> {
               // 性别选项
               Expanded(
                 child: Column(
-                  children: [
-                    _buildGenderOption('男', '男'),
-                    SizedBox(height: 16),
-                    _buildGenderOption('女', '女'),
-                    SizedBox(height: 16),
-                    _buildGenderOption('其他', '其他'),
-                  ],
+                  children:
+                      _getLocalizedGenderOptions().map((option) {
+                        return Column(
+                          children: [
+                            _buildGenderOption(
+                              option['title']!,
+                              option['value']!,
+                            ),
+                            if (option != _getLocalizedGenderOptions().last)
+                              SizedBox(height: 16),
+                          ],
+                        );
+                      }).toList(),
                 ),
               ),
 

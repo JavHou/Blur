@@ -1,7 +1,9 @@
+import 'package:blur/features/abstraxion/presentation/abstraxion_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
 import 'package:video_player/video_player.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -22,6 +24,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
 
   @override
   void initState() {
+    super.initState();
     _controller = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 1500),
@@ -145,7 +148,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                 FadeTransition(
                   opacity: _descriptionOpacity,
                   child: Text(
-                    "让心动打个照面",
+                    context.l10n.onboardingTagline,
                     style: theme.textTheme.labelLarge?.copyWith(
                       color: Colors.purple,
                       fontWeight: FontWeight.bold,
@@ -169,41 +172,57 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                     scale: _buttonScale,
                     child: Row(
                       children: [
+                        // Expanded(
+                        //   child: FullWidthButton(
+                        //     text: "connect",
+                        //     onPressed: () {
+                        //       Navigator.push(
+                        //         context,
+                        //         MaterialPageRoute(
+                        //           builder:
+                        //               (context) => const AbstraxionScreen(),
+                        //         ),
+                        //       );
+                        //     },
+                        //     radius: 52,
+                        //   ),
+                        // ),
+                        // SizedBox(width: 8),
                         Expanded(
                           child: FullWidthButton(
-                            text: "登录",
+                            text: context.l10n.startNow,
                             onPressed: () {
                               context.push("/login");
                             },
                             radius: 52,
                           ),
                         ),
-                        SizedBox(width: 8),
-                        Expanded(
-                          child: FilledButton(
-                            onPressed: () {
-                              context.push("/register");
-                            },
-                            style: ButtonStyle(
-                              backgroundColor: WidgetStatePropertyAll(
-                                Colors.white,
-                              ),
-                              shape: WidgetStatePropertyAll(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(52),
-                                  side: BorderSide(color: Colors.grey.shade300),
-                                ),
-                              ),
-                            ),
-                            child: Text(
-                              "注册",
-                              style: theme.textTheme.labelMedium?.copyWith(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ),
+                        // SizedBox(width: 8),
+                        // Expanded(
+                        //   child: FilledButton(
+                        //     onPressed: () {
+                        //       context.push("/register");
+                        //     },
+                        //     style: ButtonStyle(
+                        //       backgroundColor: WidgetStatePropertyAll(
+                        //         Colors.white,
+                        //       ),
+                        //       shape: WidgetStatePropertyAll(
+                        //         RoundedRectangleBorder(
+                        //           borderRadius: BorderRadius.circular(52),
+                        //           side: BorderSide(color: Colors.grey.shade300),
+                        //         ),
+                        //       ),
+                        //     ),
+                        //     child: Text(
+                        //       context.l10n.register,
+                        //       style: theme.textTheme.labelMedium?.copyWith(
+                        //         color: Colors.black,
+                        //         fontWeight: FontWeight.w600,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

@@ -1,5 +1,6 @@
 import 'package:blur/features/setting/presentation/screens/subscription/widgets/subscription_plan_card.dart';
 import 'package:blur/shared/border/item_border.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 import 'package:flutter/material.dart';
 
 class SubscriptionScreens extends StatefulWidget {
@@ -17,7 +18,10 @@ class _SubscriptionScreensState extends State<SubscriptionScreens> {
       appBar: AppBar(
         elevation: 0,
         scrolledUnderElevation: 0,
-        title: Text('升级您的订阅计划', style: theme.textTheme.labelLarge),
+        title: Text(
+          context.l10n.upgradeSubscriptionPlan,
+          style: theme.textTheme.labelLarge,
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -33,8 +37,44 @@ class _SubscriptionScreensState extends State<SubscriptionScreens> {
               ),
 
               SizedBox(height: 8),
-              Text('您当前的计划是：免费', style: theme.textTheme.titleLarge),
-              SizedBox(height: 32),
+              Text(context.l10n.currentPlan, style: theme.textTheme.titleLarge),
+              const SizedBox(height: 16),
+              Text(context.l10n.comingSoon, style: theme.textTheme.titleLarge),
+
+              Card(
+                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start, // 添加这行使内容左对齐
+                    children: [
+                      Divider(color: Colors.grey.shade300),
+
+                      Text(
+                        context.l10n.xionMembershipPlan,
+                        style: theme.textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        context.l10n.xionMembershipDescription,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: Colors.grey.shade600,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      ElevatedButton(
+                        onPressed: () {
+                          // Handle button press
+                        },
+                        child: Text(context.l10n.verifyEligibility),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 32),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -57,7 +97,7 @@ class _SubscriptionScreensState extends State<SubscriptionScreens> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Tips:', // Add numbering
+                                context.l10n.tips, // Add numbering
                                 style: theme.textTheme.titleMedium?.copyWith(
                                   color: Colors.grey.shade800,
                                   fontSize: 12,
@@ -66,7 +106,7 @@ class _SubscriptionScreensState extends State<SubscriptionScreens> {
                               // SizedBox(height: 8),
                               ItemBorder(12),
                               Text(
-                                '不想付费？', // Add numbering
+                                context.l10n.dontWantToPay, // Add numbering
                                 style: theme.textTheme.titleMedium?.copyWith(
                                   color: Colors.grey.shade800,
                                   fontSize: 12,
@@ -75,7 +115,7 @@ class _SubscriptionScreensState extends State<SubscriptionScreens> {
                               SizedBox(height: 8),
 
                               Text(
-                                '每日签到和完成分享日记任务可获得额外积分，积分可用于兑换匹配特权。',
+                                context.l10n.dailySignInTip,
                                 style: theme.textTheme.titleMedium?.copyWith(
                                   color: Colors.grey.shade800,
                                   fontSize: 12,

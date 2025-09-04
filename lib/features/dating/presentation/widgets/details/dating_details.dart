@@ -1,9 +1,9 @@
 import 'package:blur/features/dating/data/models/dating_model.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
+import 'package:blur/shared/utils/datetime/localized_date_formatter.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
 
 class DatingDetails extends StatefulWidget {
   final DatingModel dating;
@@ -18,7 +18,8 @@ class _DatingDetailsState extends State<DatingDetails> {
   @override
   void initState() {
     super.initState();
-    initializeDateFormatting('zh_CN'); // Initialize locale data for 'zh_CN'
+    // 初始化日期格式化数据
+    LocalizedDateFormatter.initializeAll();
   }
 
   @override
@@ -28,7 +29,7 @@ class _DatingDetailsState extends State<DatingDetails> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('地点详情', style: theme.textTheme.labelLarge),
+        Text(context.l10n.locationDetails, style: theme.textTheme.labelLarge),
         SizedBox(height: 8),
         Container(
           padding: const EdgeInsets.all(16),
@@ -47,7 +48,7 @@ class _DatingDetailsState extends State<DatingDetails> {
                   ),
                   SizedBox(width: 4),
                   Text(
-                    "主题",
+                    context.l10n.theme,
                     style: theme.textTheme.labelMedium?.copyWith(
                       color: Colors.blueGrey.shade700,
                       letterSpacing: 0,
@@ -75,7 +76,7 @@ class _DatingDetailsState extends State<DatingDetails> {
                   ),
                   SizedBox(width: 4),
                   Text(
-                    "地址",
+                    context.l10n.address,
                     style: theme.textTheme.labelMedium?.copyWith(
                       color: Colors.blueGrey.shade700,
                       letterSpacing: 0,
@@ -103,7 +104,7 @@ class _DatingDetailsState extends State<DatingDetails> {
                   ),
                   SizedBox(width: 4),
                   Text(
-                    "距离",
+                    context.l10n.distance,
                     style: theme.textTheme.labelMedium?.copyWith(
                       color: Colors.blueGrey.shade700,
                       letterSpacing: 0,
@@ -131,7 +132,7 @@ class _DatingDetailsState extends State<DatingDetails> {
                   ),
                   SizedBox(width: 4),
                   Text(
-                    "时间",
+                    context.l10n.time,
                     style: theme.textTheme.labelMedium?.copyWith(
                       color: Colors.blueGrey.shade700,
                       letterSpacing: 0,
@@ -141,10 +142,10 @@ class _DatingDetailsState extends State<DatingDetails> {
                   InkWell(
                     onTap: () {},
                     child: Text(
-                      DateFormat(
-                        'HH:mm EE yyyy-MM-dd',
-                        'zh_CN',
-                      ).format(widget.dating.dateTime),
+                      LocalizedDateFormatter.formatDateTime(
+                        widget.dating.dateTime,
+                        context,
+                      ),
                       style: theme.textTheme.labelMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),

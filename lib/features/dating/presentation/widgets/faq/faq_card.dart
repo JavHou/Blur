@@ -1,5 +1,6 @@
 import 'package:blur/shared/border/item_border.dart';
 import 'package:flutter/material.dart';
+import 'package:blur/generated/l10n.dart';
 
 class DatingFAQCard extends StatefulWidget {
   const DatingFAQCard({super.key});
@@ -35,7 +36,7 @@ class _DatingFAQCardState extends State<DatingFAQCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '我的约会安全吗？', // Add numbering
+                      S.of(context).faqDatingSafetyQuestion, // Add numbering
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.grey.shade800,
                         fontSize: 12,
@@ -44,7 +45,7 @@ class _DatingFAQCardState extends State<DatingFAQCard> {
                     SizedBox(height: 8),
 
                     Text(
-                      '我们非常重视用户的安全。所有约会都需要支付押金，约会完成后全额退款。若未协商一致情况下违约，押金将转给对方作为赔偿。此外，我们提供"一键报警"和"实时位置共享"等安全功能，确保您的安全。',
+                      S.of(context).faqDatingSafetyAnswer,
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.grey.shade800,
                         fontSize: 12,
@@ -52,7 +53,7 @@ class _DatingFAQCardState extends State<DatingFAQCard> {
                     ),
                     ItemBorder(12),
                     Text(
-                      '约会过程中遇到危险怎么办？', // Add numbering
+                      S.of(context).faqEmergencyQuestion, // Add numbering
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.grey.shade800,
                         fontSize: 12,
@@ -61,7 +62,7 @@ class _DatingFAQCardState extends State<DatingFAQCard> {
                     SizedBox(height: 8),
 
                     Text(
-                      '使用平台内的 "一键报警" 功能，快速联系警方，拨打平台客服热线寻求帮助， 平台24小时为您的安全保驾护航。',
+                      S.of(context).faqEmergencyAnswer,
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.grey.shade800,
                         fontSize: 12,
@@ -70,7 +71,7 @@ class _DatingFAQCardState extends State<DatingFAQCard> {
                     ItemBorder(12),
 
                     Text(
-                      '我的押金何时退还？', // Add numbering
+                      S.of(context).faqDepositRefundQuestion, // Add numbering
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.grey.shade800,
                         fontSize: 12,
@@ -79,7 +80,7 @@ class _DatingFAQCardState extends State<DatingFAQCard> {
                     SizedBox(height: 8),
 
                     Text(
-                      '双方约会打卡后，押金将在24小时内退还至您的账户。如未打卡，押金将转给对方作为违约赔偿。',
+                      S.of(context).faqDepositRefundAnswer,
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.grey.shade800,
                         fontSize: 12,

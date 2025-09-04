@@ -5,6 +5,7 @@ import 'package:blur/shared/buttons/full_width_button.dart';
 import 'package:blur/shared/inputs/base_input.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:blur/features/abstraxion/presentation/abstraxion_screen.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class LoginScreen extends StatefulWidget {
   final String? authCallbackGranted;
@@ -41,8 +42,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: <Widget>[
                     Center(child: TitleFont(title: 'Blur', fontSize: 64)),
                     SizedBox(height: 80),
-                    BaseInput(hint: "Email"),
-                    SizedBox(height: 16),
+                    // BaseInput(hint: context.l10n.email),
+                    SizedBox(height: 128),
                     // Column(
                     //   children: [
                     //     BaseInput(hint: "Password", obscureText: true),
@@ -69,20 +70,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     // ),
                     SizedBox(height: 16),
 
-                    // Opacity(
-                    //   opacity: _isBlockchainAuthenticating ? 0.5 : 1.0,
-                    //   child: FullWidthButton(
-                    //     text: "登录",
-                    //     onPressed: () {
-                    //       if (!_isBlockchainAuthenticating) {
-                    //         context.go('/home?showFilter=false');
-                    //       }
-                    //     },
-                    //   ),
+                    // FullWidthButton(
+                    //   text: context.l10n.login,
+                    //   onPressed: () {
+                    //     context.go('/home?showFilter=false');
+                    //   },
                     // ),
-                    // SizedBox(height: 16),
+                    SizedBox(height: 16),
                     FullWidthButton(
-                      text: "Xion登录",
+                      text: context.l10n.login,
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -98,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Column(
                   children: [
                     Text(
-                      "其他方式",
+                      context.l10n.otherMethods,
                       style: theme.textTheme.labelMedium?.copyWith(
                         color: Colors.grey.shade700,
                         letterSpacing: 0,
@@ -197,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "没有账号？ ",
+                      context.l10n.noAccount,
                       style: theme.textTheme.labelMedium?.copyWith(
                         color: Colors.grey.shade700,
                         letterSpacing: 0,
@@ -208,7 +204,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         context.push("/register");
                       },
                       child: Text(
-                        "立即注册",
+                        context.l10n.registerNow,
                         style: theme.textTheme.labelMedium?.copyWith(
                           color: Colors.blue.shade700,
                         ),

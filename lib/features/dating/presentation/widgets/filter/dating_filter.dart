@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:blur/features/home/presentation/widgets/category/selectable_category_card.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class DatingFilter extends StatefulWidget {
   const DatingFilter({super.key});
@@ -24,23 +25,19 @@ class _DatingFilterState extends State<DatingFilter> {
   late TextEditingController _minDistanceController;
   late TextEditingController _maxDistanceController;
 
-  final List<Map<String, dynamic>> _freeTypes = [
-    // {
-    //   "title": '所有',
-    //   "icon": HugeIcons.bulkRoundedCalendar03,
-    //   "isSelected": true,
-    // },
-    {"title": '所有', "icon": HugeIcons.bulkRoundedZap, "isSelected": true},
+  int _selectedFilterIndex = 0; // 0 = all, 1 = weekend
+
+  List<Map<String, dynamic>> _getFreeTypes() => [
     {
-      "title": '周末',
-      "icon": HugeIcons.bulkRoundedCalendarLove02,
-      "isSelected": false,
+      "title": context.l10n.all,
+      "icon": HugeIcons.bulkRoundedZap,
+      "isSelected": _selectedFilterIndex == 0,
     },
-    // {
-    //   "title": '一周内',
-    //   "icon": HugeIcons.bulkRoundedCalendarSetting02,
-    //   "isSelected": false,
-    // },
+    {
+      "title": context.l10n.weekend,
+      "icon": HugeIcons.bulkRoundedCalendarLove02,
+      "isSelected": _selectedFilterIndex == 1,
+    },
   ];
 
   @override
@@ -75,16 +72,31 @@ class _DatingFilterState extends State<DatingFilter> {
     });
   }
 
+  String _getDateFormat() {
+    // 根据当前语言环境返回相应的日期格式
+    final locale = Localizations.localeOf(context);
+    final languageCode = locale.languageCode;
+
+    switch (languageCode) {
+      case 'zh':
+        return 'yyyy年MM月dd日-HH时';
+      case 'en':
+        return 'MMM dd, yyyy - HH:mm';
+      default:
+        return 'MMM dd, yyyy - HH:mm';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('过滤器', style: theme.textTheme.labelLarge),
+        title: Text(context.l10n.filter, style: theme.textTheme.labelLarge),
         leadingWidth: 90,
         leading: CupertinoButton(
-          child: Text("Close", style: theme.textTheme.labelLarge),
+          child: Text(context.l10n.close, style: theme.textTheme.labelLarge),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -98,7 +110,7 @@ class _DatingFilterState extends State<DatingFilter> {
               Expanded(
                 child: FullWidthButton(
                   isSecondary: true,
-                  text: "重置",
+                  text: context.l10n.resetFilter,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -107,7 +119,7 @@ class _DatingFilterState extends State<DatingFilter> {
               SizedBox(width: 12),
               Expanded(
                 child: FullWidthButton(
-                  text: "应用",
+                  text: context.l10n.applyFilter,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -124,7 +136,10 @@ class _DatingFilterState extends State<DatingFilter> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 16),
-              Text('距离范围', style: theme.textTheme.labelMedium),
+              Text(
+                context.l10n.distanceRange,
+                style: theme.textTheme.labelMedium,
+              ),
               SizedBox(height: 8),
               FlutterSlider(
                 values: [_minDistance, _maxDistance],
@@ -174,8 +189,8 @@ class _DatingFilterState extends State<DatingFilter> {
                       textInputAction: TextInputAction.next,
                       readOnly: true,
                       decoration: InputDecoration(
-                        labelText: '最小距离 (KM)',
-                        hintText: '1 KM',
+                        labelText: context.l10n.minDistance,
+                        hintText: context.l10n.minDistanceHint,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
@@ -204,8 +219,8 @@ class _DatingFilterState extends State<DatingFilter> {
                       readOnly: true,
 
                       decoration: InputDecoration(
-                        labelText: '最大距离 (KM)',
-                        hintText: '30 KM',
+                        labelText: context.l10n.maxDistance,
+                        hintText: context.l10n.maxDistanceHint,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
@@ -228,25 +243,28 @@ class _DatingFilterState extends State<DatingFilter> {
                 ],
               ),
               SizedBox(height: 16),
-              Text('空闲时间', style: theme.textTheme.labelMedium),
+              Text(context.l10n.freeTime, style: theme.textTheme.labelMedium),
               SizedBox(height: 8),
               Wrap(
                 spacing: 8,
                 runSpacing: 8,
                 children: [
-                  for (var propertyType in _freeTypes)
+                  for (var propertyType in _getFreeTypes())
                     SelectableCategoryCard(
                       title: propertyType['title'],
                       icon: propertyType['icon'],
                       isSelected: propertyType['isSelected'],
                       onTap: () {
                         setState(() {
-                          // First deselect all items
-                          for (var item in _freeTypes) {
-                            item['isSelected'] = false;
+                          // Find the index of the selected item
+                          final freeTypes = _getFreeTypes();
+                          for (int i = 0; i < freeTypes.length; i++) {
+                            if (freeTypes[i]['title'] ==
+                                propertyType['title']) {
+                              _selectedFilterIndex = i;
+                              break;
+                            }
                           }
-                          // Then select the clicked item
-                          propertyType['isSelected'] = true;
                         });
                       },
                     ),
@@ -254,7 +272,7 @@ class _DatingFilterState extends State<DatingFilter> {
               ),
               SizedBox(height: 8),
               AdaptiveDatePicker(
-                dateFormat: 'yyyy年MM月dd日-HH时', // 或你需要的格式
+                dateFormat: _getDateFormat(),
                 initialDate: _dateTime,
                 onDatePicked: (selectedDate) {
                   setState(() {

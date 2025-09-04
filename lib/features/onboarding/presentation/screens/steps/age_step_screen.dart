@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:blur/features/onboarding/data/models/user_profile_model.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class AgeStepScreen extends StatefulWidget {
   final UserProfileModel userProfile;
 
-  const AgeStepScreen({
-    super.key,
-    required this.userProfile,
-  });
+  const AgeStepScreen({super.key, required this.userProfile});
 
   @override
   State<AgeStepScreen> createState() => _AgeStepScreenState();
@@ -67,7 +65,7 @@ class _AgeStepScreenState extends State<AgeStepScreen> {
 
               // 标题
               Text(
-                '你的年龄是？',
+                context.l10n.whatIsYourAge,
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -77,7 +75,7 @@ class _AgeStepScreenState extends State<AgeStepScreen> {
 
               // 副标题
               Text(
-                '请选择你的出生日期',
+                context.l10n.ageDescription,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: Colors.grey.shade700,
                 ),
@@ -123,7 +121,7 @@ class _AgeStepScreenState extends State<AgeStepScreen> {
                             Text(
                               _selectedDate != null
                                   ? '${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}'
-                                  : '选择出生日期',
+                                  : context.l10n.selectBirthDate,
                               style: theme.textTheme.titleMedium?.copyWith(
                                 color:
                                     _selectedDate != null
@@ -138,7 +136,7 @@ class _AgeStepScreenState extends State<AgeStepScreen> {
                             Spacer(),
                             if (_selectedDate != null)
                               Text(
-                                '${age!}岁',
+                                context.l10n.ageYears(age!),
                                 style: theme.textTheme.titleMedium?.copyWith(
                                   color: theme.primaryColor,
                                   fontWeight: FontWeight.w600,
@@ -150,7 +148,7 @@ class _AgeStepScreenState extends State<AgeStepScreen> {
                     ),
                     SizedBox(height: 16),
                     Text(
-                      '你必须年满18岁才能使用此应用',
+                      context.l10n.ageRequirement,
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: Colors.grey.shade600,
                       ),
@@ -160,7 +158,6 @@ class _AgeStepScreenState extends State<AgeStepScreen> {
               ),
 
               SizedBox(height: 24),
-
             ],
           ),
         ),

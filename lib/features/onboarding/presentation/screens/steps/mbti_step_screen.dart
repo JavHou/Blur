@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:blur/features/onboarding/data/models/user_profile_model.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class MBTIStepScreen extends StatefulWidget {
   final UserProfileModel userProfile;
 
-  const MBTIStepScreen({
-    super.key,
-    required this.userProfile,
-  });
+  const MBTIStepScreen({super.key, required this.userProfile});
 
   @override
   State<MBTIStepScreen> createState() => _MBTIStepScreenState();
@@ -66,7 +64,7 @@ class _MBTIStepScreenState extends State<MBTIStepScreen> {
 
               // 标题
               Text(
-                '你的MBTI类型是？',
+                context.l10n.yourMBTIType,
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -76,7 +74,7 @@ class _MBTIStepScreenState extends State<MBTIStepScreen> {
 
               // 副标题
               Text(
-                '请选择你的MBTI人格类型，这将帮助我们更好地为你匹配',
+                context.l10n.mbtiDescription,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: Colors.grey.shade700,
                 ),
@@ -147,7 +145,7 @@ class _MBTIStepScreenState extends State<MBTIStepScreen> {
                           SizedBox(width: 8),
                           Expanded(
                             child: Text(
-                              '不知道自己的MBTI类型？可以稍后在线测试',
+                              context.l10n.mbtiTestNote,
                               style: theme.textTheme.bodySmall?.copyWith(
                                 color: Colors.blue.shade800,
                               ),
@@ -161,7 +159,6 @@ class _MBTIStepScreenState extends State<MBTIStepScreen> {
               ),
 
               SizedBox(height: 24),
-
             ],
           ),
         ),

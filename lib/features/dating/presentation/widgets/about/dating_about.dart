@@ -2,6 +2,7 @@ import 'package:blur/features/dating/data/models/dating_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:readmore/readmore.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class DatingAbout extends StatelessWidget {
   final DatingModel dating;
@@ -22,7 +23,7 @@ class DatingAbout extends StatelessWidget {
               color: Colors.grey.shade800,
               size: 20,
             ),
-            Text('匹配理由', style: theme.textTheme.labelLarge),
+            Text(context.l10n.matchReason, style: theme.textTheme.labelLarge),
           ],
         ),
         SizedBox(height: 8),
@@ -31,8 +32,8 @@ class DatingAbout extends StatelessWidget {
           colorClickableText: Colors.blue.shade700,
           trimMode: TrimMode.Length,
           trimLength: 120,
-          trimCollapsedText: 'Show more',
-          trimExpandedText: ' Show less',
+          trimCollapsedText: context.l10n.showMore,
+          trimExpandedText: context.l10n.showLess,
           style: theme.textTheme.bodyMedium?.copyWith(
             color: Colors.grey.shade800,
             fontWeight: FontWeight.w400,

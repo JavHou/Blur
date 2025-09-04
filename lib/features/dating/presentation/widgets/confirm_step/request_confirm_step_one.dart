@@ -1,8 +1,8 @@
 import 'package:blur/features/dating/data/models/dating_model.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
+import 'package:blur/shared/utils/datetime/localized_date_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
 
 class RequestConfirmStepOne extends StatefulWidget {
   final DatingModel dating;
@@ -16,7 +16,8 @@ class _RequestConfirmStepOneState extends State<RequestConfirmStepOne> {
   @override
   void initState() {
     super.initState();
-    initializeDateFormatting('zh_CN'); // Initialize locale data for 'zh_CN'
+    // 初始化日期格式化数据
+    LocalizedDateFormatter.initializeAll();
   }
 
   @override
@@ -31,7 +32,7 @@ class _RequestConfirmStepOneState extends State<RequestConfirmStepOne> {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              "请确认约会信息",
+              context.l10n.pleaseConfirmDatingInfo,
               style: theme.textTheme.labelLarge?.copyWith(
                 fontWeight: FontWeight.w600,
               ),
@@ -129,10 +130,10 @@ class _RequestConfirmStepOneState extends State<RequestConfirmStepOne> {
                     SizedBox(width: 8),
                     Expanded(
                       child: Text(
-                        DateFormat(
-                          'HH:mm EE yyyy-MM-dd',
-                          'zh_CN',
-                        ).format(widget.dating.dateTime),
+                        LocalizedDateFormatter.formatDateTime(
+                          widget.dating.dateTime,
+                          context,
+                        ),
                         style: theme.textTheme.labelMedium?.copyWith(
                           color: Colors.blueGrey.shade800,
                         ),

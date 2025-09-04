@@ -3,6 +3,7 @@ import 'package:blur/features/meet/presentation/widgets/meta_info/meta_info_card
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blur/shared/image/image_widget.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class MeetCard extends StatefulWidget {
   final DatingModel dating;
@@ -87,7 +88,7 @@ class _MeetCardState extends State<MeetCard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "与 ${widget.dating.nickname} 的约会",
+                        context.l10n.dateWith(widget.dating.nickname),
                         style: theme.textTheme.labelLarge,
                       ),
                     ],

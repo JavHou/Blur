@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:blur/features/home/presentation/widgets/category/selectable_category_card.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class DatingDiaryScreen extends StatefulWidget {
   const DatingDiaryScreen({super.key});
@@ -32,10 +33,13 @@ class _DatingDiaryScreenState extends State<DatingDiaryScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('约会日记', style: theme.textTheme.labelLarge),
+        title: Text(
+          context.l10n.datingDiary,
+          style: theme.textTheme.labelLarge,
+        ),
         leadingWidth: 90,
         leading: CupertinoButton(
-          child: Text("Close", style: theme.textTheme.labelLarge),
+          child: Text(context.l10n.close, style: theme.textTheme.labelLarge),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -45,7 +49,7 @@ class _DatingDiaryScreenState extends State<DatingDiaryScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16), // 设置左右间距
           child: FullWidthButton(
-            text: "提交日记",
+            text: context.l10n.submitDiary,
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -90,7 +94,7 @@ class _DatingDiaryScreenState extends State<DatingDiaryScreen> {
                 maxLines: 5,
                 readOnly: true,
                 decoration: InputDecoration(
-                  hintText: '约会中有什么好玩的事情？或者来吐槽！提交后AI会自动进行自动美化',
+                  hintText: context.l10n.diaryPlaceholder,
                   border: OutlineInputBorder(),
                   contentPadding: EdgeInsets.all(16),
                 ),

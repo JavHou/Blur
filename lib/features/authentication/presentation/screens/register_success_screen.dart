@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -38,7 +39,7 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen>
         child: Container(
           height: 60,
           child: FullWidthButton(
-            text: '继续',
+            text: context.l10n.continueBtn,
             onPressed: () {
               context.go("/profile/setup");
             },
@@ -74,7 +75,7 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '开启Blur之旅！',
+                          context.l10n.startBlurJourney,
                           style: theme.textTheme.headlineSmall?.copyWith(
                             fontWeight: FontWeight.w600,
                             color: Colors.green,
@@ -101,7 +102,7 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen>
                           letterSpacing: 0,
                         ),
                         children: [
-                          const TextSpan(text: '账户创建成功, 请完善信息帮助AI更好配对到理想型.'),
+                          TextSpan(text: context.l10n.accountCreatedSuccess),
                         ],
                       ),
                     ),

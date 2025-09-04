@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:blur/features/onboarding/data/models/user_profile_model.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class ProfessionStepScreen extends StatefulWidget {
   final UserProfileModel userProfile;
 
-  const ProfessionStepScreen({
-    super.key,
-    required this.userProfile,
-  });
+  const ProfessionStepScreen({super.key, required this.userProfile});
 
   @override
   State<ProfessionStepScreen> createState() => _ProfessionStepScreenState();
@@ -18,44 +16,48 @@ class _ProfessionStepScreenState extends State<ProfessionStepScreen> {
   String? _selectedProfession;
   String? _selectedIndustry;
 
-  final List<String> _professions = [
-    '学生',
-    '教师',
-    '医生',
-    '工程师',
-    '设计师',
-    '销售',
-    '运营',
-    '市场',
-    '产品经理',
-    '程序员',
-    '律师',
-    '会计师',
-    '金融',
-    '咨询师',
-    '创业者',
-    '自由职业',
-    '其他',
-  ];
+  List<Map<String, String>> _getLocalizedProfessions() {
+    return [
+      {'title': context.l10n.student, 'value': '学生'},
+      {'title': context.l10n.teacher, 'value': '教师'},
+      {'title': context.l10n.doctor, 'value': '医生'},
+      {'title': context.l10n.engineer, 'value': '工程师'},
+      {'title': context.l10n.designer, 'value': '设计师'},
+      {'title': context.l10n.sales, 'value': '销售'},
+      {'title': context.l10n.operations, 'value': '运营'},
+      {'title': context.l10n.marketing, 'value': '市场'},
+      {'title': context.l10n.productManager, 'value': '产品经理'},
+      {'title': context.l10n.programmer, 'value': '程序员'},
+      {'title': context.l10n.lawyer, 'value': '律师'},
+      {'title': context.l10n.accountant, 'value': '会计师'},
+      {'title': context.l10n.finance, 'value': '金融'},
+      {'title': context.l10n.consultant, 'value': '咨询师'},
+      {'title': context.l10n.entrepreneur, 'value': '创业者'},
+      {'title': context.l10n.freelancer, 'value': '自由职业'},
+      {'title': context.l10n.other, 'value': '其他'},
+    ];
+  }
 
-  final List<String> _industries = [
-    '互联网',
-    '金融',
-    '教育',
-    '医疗',
-    '制造业',
-    '房地产',
-    '零售',
-    '媒体',
-    '咨询',
-    '法律',
-    '艺术',
-    '体育',
-    '旅游',
-    '政府',
-    '非营利组织',
-    '其他',
-  ];
+  List<Map<String, String>> _getLocalizedIndustries() {
+    return [
+      {'title': context.l10n.internet, 'value': '互联网'},
+      {'title': context.l10n.finance, 'value': '金融'},
+      {'title': context.l10n.education, 'value': '教育'},
+      {'title': context.l10n.healthcare, 'value': '医疗'},
+      {'title': context.l10n.manufacturing, 'value': '制造业'},
+      {'title': context.l10n.realEstate, 'value': '房地产'},
+      {'title': context.l10n.retail, 'value': '零售'},
+      {'title': context.l10n.media, 'value': '媒体'},
+      {'title': context.l10n.consultant, 'value': '咨询'},
+      {'title': context.l10n.legal, 'value': '法律'},
+      {'title': context.l10n.arts, 'value': '艺术'},
+      {'title': context.l10n.sports, 'value': '体育'},
+      {'title': context.l10n.travel, 'value': '旅游'},
+      {'title': context.l10n.government, 'value': '政府'},
+      {'title': context.l10n.nonprofit, 'value': '非营利组织'},
+      {'title': context.l10n.other, 'value': '其他'},
+    ];
+  }
 
   @override
   void initState() {
@@ -95,7 +97,7 @@ class _ProfessionStepScreenState extends State<ProfessionStepScreen> {
 
               // 标题
               Text(
-                '你的职业是什么？',
+                context.l10n.whatIsYourProfession,
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -105,7 +107,7 @@ class _ProfessionStepScreenState extends State<ProfessionStepScreen> {
 
               // 副标题
               Text(
-                '请选择你的职业和所在行业（可选填）',
+                context.l10n.professionDescription,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: Colors.grey.shade700,
                 ),
@@ -120,7 +122,7 @@ class _ProfessionStepScreenState extends State<ProfessionStepScreen> {
                     children: [
                       // 职业选择
                       Text(
-                        '职业',
+                        context.l10n.profession,
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
@@ -130,11 +132,13 @@ class _ProfessionStepScreenState extends State<ProfessionStepScreen> {
                         spacing: 8,
                         runSpacing: 8,
                         children:
-                            _professions.map((profession) {
+                            _getLocalizedProfessions().map((profession) {
                               final isSelected =
-                                  _selectedProfession == profession;
+                                  _selectedProfession == profession['value'];
                               return GestureDetector(
-                                onTap: () => _selectProfession(profession),
+                                onTap:
+                                    () =>
+                                        _selectProfession(profession['value']!),
                                 child: Container(
                                   padding: EdgeInsets.symmetric(
                                     horizontal: 16,
@@ -154,7 +158,7 @@ class _ProfessionStepScreenState extends State<ProfessionStepScreen> {
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: Text(
-                                    profession,
+                                    profession['title']!,
                                     style: theme.textTheme.bodyMedium?.copyWith(
                                       color:
                                           isSelected
@@ -175,7 +179,7 @@ class _ProfessionStepScreenState extends State<ProfessionStepScreen> {
 
                       // 行业选择
                       Text(
-                        '行业 (可选)',
+                        context.l10n.industryOptional,
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
@@ -185,10 +189,12 @@ class _ProfessionStepScreenState extends State<ProfessionStepScreen> {
                         spacing: 8,
                         runSpacing: 8,
                         children:
-                            _industries.map((industry) {
-                              final isSelected = _selectedIndustry == industry;
+                            _getLocalizedIndustries().map((industry) {
+                              final isSelected =
+                                  _selectedIndustry == industry['value'];
                               return GestureDetector(
-                                onTap: () => _selectIndustry(industry),
+                                onTap:
+                                    () => _selectIndustry(industry['value']!),
                                 child: Container(
                                   padding: EdgeInsets.symmetric(
                                     horizontal: 16,
@@ -208,7 +214,7 @@ class _ProfessionStepScreenState extends State<ProfessionStepScreen> {
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: Text(
-                                    industry,
+                                    industry['title']!,
                                     style: theme.textTheme.bodyMedium?.copyWith(
                                       color:
                                           isSelected
@@ -240,7 +246,12 @@ class _ProfessionStepScreenState extends State<ProfessionStepScreen> {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(
-                            '职业: $_selectedProfession${_selectedIndustry != null ? ' | 行业: $_selectedIndustry' : ''}',
+                            context.l10n.professionSummary(
+                              _selectedProfession!,
+                              _selectedIndustry != null
+                                  ? ' | ${context.l10n.industry}: $_selectedIndustry'
+                                  : '',
+                            ),
                             style: theme.textTheme.bodyMedium?.copyWith(
                               color: Colors.grey.shade700,
                             ),
@@ -253,7 +264,6 @@ class _ProfessionStepScreenState extends State<ProfessionStepScreen> {
               ),
 
               SizedBox(height: 24),
-
             ],
           ),
         ),

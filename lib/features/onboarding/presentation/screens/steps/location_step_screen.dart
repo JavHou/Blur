@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:blur/features/onboarding/data/models/user_profile_model.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class LocationStepScreen extends StatefulWidget {
   final UserProfileModel userProfile;
@@ -64,7 +65,7 @@ class _LocationStepScreenState extends State<LocationStepScreen> {
 
               // 标题
               Text(
-                '你住在哪里？',
+                context.l10n.whereDoYouLive,
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -74,7 +75,7 @@ class _LocationStepScreenState extends State<LocationStepScreen> {
 
               // 副标题
               Text(
-                '请输入你的居住城市和区域，这将用于匹配附近的用户',
+                context.l10n.locationDescription,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: Colors.grey.shade700,
                 ),
@@ -88,8 +89,8 @@ class _LocationStepScreenState extends State<LocationStepScreen> {
                     TextField(
                       controller: _cityController,
                       decoration: InputDecoration(
-                        labelText: '城市',
-                        hintText: '例如：北京',
+                        labelText: context.l10n.city,
+                        hintText: context.l10n.cityExample,
                         prefixIcon: Icon(Icons.location_city),
                       ),
                     ),
@@ -97,8 +98,8 @@ class _LocationStepScreenState extends State<LocationStepScreen> {
                     TextField(
                       controller: _regionController,
                       decoration: InputDecoration(
-                        labelText: '区域',
-                        hintText: '例如：朝阳区',
+                        labelText: context.l10n.area,
+                        hintText: context.l10n.areaExample,
                         prefixIcon: Icon(Icons.location_on),
                       ),
                     ),
@@ -106,8 +107,8 @@ class _LocationStepScreenState extends State<LocationStepScreen> {
                     TextField(
                       controller: _regionController,
                       decoration: InputDecoration(
-                        labelText: '街道',
-                        hintText: '例如：西丽区',
+                        labelText: context.l10n.street,
+                        hintText: context.l10n.streetExample,
                         prefixIcon: Icon(Icons.location_on),
                       ),
                     ),
@@ -122,7 +123,7 @@ class _LocationStepScreenState extends State<LocationStepScreen> {
                         SizedBox(width: 8),
                         Expanded(
                           child: Text(
-                            '你的位置信息将用于计算与其他用户的距离，未填写将自动使用当前定位来确定',
+                            context.l10n.locationInfo,
                             style: theme.textTheme.bodySmall?.copyWith(
                               color: Colors.grey.shade600,
                             ),
