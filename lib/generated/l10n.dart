@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `Authenticating...`
+  String get authenticating {
+    return Intl.message(
+      'Authenticating...',
+      name: 'authenticating',
+      desc: 'Loading text when authenticating',
+      args: [],
+    );
+  }
+
   /// `Register`
   String get register {
     return Intl.message(
@@ -1040,10 +1050,10 @@ class S {
     );
   }
 
-  /// `See me, then talk to me`
+  /// `Meet first, Unblur love.`
   String get onboardingTagline {
     return Intl.message(
-      'See me, then talk to me',
+      'Meet first, Unblur love.',
       name: 'onboardingTagline',
       desc: 'Onboarding screen tagline',
       args: [],
@@ -1150,10 +1160,10 @@ class S {
     );
   }
 
-  /// `We take user safety very seriously. All dates require a deposit, which is fully refunded after the date is completed. If there is a breach of contract without mutual agreement, the deposit will be transferred to the other party as compensation. Additionally, we provide safety features such as "one-touch emergency" and "real-time location sharing" to ensure your safety.`
+  /// `Your safety is our top priority. We only recommend dates in public places and match based on distance. For each date, both parties are required to pay a deposit, which will be fully refunded once the date is successfully completed. In addition, we provide safety features such as 'One-Tap Emergency Call' and 'Real-Time Location Sharing' to ensure your security.`
   String get faqDatingSafetyAnswer {
     return Intl.message(
-      'We take user safety very seriously. All dates require a deposit, which is fully refunded after the date is completed. If there is a breach of contract without mutual agreement, the deposit will be transferred to the other party as compensation. Additionally, we provide safety features such as "one-touch emergency" and "real-time location sharing" to ensure your safety.',
+      'Your safety is our top priority. We only recommend dates in public places and match based on distance. For each date, both parties are required to pay a deposit, which will be fully refunded once the date is successfully completed. In addition, we provide safety features such as \'One-Tap Emergency Call\' and \'Real-Time Location Sharing\' to ensure your security.',
       name: 'faqDatingSafetyAnswer',
       desc: 'FAQ answer about dating safety',
       args: [],

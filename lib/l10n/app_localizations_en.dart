@@ -15,6 +15,9 @@ class SEn extends S {
   String get login => 'Login';
 
   @override
+  String get authenticating => 'Authenticating...';
+
+  @override
   String get register => 'Register';
 
   @override
@@ -314,7 +317,7 @@ class SEn extends S {
   String get membershipSubscription => 'Membership Subscription';
 
   @override
-  String get onboardingTagline => 'See me, then talk to me';
+  String get onboardingTagline => 'Meet first, Unblur love.';
 
   @override
   String get letMeThink => 'Let me think';
@@ -353,7 +356,7 @@ class SEn extends S {
 
   @override
   String get faqDatingSafetyAnswer =>
-      'We take user safety very seriously. All dates require a deposit, which is fully refunded after the date is completed. If there is a breach of contract without mutual agreement, the deposit will be transferred to the other party as compensation. Additionally, we provide safety features such as \"one-touch emergency\" and \"real-time location sharing\" to ensure your safety.';
+      'Your safety is our top priority. We only recommend dates in public places and match based on distance. For each date, both parties are required to pay a deposit, which will be fully refunded once the date is successfully completed. In addition, we provide safety features such as \'One-Tap Emergency Call\' and \'Real-Time Location Sharing\' to ensure your security.';
 
   @override
   String get faqEmergencyQuestion =>

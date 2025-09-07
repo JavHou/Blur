@@ -66,7 +66,7 @@ class _VerticalDatingCardState extends State<VerticalDatingCard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "${widget.dating.nickname}",
+                            widget.dating.nickname,
                             style: theme.textTheme.labelLarge,
                           ),
                           Spacer(),

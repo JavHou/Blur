@@ -54,7 +54,7 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       bottomNavigationBar: ConversationNavbar(),
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           height: deviceHeight * 0.8,
           child: SingleChildScrollView(
             reverse: true,

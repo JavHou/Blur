@@ -30,7 +30,7 @@ class _DatingconfirmScreenState extends State<DatingconfirmScreen> {
 
   bool _isLoading = false;
 
-  late Timer _timer = Timer(Duration.zero, () {});
+  late final Timer _timer = Timer(Duration.zero, () {});
 
   final CrossmintService _crossmintService = CrossmintService();
 

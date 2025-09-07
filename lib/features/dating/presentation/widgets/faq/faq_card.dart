@@ -1,6 +1,6 @@
 import 'package:blur/shared/border/item_border.dart';
 import 'package:flutter/material.dart';
-import 'package:blur/generated/l10n.dart';
+import 'package:blur/shared/utils/localization_helper.dart';
 
 class DatingFAQCard extends StatefulWidget {
   const DatingFAQCard({super.key});
@@ -36,7 +36,7 @@ class _DatingFAQCardState extends State<DatingFAQCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      S.of(context).faqDatingSafetyQuestion, // Add numbering
+                      context.l10n.faqDatingSafetyQuestion, // Add numbering
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.grey.shade800,
                         fontSize: 12,
@@ -45,7 +45,7 @@ class _DatingFAQCardState extends State<DatingFAQCard> {
                     SizedBox(height: 8),
 
                     Text(
-                      S.of(context).faqDatingSafetyAnswer,
+                      context.l10n.faqDatingSafetyAnswer,
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.grey.shade800,
                         fontSize: 12,
@@ -53,7 +53,7 @@ class _DatingFAQCardState extends State<DatingFAQCard> {
                     ),
                     ItemBorder(12),
                     Text(
-                      S.of(context).faqEmergencyQuestion, // Add numbering
+                      context.l10n.faqEmergencyQuestion, // Add numbering
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.grey.shade800,
                         fontSize: 12,
@@ -62,7 +62,7 @@ class _DatingFAQCardState extends State<DatingFAQCard> {
                     SizedBox(height: 8),
 
                     Text(
-                      S.of(context).faqEmergencyAnswer,
+                      context.l10n.faqEmergencyAnswer,
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.grey.shade800,
                         fontSize: 12,
@@ -71,7 +71,7 @@ class _DatingFAQCardState extends State<DatingFAQCard> {
                     ItemBorder(12),
 
                     Text(
-                      S.of(context).faqDepositRefundQuestion, // Add numbering
+                      context.l10n.faqDepositRefundQuestion, // Add numbering
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.grey.shade800,
                         fontSize: 12,
@@ -80,7 +80,7 @@ class _DatingFAQCardState extends State<DatingFAQCard> {
                     SizedBox(height: 8),
 
                     Text(
-                      S.of(context).faqDepositRefundAnswer,
+                      context.l10n.faqDepositRefundAnswer,
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.grey.shade800,
                         fontSize: 12,

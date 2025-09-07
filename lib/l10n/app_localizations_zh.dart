@@ -15,6 +15,9 @@ class SZh extends S {
   String get login => '登录';
 
   @override
+  String get authenticating => '认证中...';
+
+  @override
   String get register => '注册';
 
   @override
@@ -350,7 +353,7 @@ class SZh extends S {
 
   @override
   String get faqDatingSafetyAnswer =>
-      '我们非常重视用户的安全。所有约会都需要支付押金，约会完成后全额退款。若未协商一致情况下违约，押金将转给对方作为赔偿。此外，我们提供\"一键报警\"和\"实时位置共享\"等安全功能，确保您的安全。';
+      '您的安全是我们的首要任务。我们仅推荐在公共场所的约会，并结合距离智能匹配，每次约会需双方缴纳押金，约会顺利完成后全额退还。此外，我们提供\"一键报警\"和\"实时位置共享\"等安全功能，确保您的安全。';
 
   @override
   String get faqEmergencyQuestion => '约会过程中遇到危险怎么办？';

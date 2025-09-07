@@ -9,6 +9,10 @@
     "@login": {
         "description": "Login button text"
     },
+    "authenticating": "Authenticating...",
+    "@authenticating": {
+        "description": "Loading text when authenticating"
+    },
     "register": "Register",
     "@register": {
         "description": "Register button text"
@@ -415,7 +419,7 @@
     "@membershipSubscription": {
         "description": "Membership subscription option in profile"
     },
-    "onboardingTagline": "See me, then talk to me",
+    "onboardingTagline": "Meet first, Unblur love.",
     "@onboardingTagline": {
         "description": "Onboarding screen tagline"
     },
@@ -471,7 +475,7 @@
     "@faqDatingSafetyQuestion": {
         "description": "FAQ question about dating safety"
     },
-    "faqDatingSafetyAnswer": "We take user safety very seriously. All dates require a deposit, which is fully refunded after the date is completed. If there is a breach of contract without mutual agreement, the deposit will be transferred to the other party as compensation. Additionally, we provide safety features such as \"one-touch emergency\" and \"real-time location sharing\" to ensure your safety.",
+    "faqDatingSafetyAnswer": "Your safety is our top priority. We only recommend dates in public places and match based on distance. For each date, both parties are required to pay a deposit, which will be fully refunded once the date is successfully completed. In addition, we provide safety features such as 'One-Tap Emergency Call' and 'Real-Time Location Sharing' to ensure your security.",
     "@faqDatingSafetyAnswer": {
         "description": "FAQ answer about dating safety"
     },

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:blur/features/onboarding/data/models/user_profile_model.dart';
-import 'package:blur/shared/buttons/full_width_button.dart';
 import 'package:blur/shared/utils/localization_helper.dart';
 
 class AgeStepScreen extends StatefulWidget {

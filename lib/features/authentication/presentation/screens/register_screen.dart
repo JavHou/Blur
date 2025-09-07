@@ -75,7 +75,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: Container(
+        child: SizedBox(
           height: 60,
           child: FullWidthButton(
             text: _currentStep < 2 ? '继续' : "注册",

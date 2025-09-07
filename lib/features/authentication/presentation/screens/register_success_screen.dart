@@ -36,7 +36,7 @@ class _RegisterSuccessScreenState extends State<RegisterSuccessScreen>
 
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
-        child: Container(
+        child: SizedBox(
           height: 60,
           child: FullWidthButton(
             text: context.l10n.continueBtn,

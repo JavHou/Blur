@@ -79,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("点击下方按钮，在浏览器中完成安全认证"),
         "authStartError": m1,
         "authStartFailed": MessageLookupByLibrary.simpleMessage("启动认证失败"),
+        "authenticating": MessageLookupByLibrary.simpleMessage("认证中..."),
         "back": MessageLookupByLibrary.simpleMessage("返回"),
         "basicInfo": MessageLookupByLibrary.simpleMessage("基本信息"),
         "blockchainAuth": MessageLookupByLibrary.simpleMessage("区块链认证"),
@@ -163,7 +164,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("错误"),
         "faq": MessageLookupByLibrary.simpleMessage("常见问题"),
         "faqDatingSafetyAnswer": MessageLookupByLibrary.simpleMessage(
-            "我们非常重视用户的安全。所有约会都需要支付押金，约会完成后全额退款。若未协商一致情况下违约，押金将转给对方作为赔偿。此外，我们提供\"一键报警\"和\"实时位置共享\"等安全功能，确保您的安全。"),
+            "您的安全是我们的首要任务。我们仅推荐在公共场所的约会，并结合距离智能匹配，每次约会需双方缴纳押金，约会顺利完成后全额退还。此外，我们提供\"一键报警\"和\"实时位置共享\"等安全功能，确保您的安全。"),
         "faqDatingSafetyQuestion":
             MessageLookupByLibrary.simpleMessage("我的约会安全吗？"),
         "faqDepositRefundAnswer": MessageLookupByLibrary.simpleMessage(

@@ -109,6 +109,12 @@ abstract class S {
   /// **'Login'**
   String get login;
 
+  /// Loading text when authenticating
+  ///
+  /// In en, this message translates to:
+  /// **'Authenticating...'**
+  String get authenticating;
+
   /// Register button text
   ///
   /// In en, this message translates to:
@@ -694,7 +700,7 @@ abstract class S {
   /// Onboarding screen tagline
   ///
   /// In en, this message translates to:
-  /// **'See me, then talk to me'**
+  /// **'Meet first, Unblur love.'**
   String get onboardingTagline;
 
   /// Dating decision button text
@@ -760,7 +766,7 @@ abstract class S {
   /// FAQ answer about dating safety
   ///
   /// In en, this message translates to:
-  /// **'We take user safety very seriously. All dates require a deposit, which is fully refunded after the date is completed. If there is a breach of contract without mutual agreement, the deposit will be transferred to the other party as compensation. Additionally, we provide safety features such as \"one-touch emergency\" and \"real-time location sharing\" to ensure your safety.'**
+  /// **'Your safety is our top priority. We only recommend dates in public places and match based on distance. For each date, both parties are required to pay a deposit, which will be fully refunded once the date is successfully completed. In addition, we provide safety features such as \'One-Tap Emergency Call\' and \'Real-Time Location Sharing\' to ensure your security.'**
   String get faqDatingSafetyAnswer;
 
   /// FAQ question about emergency situations

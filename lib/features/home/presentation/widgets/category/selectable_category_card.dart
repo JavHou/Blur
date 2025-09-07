@@ -36,9 +36,7 @@ class _SelectableCategoryCardState extends State<SelectableCategoryCard> {
       overlayColor: WidgetStatePropertyAll(Colors.blue.withAlpha(10)),
       child: Container(
         padding:
-            widget.padding != null
-                ? widget.padding
-                : EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            widget.padding ?? EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
           // color: widget.isSelected ? theme.colorScheme.primary.withAlpha(50) : Colors.white,
           border: Border.all(

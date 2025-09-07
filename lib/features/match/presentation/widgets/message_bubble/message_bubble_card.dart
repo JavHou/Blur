@@ -2,7 +2,6 @@ import 'package:blur/features/dating/presentation/widgets/cards/vertical_dating_
 import 'package:blur/features/match/presentation/widgets/share/share_card.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:share_plus/share_plus.dart';
 import '../../../data/models/match_message_model.dart';
 
 class MessageBubbleCard extends StatelessWidget {

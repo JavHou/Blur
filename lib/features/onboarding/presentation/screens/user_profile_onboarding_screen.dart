@@ -146,7 +146,7 @@ class _UserProfileOnboardingScreenState
                 : null,
       ),
       bottomNavigationBar: BottomAppBar(
-        child: Container(
+        child: SizedBox(
           height: 60,
           child: FullWidthButton(
             text:

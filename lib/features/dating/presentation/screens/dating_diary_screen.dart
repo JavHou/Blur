@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:blur/features/home/presentation/widgets/category/selectable_category_card.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
 import 'package:blur/shared/utils/localization_helper.dart';
 

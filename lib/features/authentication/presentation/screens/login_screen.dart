@@ -2,9 +2,7 @@ import 'package:blur/shared/logo_fonts/title_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blur/shared/buttons/full_width_button.dart';
-import 'package:blur/shared/inputs/base_input.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:blur/features/abstraxion/presentation/abstraxion_screen.dart';
 import 'package:blur/shared/utils/localization_helper.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -22,6 +20,23 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool _isAuthenticating = false;
+
+  Future<void> _handleLogin() async {
+    setState(() {
+      _isAuthenticating = true;
+    });
+
+    // 延迟1秒
+    await Future.delayed(const Duration(seconds: 1));
+
+    if (mounted) {
+      // context.go('/home?showFilter=false');
+      context.go('/register/success');
+
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -70,24 +85,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     // ),
                     SizedBox(height: 16),
 
+                    FullWidthButton(
+                      text: context.l10n.login,
+                      isLoading: _isAuthenticating,
+                      onPressed: _isAuthenticating ? () {} : _handleLogin,
+                    ),
+                    SizedBox(height: 16),
                     // FullWidthButton(
                     //   text: context.l10n.login,
                     //   onPressed: () {
-                    //     context.go('/home?showFilter=false');
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) => const AbstraxionScreen(),
+                    //       ),
+                    //     );
                     //   },
                     // ),
-                    SizedBox(height: 16),
-                    FullWidthButton(
-                      text: context.l10n.login,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const AbstraxionScreen(),
-                          ),
-                        );
-                      },
-                    ),
                   ],
                 ),
                 SizedBox(height: 32),

@@ -1,5 +1,5 @@
 String toHumanReadableDateTime(DateTime dateTime) {
-  final dayString = '${dateTime.day.toString().padLeft(2, '0')}';
+  final dayString = dateTime.day.toString().padLeft(2, '0');
   final monthString = _monthToString(dateTime.month);
   final yearString = dateTime.year.toString().padLeft(4, '0');
   final hourString = dateTime.hour.toString().padLeft(2, '0');

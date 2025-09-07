@@ -88,6 +88,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "authStartError": m1,
         "authStartFailed": MessageLookupByLibrary.simpleMessage(
             "Failed to start authentication"),
+        "authenticating":
+            MessageLookupByLibrary.simpleMessage("Authenticating..."),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "basicInfo": MessageLookupByLibrary.simpleMessage("Basic Info"),
         "blockchainAuth":
@@ -185,7 +187,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("Error"),
         "faq": MessageLookupByLibrary.simpleMessage("FAQ"),
         "faqDatingSafetyAnswer": MessageLookupByLibrary.simpleMessage(
-            "We take user safety very seriously. All dates require a deposit, which is fully refunded after the date is completed. If there is a breach of contract without mutual agreement, the deposit will be transferred to the other party as compensation. Additionally, we provide safety features such as \"one-touch emergency\" and \"real-time location sharing\" to ensure your safety."),
+            "Your safety is our top priority. We only recommend dates in public places and match based on distance. For each date, both parties are required to pay a deposit, which will be fully refunded once the date is successfully completed. In addition, we provide safety features such as \'One-Tap Emergency Call\' and \'Real-Time Location Sharing\' to ensure your security."),
         "faqDatingSafetyQuestion":
             MessageLookupByLibrary.simpleMessage("Is my date safe?"),
         "faqDepositRefundAnswer": MessageLookupByLibrary.simpleMessage(
@@ -288,7 +290,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "onboarding": MessageLookupByLibrary.simpleMessage("Welcome"),
         "onboardingTagline":
-            MessageLookupByLibrary.simpleMessage("See me, then talk to me"),
+            MessageLookupByLibrary.simpleMessage("Meet first, Unblur love."),
         "operations": MessageLookupByLibrary.simpleMessage("Operations"),
         "other": MessageLookupByLibrary.simpleMessage("Other"),
         "otherMethods": MessageLookupByLibrary.simpleMessage("Other Methods"),

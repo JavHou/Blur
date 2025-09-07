@@ -36,7 +36,7 @@ class _UserMessageCardState extends State<UserMessageCard> {
               children: [
                 Text(widget.message, style: theme.textTheme.labelMedium?.copyWith(color: Colors.blueGrey.shade900, letterSpacing: 0)),
                 SizedBox(height: 4),
-                Container(
+                SizedBox(
                   width: 80,
                   child: Row(
                     children: [

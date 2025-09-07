@@ -4,8 +4,6 @@ import 'package:blur/shared/image/image_widget.dart';
 import 'package:blur/shared/socialmedia_share/socialmedia_share_card.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:blur/shared/buttons/full_width_button.dart';
 import 'package:lottie/lottie.dart';
 
 class DatingPosterShareScreen extends StatefulWidget {

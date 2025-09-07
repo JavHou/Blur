@@ -232,7 +232,7 @@ class _DatingScreenState extends State<DatingScreen> {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        child: Container(
+        child: SizedBox(
           height: 60,
           child: _buildBottomButtons(context, theme),
         ),
